@@ -1,4 +1,4 @@
-package com.studenti.uninsubria.emotionalsongs.ServerES.Connection;
+package com.studenti.uninsubria.emotionalsongs.ServerES.ClientHandler;
 
 import java.io.IOException;
 import java.net.InetAddress;
