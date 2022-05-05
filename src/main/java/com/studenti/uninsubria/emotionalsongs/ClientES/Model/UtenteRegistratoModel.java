@@ -1,15 +1,22 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Utility.Indirizzo;
+
+/**
+ * @author Asghar Luqman
+ * @author Zuffellato Cristian
+ */
 public class UtenteRegistratoModel {
 
-    // <editor-fold desc="Attributes">
+    // <editor-fold desc="Attributi">
     private short utenteRegistratoID;
     private String nome;
     private String cognome;
-    private String indirizzo;
+    private Indirizzo indirizzo;
     private String email;
     private String username;
     private String password;
+
     // </editor-fold>
 
     // <editor-fold desc="Costruttori">
@@ -17,7 +24,7 @@ public class UtenteRegistratoModel {
 
     }
 
-    public UtenteRegistratoModel(short utenteRegistratoID, String nome, String cognome, String indirizzo, String email, String username, String password) {
+    public UtenteRegistratoModel(short utenteRegistratoID, String nome, String cognome, Indirizzo indirizzo, String email, String username, String password) {
 
         this.utenteRegistratoID = utenteRegistratoID;
         this.nome = nome;
@@ -91,7 +98,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public String getIndirizzo() {
+    public Indirizzo getIndirizzo() {
         return indirizzo;
     }
 
@@ -100,7 +107,7 @@ public class UtenteRegistratoModel {
      * @param indirizzo
      */
 
-    public void setIndirizzo(String indirizzo) {
+    public void setIndirizzo(Indirizzo indirizzo) {
         this.indirizzo = indirizzo;
     }
 

@@ -1,7 +1,8 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
 /**
- * @author luqmanasghar
+ * @author Asghar Luqman
+ * @author Zuffellato Cristian
  */
 public class CanzoneModel {
 }

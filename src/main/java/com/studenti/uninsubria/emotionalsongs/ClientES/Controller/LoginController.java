@@ -11,7 +11,8 @@ import javafx.scene.control.TitledPane;
 
 
 /**
- * @author luqmanasghar
+ * @author Asghar Luqman
+ * @author Zuffellato Cristian
  */
 
 public class LoginController {
