@@ -9,6 +9,7 @@ import com.studenti.uninsubria.emotionalsongs.ClientES.Utility.Indirizzo;
 public class UtenteRegistratoModel {
 
     // <editor-fold desc="Attributi">
+
     private short utenteRegistratoID;
     private String nome;
     private String cognome;
@@ -20,6 +21,7 @@ public class UtenteRegistratoModel {
     // </editor-fold>
 
     // <editor-fold desc="Costruttori">
+
     public UtenteRegistratoModel() {
 
     }
