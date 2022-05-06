@@ -21,11 +21,15 @@ public class UtenteRegistratoEntity {
     public void Create(UtenteRegistratoModel utenteRegistrato) throws SQLException, IOException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        Statement statement = null;
+
         try {
             connection = connectionFactory.getConnection();
-            statement = connectionFactory.getStatement();
+            statement = connectionFactory.getStatement(connection);
 
-            sb.append("INSERT INTO UtenteRegistrato(Nome, Cognome, Indirizzo, Email, Username, Password) ");
+            sb.append("INSERT INTO \"EmotionalSongs\".\"UtenteRegistrato\"(");
+            sb.append("\"Nome\", \"Cognome\", \"Indirizzo\", \"Email\", \"Username\", \"Password\")");
             sb.append("VALUES (?, ?, ?, ?, ?, ?);");
 
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
@@ -36,13 +40,17 @@ public class UtenteRegistratoEntity {
             preparedStatement.setString(5, utenteRegistrato.getUsername());
             preparedStatement.setString(6, utenteRegistrato.getPassword());
 
-            int res = preparedStatement.executeUpdate(sb.toString());
+            int res = preparedStatement.executeUpdate();
 
             connection.close();
         }
         catch (Exception ex){
             ex.printStackTrace();
             throw ex;
+        }
+        finally {
+            if(!connection.isClosed())
+                connection.close();
         }
     }
 

@@ -12,8 +12,6 @@ import java.sql.Statement;
 public class ConnectionFactory {
 
     private final ServerInformation serverInformation;
-    private Connection connection;
-    private Statement statement;
 
     public ConnectionFactory(String username, String password) throws IOException {
         serverInformation = new ServerInformation();
@@ -26,33 +24,18 @@ public class ConnectionFactory {
     }
 
     public Connection getConnection() throws SQLException {
-        try {
-            if(connection == null){
-                connection = DriverManager.getConnection(serverInformation.getConnectionString(),
-                        serverInformation.getUsername(),
-                        serverInformation.getPassword());
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw ex;
-        }
-
-        return connection;
+        return DriverManager.getConnection(serverInformation.getConnectionString(),
+                    serverInformation.getUsername(),
+                    serverInformation.getPassword());
     }
 
-    public void closeConnection() throws SQLException {
-        if(connection != null) {
-            connection.close();
-            connection = null;
-        }
+    public Statement getStatement(Connection connection) throws SQLException {
+        return connection.createStatement();
     }
 
     public Statement getStatement() throws SQLException {
-        if (statement == null) {
-            Connection connection = getConnection();
-            statement = connection.createStatement();
-        }
-        return statement;
+        Connection connection = getConnection();
+        return connection.createStatement();
     }
 
 }
