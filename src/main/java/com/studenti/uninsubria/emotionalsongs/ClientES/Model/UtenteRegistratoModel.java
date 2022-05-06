@@ -1,7 +1,5 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Utility.Indirizzo;
-
 /**
  * @author Asghar Luqman
  * @author Zuffellato Cristian
@@ -11,12 +9,12 @@ public class UtenteRegistratoModel {
     // <editor-fold desc="Attributi">
 
     private short utenteRegistratoID;
-    private String nome;
-    private String cognome;
-    private Indirizzo indirizzo;
-    private String email;
-    private String username;
-    private String password;
+    private java.lang.String nome;
+    private java.lang.String cognome;
+    private String indirizzo;
+    private java.lang.String email;
+    private java.lang.String username;
+    private java.lang.String password;
 
     // </editor-fold>
 
@@ -26,7 +24,7 @@ public class UtenteRegistratoModel {
 
     }
 
-    public UtenteRegistratoModel(short utenteRegistratoID, String nome, String cognome, Indirizzo indirizzo, String email, String username, String password) {
+    public UtenteRegistratoModel(short utenteRegistratoID, java.lang.String nome, java.lang.String cognome, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
 
         this.utenteRegistratoID = utenteRegistratoID;
         this.nome = nome;
@@ -64,7 +62,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public String getNome() {
+    public java.lang.String getNome() {
         return nome;
     }
 
@@ -73,7 +71,7 @@ public class UtenteRegistratoModel {
      * @param nome
      */
 
-    public void setNome(String nome) {
+    public void setNome(java.lang.String nome) {
         this.nome = nome;
     }
 
@@ -82,7 +80,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public String getCognome() {
+    public java.lang.String getCognome() {
         return cognome;
     }
 
@@ -91,7 +89,7 @@ public class UtenteRegistratoModel {
      * @param cognome
      */
 
-    public void setCognome(String cognome) {
+    public void setCognome(java.lang.String cognome) {
         this.cognome = cognome;
     }
 
@@ -100,17 +98,17 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public Indirizzo getIndirizzo() {
+    public String getIndirizzo() {
         return indirizzo;
     }
 
     /**
      * Assegna indirizzo
-     * @param indirizzo
+     * @param string
      */
 
-    public void setIndirizzo(Indirizzo indirizzo) {
-        this.indirizzo = indirizzo;
+    public void setIndirizzo(String string) {
+        this.indirizzo = string;
     }
 
     /**
@@ -118,7 +116,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public String getEmail() {
+    public java.lang.String getEmail() {
         return email;
     }
 
@@ -127,7 +125,7 @@ public class UtenteRegistratoModel {
      * @param email
      */
 
-    public void setEmail(String email) {
+    public void setEmail(java.lang.String email) {
         this.email = email;
     }
 
@@ -136,7 +134,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public String getUsername() {
+    public java.lang.String getUsername() {
         return username;
     }
 
@@ -145,7 +143,7 @@ public class UtenteRegistratoModel {
      * @param username
      */
 
-    public void setUsername(String username) {
+    public void setUsername(java.lang.String username) {
         this.username = username;
     }
 
@@ -154,7 +152,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public String getPassword() {
+    public java.lang.String getPassword() {
         return password;
     }
 
@@ -163,7 +161,7 @@ public class UtenteRegistratoModel {
      * @param password
      */
 
-    public void setPassword(String password) {
+    public void setPassword(java.lang.String password) {
         this.password = password;
     }
 
