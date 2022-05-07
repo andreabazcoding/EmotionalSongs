@@ -1,4 +1,4 @@
-package com.studenti.uninsubria.emotionalsongs.ClientES.Connection;
+package com.studenti.uninsubria.emotionalsongs.ServerES.Connection;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

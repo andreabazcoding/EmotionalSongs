@@ -1,6 +1,6 @@
-package com.studenti.uninsubria.emotionalsongs.ClientES.Entities;
+package com.studenti.uninsubria.emotionalsongs.ServerES.Entities;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Connection.ConnectionFactory;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 
 import java.io.IOException;

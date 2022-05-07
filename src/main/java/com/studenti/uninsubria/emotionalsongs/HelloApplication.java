@@ -1,6 +1,6 @@
 package com.studenti.uninsubria.emotionalsongs;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Entities.UtenteRegistratoEntity;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

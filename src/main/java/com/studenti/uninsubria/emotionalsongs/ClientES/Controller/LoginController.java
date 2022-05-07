@@ -1,7 +1,7 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Connection.ConnectionFactory;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
