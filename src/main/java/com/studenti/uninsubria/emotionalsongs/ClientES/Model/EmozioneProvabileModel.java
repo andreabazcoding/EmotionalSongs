@@ -4,7 +4,7 @@ public class EmozioneProvabileModel {
 
     // <editor-fold desc="Attributi">
 
-    private short emozioneID;
+    private int emozioneID;
     private String nomeEmozione;
 
     // </editor-fold>
@@ -15,7 +15,7 @@ public class EmozioneProvabileModel {
 
     }
 
-    public EmozioneProvabileModel(short emozioneID, String nomeEmozione) {
+    public EmozioneProvabileModel(int emozioneID, String nomeEmozione) {
         this.emozioneID = emozioneID;
         this.nomeEmozione = nomeEmozione;
     }
@@ -29,7 +29,7 @@ public class EmozioneProvabileModel {
      * @return
      */
 
-    public short getEmozioneID() {
+    public int getEmozioneID() {
         return emozioneID;
     }
 
@@ -38,7 +38,7 @@ public class EmozioneProvabileModel {
      * @param emozioneID
      */
 
-    public void setEmozioneID(short emozioneID) {
+    public void setEmozioneID(int emozioneID) {
         this.emozioneID = emozioneID;
     }
 

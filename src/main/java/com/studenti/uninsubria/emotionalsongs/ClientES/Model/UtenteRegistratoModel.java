@@ -8,7 +8,7 @@ public class UtenteRegistratoModel {
 
     // <editor-fold desc="Attributi">
 
-    private short utenteRegistratoID;
+    private int utenteRegistratoID;
     private java.lang.String nome;
     private java.lang.String cognome;
     private String indirizzo;
@@ -24,7 +24,7 @@ public class UtenteRegistratoModel {
 
     }
 
-    public UtenteRegistratoModel(short utenteRegistratoID, java.lang.String nome, java.lang.String cognome, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
+    public UtenteRegistratoModel(int utenteRegistratoID, java.lang.String nome, java.lang.String cognome, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
 
         this.utenteRegistratoID = utenteRegistratoID;
         this.nome = nome;
@@ -44,7 +44,7 @@ public class UtenteRegistratoModel {
      * @return
      */
 
-    public short getUtenteRegistratoID() {
+    public int getUtenteRegistratoID() {
         return utenteRegistratoID;
     }
 
@@ -53,7 +53,7 @@ public class UtenteRegistratoModel {
      * @param utenteRegistratoID
      */
 
-    public void setUtenteRegistratoID(short utenteRegistratoID) {
+    public void setUtenteRegistratoID(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }
 
