@@ -37,7 +37,7 @@ public class PlaylistEntity {
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
 
             preparedStatement.setString(1,playlistModel.getNomePlaylist());
-            preparedStatement.setShort(2,utenteRegistratoModel.getUtenteRegistratoID());
+            preparedStatement.setInt(2,utenteRegistratoModel.getUtenteRegistratoID());
 
             int res = preparedStatement.executeUpdate();
 

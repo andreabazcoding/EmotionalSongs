@@ -1,6 +1,7 @@
 package com.studenti.uninsubria.emotionalsongs.ServerES.Entities;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneProvabileModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
@@ -52,7 +53,7 @@ public class CanzoneEntity {
         }
     }
 
-    public List<CanzoneModel> AuthenticateUser(String titolo) throws SQLException, IOException  {
+    public List<CanzoneModel> SerchingByTitle(String titolo) throws SQLException, IOException  {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = null;
@@ -73,11 +74,11 @@ public class CanzoneEntity {
 
             while (resultSet.next()){
                 model = new CanzoneModel();
-                model.setCanzoneID(resultSet.getShort(1));
+                model.setCanzoneID(resultSet.getInt(1));
                 model.setTitolo(resultSet.getString(2));
                 model.setAutore(resultSet.getString(3));
                 model.setAlbum(resultSet.getString(4));
-                model.setAnno(resultSet.getShort(5));
+                model.setAnno(resultSet.getInt(5));
                 model.setDurata(resultSet.getShort(6));
                 model.setGenere(resultSet.getString(7));
 
@@ -97,4 +98,6 @@ public class CanzoneEntity {
 
         return listCanzone;
     }
+
+
 }
