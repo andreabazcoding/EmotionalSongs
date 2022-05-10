@@ -4,10 +4,7 @@ import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFact
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * @author luqmanasghar
@@ -22,11 +19,9 @@ public class UtenteRegistratoEntity {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = null;
-        Statement statement = null;
 
         try {
             connection = connectionFactory.getConnection();
-            statement = connectionFactory.getStatement(connection);
 
             sb.append("INSERT INTO \"EmotionalSongs\".\"UtenteRegistrato\"(");
             sb.append("\"Nome\", \"Cognome\", \"Indirizzo\", \"Email\", \"Username\", \"Password\")");
@@ -54,4 +49,41 @@ public class UtenteRegistratoEntity {
         }
     }
 
+    public int AuthenticateUser(String username, String password) throws SQLException, IOException  {
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        int userId = 0;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"UtenteRegistratoID\" ");
+            sb.append("FROM \"EmotionalSongs\".\"UtenteRegistrato\" ");
+            sb.append("WHERE \"Username\" = ? ");
+            sb.append("AND \"Password\" = ? ");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                userId = resultSet.getInt(1);
+            }
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(!connection.isClosed())
+                connection.close();
+        }
+
+        return userId;
+    }
 }

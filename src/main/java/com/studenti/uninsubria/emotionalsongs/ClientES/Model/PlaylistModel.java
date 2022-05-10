@@ -4,9 +4,9 @@ public class PlaylistModel {
 
     // <editor-fold desc="Attributi">
 
-    private short playlistID;
+    private int playlistID;
     private String nomePlaylist;
-    private short utenteRegistratoID;
+    private int utenteRegistratoID;
 
     // </editor-fold>
 
@@ -16,7 +16,7 @@ public class PlaylistModel {
 
     }
 
-    public PlaylistModel(short playlistID, String nomePlaylist, short utenteRegistratoID) {
+    public PlaylistModel(int playlistID, String nomePlaylist, int utenteRegistratoID) {
         this.playlistID = playlistID;
         this.nomePlaylist = nomePlaylist;
         this.utenteRegistratoID = utenteRegistratoID;
@@ -31,7 +31,7 @@ public class PlaylistModel {
      * @return
      */
 
-    public short getPlaylistID() {
+    public int getPlaylistID() {
         return playlistID;
     }
 
@@ -40,7 +40,7 @@ public class PlaylistModel {
      * @param playlistID
      */
 
-    public void setPlaylistID(short playlistID) {
+    public void setPlaylistID(int playlistID) {
         this.playlistID = playlistID;
     }
 
@@ -69,7 +69,7 @@ public class PlaylistModel {
      * @return
      */
 
-    public short getUtenteRegistratoID() {
+    public int getUtenteRegistratoID() {
         return utenteRegistratoID;
     }
 
@@ -79,7 +79,7 @@ public class PlaylistModel {
      * @param utenteRegistratoID
      */
 
-    public void setUtenteRegistrato(short utenteRegistratoID) {
+    public void setUtenteRegistrato(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }
 

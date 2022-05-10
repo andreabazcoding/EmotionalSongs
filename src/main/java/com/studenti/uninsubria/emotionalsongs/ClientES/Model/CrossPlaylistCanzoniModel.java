@@ -4,9 +4,9 @@ public class CrossPlaylistCanzoniModel {
 
     // <editor-fold desc="Attributi">
 
-    private short crossPlaylistCanzoniID;
-    private short canzoneID;
-    private short playlistID;
+    private int crossPlaylistCanzoniID;
+    private int canzoneID;
+    private int playlistID;
 
     // </editor-fold>
 
@@ -16,7 +16,7 @@ public class CrossPlaylistCanzoniModel {
 
     }
 
-    public CrossPlaylistCanzoniModel(short crossPlaylistCanzoniID, short canzoneID, short playlistID) {
+    public CrossPlaylistCanzoniModel(int crossPlaylistCanzoniID, int canzoneID, int playlistID) {
         this.crossPlaylistCanzoniID = crossPlaylistCanzoniID;
         this.canzoneID = canzoneID;
         this.playlistID = playlistID;
@@ -31,7 +31,7 @@ public class CrossPlaylistCanzoniModel {
      * @return
      */
 
-    public short getCrossPlaylistCanzoniID() {
+    public int getCrossPlaylistCanzoniID() {
         return crossPlaylistCanzoniID;
     }
 
@@ -40,7 +40,7 @@ public class CrossPlaylistCanzoniModel {
      * @param crossPlaylistCanzoniID
      */
 
-    public void setCrossPlaylistCanzoniID(short crossPlaylistCanzoniID) {
+    public void setCrossPlaylistCanzoniID(int crossPlaylistCanzoniID) {
         this.crossPlaylistCanzoniID = crossPlaylistCanzoniID;
     }
 
@@ -49,7 +49,7 @@ public class CrossPlaylistCanzoniModel {
      * @return
      */
 
-    public short getCanzoneID() {
+    public int getCanzoneID() {
         return canzoneID;
     }
 
@@ -58,7 +58,7 @@ public class CrossPlaylistCanzoniModel {
      * @param canzoneID
      */
 
-    public void setCanzoneID(short canzoneID) {
+    public void setCanzoneID(int canzoneID) {
         this.canzoneID = canzoneID;
     }
 
@@ -67,7 +67,7 @@ public class CrossPlaylistCanzoniModel {
      * @return
      */
 
-    public short getPlaylistID() {
+    public int getPlaylistID() {
         return playlistID;
     }
 
@@ -76,7 +76,7 @@ public class CrossPlaylistCanzoniModel {
      * @param playlistID
      */
 
-    public void setPlaylistID(short playlistID) {
+    public void setPlaylistID(int playlistID) {
         this.playlistID = playlistID;
     }
 

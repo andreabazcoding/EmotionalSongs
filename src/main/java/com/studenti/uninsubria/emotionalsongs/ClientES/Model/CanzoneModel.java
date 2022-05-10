@@ -8,11 +8,11 @@ public class CanzoneModel {
 
     // <editor-fold desc="Attributi">
 
-    private short canzoneID;
+    private int canzoneID;
     private String titolo;
     private String autore;
     private String album;
-    private short anno;
+    private int anno;
     private int durata;
     private String genere;
 
@@ -24,7 +24,7 @@ public class CanzoneModel {
 
     }
 
-    public CanzoneModel(short canzoneID, String titolo, String autore, String album, short anno, int durata, String genere) {
+    public CanzoneModel(int canzoneID, String titolo, String autore, String album, int anno, int durata, String genere) {
 
         this.canzoneID = canzoneID;
         this.titolo = titolo;
@@ -46,7 +46,7 @@ public class CanzoneModel {
      * @return
      */
 
-    public short getCanzoneID() {
+    public int getCanzoneID() {
         return canzoneID;
     }
 
@@ -55,7 +55,7 @@ public class CanzoneModel {
      * @param canzoneID
      */
 
-    public void setCanzoneID(short canzoneID) {
+    public void setCanzoneID(int canzoneID) {
         this.canzoneID = canzoneID;
     }
 
@@ -120,7 +120,7 @@ public class CanzoneModel {
      * @return
      */
 
-    public short getAnno() {
+    public int getAnno() {
         return anno;
     }
 
@@ -129,7 +129,7 @@ public class CanzoneModel {
      * @param anno
      */
 
-    public void setAnno(short anno) {
+    public void setAnno(int anno) {
         this.anno = anno;
     }
 

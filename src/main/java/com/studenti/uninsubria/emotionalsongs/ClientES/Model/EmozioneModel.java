@@ -4,11 +4,11 @@ public class EmozioneModel {
 
     // <editor-fold desc="Attributi">
 
-    private short emozioneID;
-    private short utenteRegistratoID;
-    private short canzoneID;
-    private short emozioneProvabileID;
-    private short intensità;
+    private int emozioneID;
+    private int utenteRegistratoID;
+    private int canzoneID;
+    private int emozioneProvabileID;
+    private int intensità;
     private String annotazioneEmozione;
 
     // </editor-fold>
@@ -19,7 +19,7 @@ public class EmozioneModel {
 
     }
 
-    public EmozioneModel(short emozioneID, short utenteRegistratoID, short canzoneID, short emozioneProvabileID, short intentità, String annotazioneEmozione) {
+    public EmozioneModel(int emozioneID, int utenteRegistratoID, int canzoneID, int emozioneProvabileID, int intentità, String annotazioneEmozione) {
 
         this.emozioneID = emozioneID;
         this.utenteRegistratoID = utenteRegistratoID;
@@ -39,7 +39,7 @@ public class EmozioneModel {
      * @return
      */
 
-    public short getEmozioneID() {
+    public int getEmozioneID() {
         return emozioneID;
     }
 
@@ -48,7 +48,7 @@ public class EmozioneModel {
      * @param emozioneID
      */
 
-    public void setEmozioneID(short emozioneID) {
+    public void setEmozioneID(int emozioneID) {
         this.emozioneID = emozioneID;
     }
 
@@ -57,7 +57,7 @@ public class EmozioneModel {
      * @return
      */
 
-    public short getUtenteRegistratoID() {
+    public int getUtenteRegistratoID() {
         return utenteRegistratoID;
     }
 
@@ -66,7 +66,7 @@ public class EmozioneModel {
      * @param utenteRegistratoID
      */
 
-    public void setUtenteRegistratoID(short utenteRegistratoID) {
+    public void setUtenteRegistratoID(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }
 
@@ -75,7 +75,7 @@ public class EmozioneModel {
      * @return
      */
 
-    public short getCanzoneID() {
+    public int getCanzoneID() {
         return canzoneID;
     }
 
@@ -84,7 +84,7 @@ public class EmozioneModel {
      * @param canzoneID
      */
 
-    public void setCanzoneID(short canzoneID) {
+    public void setCanzoneID(int canzoneID) {
         this.canzoneID = canzoneID;
     }
 
@@ -93,7 +93,7 @@ public class EmozioneModel {
      * @return
      */
 
-    public short getEmozioneProvabileID() {
+    public int getEmozioneProvabileID() {
         return emozioneProvabileID;
     }
 
@@ -102,7 +102,7 @@ public class EmozioneModel {
      * @param emozioneProvabileID
      */
 
-    public void setEmozioneProvabileID(short emozioneProvabileID) {
+    public void setEmozioneProvabileID(int emozioneProvabileID) {
         this.emozioneProvabileID = emozioneProvabileID;
     }
 
@@ -111,7 +111,7 @@ public class EmozioneModel {
      * @return
      */
 
-    public short getIntensità() {
+    public int getIntensità() {
         return intensità;
     }
 
@@ -120,7 +120,7 @@ public class EmozioneModel {
      * @param intensità
      */
 
-    public void setIntensità(short intensità) {
+    public void setIntensità(int intensità) {
         this.intensità = intensità;
     }
 

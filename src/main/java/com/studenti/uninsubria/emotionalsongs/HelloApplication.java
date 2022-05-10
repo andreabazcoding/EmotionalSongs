@@ -19,16 +19,9 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        UtenteRegistratoModel ute = new UtenteRegistratoModel();
-        ute.setNome("Andrea1");
-        ute.setCognome("Basilico");
-        ute.setIndirizzo("Via san francesco 13");
-        ute.setEmail("andreab@gmail.com");
-        ute.setUsername("andreab");
-        ute.setPassword("passProva!");
-
         UtenteRegistratoEntity uteEntity = new UtenteRegistratoEntity();
-        uteEntity.Create(ute);
+        int res = uteEntity.AuthenticateUser("fsampi", "provaPass!");
+        System.out.println(res);
 
     }
 
