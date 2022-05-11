@@ -3,6 +3,7 @@ package com.studenti.uninsubria.emotionalsongs.ServerES.Entities;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneProvabileModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 
 import java.io.IOException;
@@ -18,7 +19,80 @@ public class EmozioniEntity {
     public EmozioniEntity() {
     }
 
+    public void Create(EmozioneModel emozioneModel) throws SQLException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("INSERT INTO \"EmotionalSongs\".\"Emozione\"(");
+            sb.append("\"UtenteRegistratoID\", \"CanzoneID\", \"EmozioneProvabileID\", \"IntensitaEmozione\", \"AnnotazioneEmozione\")");
+            sb.append("VALUES (?, ?, ?, ?, ?);");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+            preparedStatement.setInt(1,emozioneModel.getUtenteRegistratoID());
+            preparedStatement.setInt(2, emozioneModel.getCanzoneID());
+            preparedStatement.setInt(3, emozioneModel.getEmozioneProvabileID());
+            preparedStatement.setInt(4, emozioneModel.getIntensità());
+            preparedStatement.setString(5, emozioneModel.getAnnotazioneEmozione());
+
+            int res = preparedStatement.executeUpdate();
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(!connection.isClosed())
+                connection.close();
+        }
+    }
+
+    public ResultSet EmotionProspect(int canzoneID) throws SQLException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"EmozioneProvabile\".\"NomeEmozione\",");
+            sb.append("COUNT(\"EmozioneProvabile\".\"NomeEmozione\") as NumeroUtenti,");
+            sb.append("AVG(\"Emozione\".\"IntensitaEmozione\") as MediaIntensita ");
+            sb.append("FROM \"EmotionalSongs\".\"Emozione\" ");
+            sb.append("INNER JOIN \"EmotionalSongs\".\"EmozioneProvabile\" ON \"Emozione\".\"EmozioneProvabileID\" = \"EmozioneProvabile\".\"EmozioneProvabileID\"");
+            sb.append("WHERE \"Emozione\".\"CanzoneID\" =");
+            sb.append(canzoneID);
+            sb.append(" GROUP BY \"EmozioneProvabile\".\"NomeEmozione\"");
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(!connection.isClosed())
+                connection.close();
+        }
+
+        return resultSet;
+    }
+
     public List<EmozioneModel> FeltEmotions(CanzoneModel canzoneModel, EmozioneProvabileModel emozioneProvabileModel) throws IOException, SQLException {
+
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = null;
