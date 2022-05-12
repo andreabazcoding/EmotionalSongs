@@ -270,12 +270,12 @@ public class CanzoneEntity {
     }
 
     /**/
-    public List<CanzoneModel> ExctractSummary(int[] arrCanzoneId) throws SQLException, IOException  {
+    public ResultSet ExctractSummary(int[] arrCanzoneId) throws SQLException, IOException  {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = null;
         CanzoneModel model = null;
-        List<CanzoneModel> listCanzone = new ArrayList<>();
+        ResultSet resultSet = null;
 
         try {
             connection = connectionFactory.getConnection();
@@ -285,16 +285,12 @@ public class CanzoneEntity {
                 sb.append("SELECT \"EmozioneProvabile\".\"NomeEmozione\", COUNT(\"EmozioneProvabile\".\"NomeEmozione\"), AVG(\"Emozione\".\"IntensitaEmozione\") ");
                 sb.append("FROM \"EmotionalSongs\".\"EmozioneProvabile\" ");
                 sb.append("INNER JOIN \"EmotionalSongs\".\"Emozione\" USING(\"EmozioneProvabileID\") ");
-                sb.append("INNER JOIN \"EmotionalSongs\".\"Canzone\" USING(\"CanzoneID\") ");
-                sb.append("WHERE \"Canzone\".\"CanzoneID\" = " + arrCanzoneId[i] + " ");
+                sb.append("WHERE \"Emozione\".\"CanzoneID\" = " + arrCanzoneId[i] + " ");
                 sb.append("GROUP BY (\"EmozioneProvabile\".\"NomeEmozione\");");
 
                 PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
-                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet = preparedStatement.executeQuery();
 
-                while (resultSet.next()){
-                    //?
-                }
             }
             connection.close();
         }
@@ -307,7 +303,7 @@ public class CanzoneEntity {
                 connection.close();
         }
 
-        return listCanzone;
+        return resultSet;
     }
 
 
