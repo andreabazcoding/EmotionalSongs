@@ -2,12 +2,14 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 
 /**
@@ -17,15 +19,16 @@ import javafx.scene.control.TitledPane;
 
 public class LoginController {
 
-    public TitledPane titledPaneEmotionaSongs;
     @FXML
-    private Label lblUsername, lblPassword, lblError;
+    private Label lblUsername, lblPassword;
     @FXML
-    private TextField txtFieldUsername, txtFieldPassword;
+    private TextField txtFieldUsername;
     @FXML
-    private Button btnAccedi, btnRegistrati, btnOspite;
+    private PasswordField pssFieldPassword;
+    @FXML
+    private Button btnAccedi,btnOspite;
 
-    private UtenteRegistratoModel utenteRegistratoModel;
+    private UtenteRegistratoEntity utenteRegistratoEntity;
     private ConnectionFactory connectionFactory;
 
     /**
@@ -33,61 +36,29 @@ public class LoginController {
      *
      * @param event
      */
-    public void btnAccediClicked(ActionEvent event){
+    public void btnAccediClicked(ActionEvent event) throws SQLException, IOException {
 
-        //connesione DB
+        if(btnAccedi.isPressed()){
 
-        String username = txtFieldUsername.getText().trim();
-        String password = txtFieldPassword.getText().trim();
+            String username = txtFieldUsername.getText().trim();
+            String password = pssFieldPassword.getText().trim();
 
-        if(username.isBlank() || password.isBlank()){
-            lblError.setText("Campi mancanti, inserire username e password per accedere");
-            return;
-        }
-
-        String query = "select *" +
-                        "from UtentiRegistrati" +
-                        "where username = '" + username +  "'and password ='" + password +"'";
-
-        if(utenteRegistratoModel == null){
-            lblError.setText("Credenziali errate, username e password non corrispondono a nessun utente registrato");
-        }
-        /**
-         * else if(){
-                // cambio scena
-            }else{
-                // cambio scena
+            if(username.isBlank() || password.isBlank()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setContentText("Campi mancanti, inserire username e password per accedere");
+                alert.showAndWait();
             }
-         */
 
         }
-
-
-    /**
-     * Permette la registrazione, agli utenti non ancora registrati
-     *
-     * @param event
-     */
-    public void btnRegistratiClicked(ActionEvent event){
 
     }
 
-    /**
-     * Permette di accedere come ospite
-     *
-     * @param event
-     */
     public void btnOspiteClicked(ActionEvent event){
 
-    }
+        if(btnOspite.isPressed()){
 
-    /**
-     * Resetta i campi
-     */
-    public void reset(){
-
-        txtFieldUsername.clear();
-        txtFieldPassword.clear();
+        }
 
     }
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.ListCanzoniController">
+   <children>
+      <TableView fx:id="tbViewCanzoni" layoutY="75.0" prefHeight="525.0" prefWidth="725.0">
+        <columns>
+          <TableColumn prefWidth="121.0" text="Titolo" />
+          <TableColumn prefWidth="121.0" text="Autore" />
+            <TableColumn prefWidth="121.0" text="Anno" />
+            <TableColumn prefWidth="121.0" text="Album" />
+            <TableColumn prefWidth="121.0" text="Durata" />
+            <TableColumn prefWidth="121.0" text="Genere" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtFieldRicercaTitolo" layoutX="4.0" layoutY="49.0" prefHeight="25.0" prefWidth="115.0" promptText="Titolo">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="129.0" layoutY="49.0" prefHeight="25.0" prefWidth="230.0" promptText="Autore e Anno" />
+   </children>
+</AnchorPane>
