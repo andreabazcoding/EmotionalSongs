@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EmozioniProvateController">
    <children>
       <Pane fx:id="paneEmozioneProvate" prefHeight="500.0" prefWidth="700.0">
@@ -20,10 +19,10 @@
             </Label>
             <TableView fx:id="tbViewEmozioniProvate" layoutX="25.0" layoutY="33.0" prefHeight="342.0" prefWidth="650.0">
               <columns>
-                <TableColumn prefWidth="163.0" text="Emozione" />
-                <TableColumn fx:id="tbViewEmozione" text="N.Utenti" />
-                  <TableColumn prefWidth="50.0" text="Media" />
-                  <TableColumn prefWidth="360.0" text="Annotazione" />
+                <TableColumn fx:id="colEmozione" prefWidth="163.0" text="Emozione" />
+                <TableColumn fx:id="colNumeroUtenti" text="N.Utenti" />
+                  <TableColumn fx:id="colMedia" prefWidth="124.0" text="Media Intensità" />
+                  <TableColumn fx:id="colAnnotazione" prefWidth="286.0" text="Annotazione" />
               </columns>
             </TableView>
             <Label fx:id="lblRecenzioneCompleta" layoutX="25.0" layoutY="383.0" text="Recensione Completa: ">
@@ -32,6 +31,7 @@
                </font>
             </Label>
             <TextArea fx:id="txtAreaRecCompleta" layoutX="25.0" layoutY="397.0" prefHeight="80.0" prefWidth="650.0" />
+            <Label fx:id="lblSelectedSong" layoutX="75.0" layoutY="15.0" />
          </children>
       </Pane>
    </children>

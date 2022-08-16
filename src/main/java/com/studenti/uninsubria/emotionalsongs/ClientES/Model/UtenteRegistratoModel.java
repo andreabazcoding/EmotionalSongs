@@ -11,6 +11,7 @@ public class UtenteRegistratoModel {
     private int utenteRegistratoID;
     private java.lang.String nome;
     private java.lang.String cognome;
+    private String codiceFiscale;
     private String indirizzo;
     private java.lang.String email;
     private java.lang.String username;
@@ -24,11 +25,12 @@ public class UtenteRegistratoModel {
 
     }
 
-    public UtenteRegistratoModel(int utenteRegistratoID, java.lang.String nome, java.lang.String cognome, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
+    public UtenteRegistratoModel(int utenteRegistratoID, java.lang.String nome, java.lang.String cognome, String codiceFiscale, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
 
         this.utenteRegistratoID = utenteRegistratoID;
         this.nome = nome;
         this.cognome = cognome;
+        this.codiceFiscale = codiceFiscale;
         this.indirizzo = indirizzo;
         this.email = email;
         this.username = username;
@@ -92,6 +94,23 @@ public class UtenteRegistratoModel {
     public void setCognome(java.lang.String cognome) {
         this.cognome = cognome;
     }
+
+
+    /**
+     * Legge codiceFiscale
+     * @return
+     */
+
+    public String getCodiceFiscale() {
+        return codiceFiscale;
+    }
+
+    /**
+     * Assegna codiceFiscale
+     * @param codiceFiscale
+     */
+
+    public void setCodiceFiscale(String codiceFiscale) { this.codiceFiscale = codiceFiscale; }
 
     /**
      * Legge indirizzo
