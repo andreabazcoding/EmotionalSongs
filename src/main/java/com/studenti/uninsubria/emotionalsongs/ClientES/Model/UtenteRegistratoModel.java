@@ -11,11 +11,12 @@ public class UtenteRegistratoModel {
     private int utenteRegistratoID;
     private java.lang.String nome;
     private java.lang.String cognome;
-    private String codiceFiscale;
     private String indirizzo;
     private java.lang.String email;
     private java.lang.String username;
     private java.lang.String password;
+
+    private String codiceFiscale;
 
     // </editor-fold>
 
@@ -25,7 +26,7 @@ public class UtenteRegistratoModel {
 
     }
 
-    public UtenteRegistratoModel(int utenteRegistratoID, java.lang.String nome, java.lang.String cognome, String codiceFiscale, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
+    public UtenteRegistratoModel(int utenteRegistratoID, java.lang.String nome, java.lang.String cognome,String codiceFiscale, String indirizzo, java.lang.String email, java.lang.String username, java.lang.String password) {
 
         this.utenteRegistratoID = utenteRegistratoID;
         this.nome = nome;
@@ -95,7 +96,6 @@ public class UtenteRegistratoModel {
         this.cognome = cognome;
     }
 
-
     /**
      * Legge codiceFiscale
      * @return
@@ -110,7 +110,9 @@ public class UtenteRegistratoModel {
      * @param codiceFiscale
      */
 
-    public void setCodiceFiscale(String codiceFiscale) { this.codiceFiscale = codiceFiscale; }
+    public void setCodiceFiscale(String codiceFiscale) {
+        this.codiceFiscale = codiceFiscale;
+    }
 
     /**
      * Legge indirizzo

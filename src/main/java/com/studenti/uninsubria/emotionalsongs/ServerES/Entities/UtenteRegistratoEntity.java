@@ -24,16 +24,17 @@ public class UtenteRegistratoEntity {
             connection = connectionFactory.getConnection();
 
             sb.append("INSERT INTO \"EmotionalSongs\".\"UtenteRegistrato\"(");
-            sb.append("\"Nome\", \"Cognome\", \"Indirizzo\", \"Email\", \"Username\", \"Password\")");
+            sb.append("\"Nome\", \"Cognome\",\"CodiceFiscale\", \"Indirizzo\", \"Email\", \"Username\", \"Password\")");
             sb.append("VALUES (?, ?, ?, ?, ?, ?);");
 
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
             preparedStatement.setString(1, utenteRegistrato.getNome());
             preparedStatement.setString(2, utenteRegistrato.getCognome());
-            preparedStatement.setString(3, utenteRegistrato.getIndirizzo());
-            preparedStatement.setString(4, utenteRegistrato.getEmail());
-            preparedStatement.setString(5, utenteRegistrato.getUsername());
-            preparedStatement.setString(6, utenteRegistrato.getPassword());
+            preparedStatement.setString(3, utenteRegistrato.getCodiceFiscale());
+            preparedStatement.setString(4, utenteRegistrato.getIndirizzo());
+            preparedStatement.setString(5, utenteRegistrato.getEmail());
+            preparedStatement.setString(6, utenteRegistrato.getUsername());
+            preparedStatement.setString(7, utenteRegistrato.getPassword());
 
             int res = preparedStatement.executeUpdate();
 

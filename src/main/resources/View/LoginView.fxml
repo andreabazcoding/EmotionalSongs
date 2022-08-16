@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="paneLogin" prefHeight="557.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.LoginController">
+   <children>
+      <Label fx:id="lblPassword" layoutX="214.0" layoutY="262.0" text="Password: ">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUsername" layoutX="213.0" layoutY="226.0" text="Username: ">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFieldUsername" layoutX="299.0" layoutY="222.0">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnAccedi" contentDisplay="CENTER" layoutX="265.0" layoutY="303.0" mnemonicParsing="false" onAction="#btnAccediClicked" prefHeight="22.0" prefWidth="53.0" text="Accedi">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnOspite" layoutX="368.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnOspiteClicked" prefHeight="23.0" prefWidth="51.0" text="Ospite">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="pssFieldPassword" layoutX="299.0" layoutY="258.0">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </PasswordField>
+   </children>
+</Pane>
