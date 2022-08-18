@@ -48,7 +48,7 @@ public class EmozioniEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
     }
@@ -84,7 +84,7 @@ public class EmozioniEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 
@@ -96,7 +96,7 @@ public class EmozioniEntity {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = null;
-        EmozioneModel model = null;
+        EmozioneModel model = new EmozioneModel();
         List<EmozioneModel> listEmozioni = new ArrayList<>();
         try {
             connection = connectionFactory.getConnection();
@@ -126,7 +126,7 @@ public class EmozioniEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
         return listEmozioni;

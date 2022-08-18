@@ -1,9 +1,6 @@
 package com.studenti.uninsubria.emotionalsongs.ServerES.Entities;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneProvabileModel;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 
 import java.io.IOException;
@@ -48,7 +45,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
     }
@@ -92,7 +89,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 
@@ -135,7 +132,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 
@@ -174,7 +171,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 
@@ -218,7 +215,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 
@@ -262,7 +259,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 
@@ -299,7 +296,7 @@ public class CanzoneEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 

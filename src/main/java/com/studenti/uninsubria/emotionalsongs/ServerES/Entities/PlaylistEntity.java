@@ -62,7 +62,7 @@ public class PlaylistEntity {
 
         }finally {
 
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
 
         }
@@ -106,7 +106,7 @@ public class PlaylistEntity {
 
         }finally {
 
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
 
         }
