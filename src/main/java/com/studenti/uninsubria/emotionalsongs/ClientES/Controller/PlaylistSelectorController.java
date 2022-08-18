@@ -1,15 +1,14 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
-import com.studenti.uninsubria.emotionalsongs.HelloApplication;
-import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
+import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
