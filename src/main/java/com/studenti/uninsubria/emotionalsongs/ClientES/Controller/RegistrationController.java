@@ -1,7 +1,7 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
-import com.studenti.uninsubria.emotionalsongs.HelloApplication;
+import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import javafx.application.Application;
@@ -53,7 +53,7 @@ public class RegistrationController extends Application {
      * @throws SQLException
      */
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/View/Registration-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/Registration-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Registrazione utente");
         stage.setScene(scene);

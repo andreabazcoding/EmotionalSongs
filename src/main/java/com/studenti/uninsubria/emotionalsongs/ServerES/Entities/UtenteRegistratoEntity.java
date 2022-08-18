@@ -45,7 +45,7 @@ public class UtenteRegistratoEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
     }
@@ -81,7 +81,7 @@ public class UtenteRegistratoEntity {
             throw ex;
         }
         finally {
-            if(!connection.isClosed())
+            if(connection != null && !connection.isClosed())
                 connection.close();
         }
 

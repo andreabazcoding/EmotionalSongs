@@ -1,8 +1,6 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
-import com.studenti.uninsubria.emotionalsongs.HelloApplication;
-import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
+import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -46,7 +44,7 @@ public class PlaylistSelectorController extends Application implements Initializ
      */
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/View/PlaylistSelector-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/PlaylistSelector-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Selezione playlist");
         stage.setScene(scene);

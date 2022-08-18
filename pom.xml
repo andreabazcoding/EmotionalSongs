@@ -86,7 +86,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.studenti.uninsubria.emotionalsongs/com.studenti.uninsubria.emotionalsongs.HelloApplication
+                                com.studenti.uninsubria.emotionalsongs/com.studenti.uninsubria.emotionalsongs.Main
                             </mainClass>
                         </configuration>
                     </execution>

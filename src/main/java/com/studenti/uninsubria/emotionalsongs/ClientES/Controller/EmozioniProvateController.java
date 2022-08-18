@@ -2,9 +2,8 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
-import com.studenti.uninsubria.emotionalsongs.HelloApplication;
+import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.EmozioniEntity;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -14,10 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -71,7 +68,7 @@ public class EmozioniProvateController extends Application implements Initializa
      */
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/View/EmozioniProvateView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/EmozioniProvateView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Prospetto Emozioni");
         stage.setScene(scene);
