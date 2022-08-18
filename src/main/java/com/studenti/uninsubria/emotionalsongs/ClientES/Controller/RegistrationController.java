@@ -11,12 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Classe controller per la view "Registration-view"
+ * Classe controller per la view "RegistrationView"
  * Permette la registrazione dell'utente tramite compilazione dei campi
  * @author Nour Faraj
  * @author Andrea Basilico
@@ -54,7 +53,7 @@ public class RegistrationController extends Application {
      * @throws SQLException
      */
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/View/Registration-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/View/RegistrationView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Registrazione utente");
         stage.setScene(scene);

@@ -26,26 +26,14 @@ public class TableModel {
         this.media = new SimpleFloatProperty(media);
     }
 
-    /**
-     * (eliminare ?)
-     * @return
-     */
     public StringProperty emozioneProperty() {
         return emozione;
     }
 
-    /**
-     * (eliminare ?)
-     * @return
-     */
     public IntegerProperty utentiProperty() {
         return numeroUtenti;
     }
 
-    /**
-     * (eliminare ?)
-     * @return
-     */
     public FloatProperty mediaProperty() {
         return media;
     }

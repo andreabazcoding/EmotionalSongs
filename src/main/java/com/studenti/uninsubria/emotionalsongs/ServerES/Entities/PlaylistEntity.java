@@ -3,9 +3,9 @@ package com.studenti.uninsubria.emotionalsongs.ServerES.Entities;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
-
 import java.io.IOException;
 import java.sql.*;
+
 
 /**
  * La classe contiene i metodi per eseguire operazioni sulla tabella Playlist nel database

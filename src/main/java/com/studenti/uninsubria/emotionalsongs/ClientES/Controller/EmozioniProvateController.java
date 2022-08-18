@@ -16,7 +16,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -24,7 +23,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
- * Classe controller per la view "EmozioniProvate-view"
+ * Classe controller per la view "EmozioniProvateView"
  * Mostra il prospetto delle emozioni riferito alla canzone selezionata precedentemente
  * @author Nour Faraj
  * @author Andrea Basilico
