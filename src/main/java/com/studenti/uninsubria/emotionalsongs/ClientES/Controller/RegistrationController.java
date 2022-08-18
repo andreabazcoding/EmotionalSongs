@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
+ * Classe controller per la view "Registration-view"
+ * Permette la registrazione dell'utente tramite compilazione dei campi
  * @author Nour Faraj
  * @author Andrea Basilico
  */
@@ -47,7 +49,6 @@ public class RegistrationController extends Application {
     }
 
     /**
-     *
      * @param stage
      * @throws IOException
      * @throws SQLException

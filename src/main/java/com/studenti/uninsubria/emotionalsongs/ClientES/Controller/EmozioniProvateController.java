@@ -2,7 +2,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.HelloApplication;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.EmozioniEntity;
@@ -14,10 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +24,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
+ * Classe controller per la view "EmozioniProvate-view"
+ * Mostra il prospetto delle emozioni riferito alla canzone selezionata precedentemente
  * @author Nour Faraj
  * @author Andrea Basilico
  */
@@ -64,7 +63,6 @@ public class EmozioniProvateController extends Application implements Initializa
     }
 
     /**
-     *
      * @param stage
      * @throws IOException
      * @throws SQLException

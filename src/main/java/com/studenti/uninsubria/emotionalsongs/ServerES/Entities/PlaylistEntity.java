@@ -7,21 +7,36 @@ import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFact
 import java.io.IOException;
 import java.sql.*;
 
+/**
+ * La classe contiene i metodi per eseguire operazioni sulla tabella Playlist nel database
+ * @author Luqman Asghar
+ * @author Cristian Zuffellato
+ */
+
 public class PlaylistEntity {
 
     private Connection connection;
     private Statement statement;
 
+    /**
+     * Costruttore vuoto
+     */
     public PlaylistEntity() {
 
     }
 
+    /**
+     * Effettua la connessione al database ed esegue la query di inserimento di una nuova playlist
+     * @param playlistModel dati playlist
+     * @param utenteRegistratoModel dati utente creatore della playlist
+     * @throws IOException
+     * @throws SQLException
+     */
     public void Create(PlaylistModel playlistModel, UtenteRegistratoModel utenteRegistratoModel) throws IOException, SQLException {
 
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        Connection connection = null;
-        Statement statement = null;
+
 
         try{
             connection = connectionFactory.getConnection();
@@ -54,6 +69,12 @@ public class PlaylistEntity {
 
     }
 
+    /**
+     * Effettua la connessione al database ed esegue la query per estrarre tutte le playlist
+     * @return resultset
+     * @throws IOException
+     * @throws SQLException
+     */
     public static ResultSet allPlaylists() throws IOException, SQLException {
 
         StringBuilder sb = new StringBuilder();
