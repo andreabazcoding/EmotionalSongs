@@ -1,6 +1,8 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-import com.studenti.uninsubria.emotionalsongs.Main;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
+import com.studenti.uninsubria.emotionalsongs.HelloApplication;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -18,7 +20,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
- * @author Basilico Andrea
+ * Classe controller per la view "PlaylistSelector-view"
+ * Permette la visualizzazione e la selezione di tutte le playlist
+ * @author Andrea Basilico
+ * @author Nour Faraj
  */
 
 public class PlaylistSelectorController extends Application implements Initializable {
@@ -37,7 +42,6 @@ public class PlaylistSelectorController extends Application implements Initializ
     }
 
     /**
-     *
      * @param stage
      * @throws IOException
      * @throws SQLException
@@ -72,7 +76,7 @@ public class PlaylistSelectorController extends Application implements Initializ
     }
 
     /**
-     *
+     * Gestisce l'evento di click del mouse sul bottone "Seleziona"
      * @param mouseEvent
      */
     public void btnSelezionaPlaylistClicked(MouseEvent mouseEvent) {

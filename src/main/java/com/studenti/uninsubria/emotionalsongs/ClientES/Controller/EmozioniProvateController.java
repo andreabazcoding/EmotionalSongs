@@ -24,6 +24,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
+ * Classe controller per la view "EmozioniProvate-view"
+ * Mostra il prospetto delle emozioni riferito alla canzone selezionata precedentemente
  * @author Nour Faraj
  * @author Andrea Basilico
  */
@@ -61,7 +63,6 @@ public class EmozioniProvateController extends Application implements Initializa
     }
 
     /**
-     *
      * @param stage
      * @throws IOException
      * @throws SQLException
