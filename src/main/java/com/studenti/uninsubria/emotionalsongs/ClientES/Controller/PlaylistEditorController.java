@@ -1,4 +1,4 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-public class PlaylistViewController {
+public class PlaylistEditorController {
 }
