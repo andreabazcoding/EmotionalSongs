@@ -4,10 +4,7 @@ import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class CanzoneEntity {
             preparedStatement.setString(2, canzone.getAutore());
             preparedStatement.setString(3, canzone.getAlbum());
             preparedStatement.setInt(4, canzone.getAnno());
-            preparedStatement.setInt(5, canzone.getDurata());
+            preparedStatement.setDouble(5, canzone.getDurata());
             preparedStatement.setString(6, canzone.getGenere());
 
             int res = preparedStatement.executeUpdate();
@@ -94,6 +91,36 @@ public class CanzoneEntity {
         }
 
         return listCanzone;
+    }
+
+    public ResultSet allSongs() throws SQLException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\"");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\"");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(connection != null && !connection.isClosed())
+                connection.close();
+        }
+        return resultSet;
     }
 
     public List<CanzoneModel> ExtractAllInfo() throws SQLException, IOException  {
