@@ -14,8 +14,16 @@ public class TableModel {
     private IntegerProperty numeroUtenti;
     private FloatProperty media;
 
+    private StringProperty titolo;
+    private StringProperty autore;
+    private StringProperty album;
+    private IntegerProperty anno;
+    private DoubleProperty durata;
+    private StringProperty genere;
+
+
     /**
-     * Costruttore
+     * Costruttore per TableModelEmozioni
      * @param emozione
      * @param numeroUtenti
      * @param media
@@ -24,6 +32,15 @@ public class TableModel {
         this.emozione = new SimpleStringProperty(emozione);
         this.numeroUtenti = new SimpleIntegerProperty(numeroUtenti);
         this.media = new SimpleFloatProperty(media);
+    }
+
+    public TableModel(String titolo, String autore, String album, Integer anno, Double durata, String genere) {
+        this.titolo = new SimpleStringProperty(titolo);
+        this.autore = new SimpleStringProperty(autore);
+        this.album = new SimpleStringProperty(album);
+        this.anno = new SimpleIntegerProperty(anno);
+        this.durata = new SimpleDoubleProperty(durata);
+        this.genere = new SimpleStringProperty(genere);
     }
 
     public StringProperty emozioneProperty() {
@@ -85,4 +102,29 @@ public class TableModel {
     public ObservableValue getMedia() {
         return media;
     }
+
+    public StringProperty getTitolo() {
+        return titolo;
+    }
+
+    public StringProperty getAutore() {
+        return autore;
+    }
+
+    public StringProperty getAlbum() {
+        return album;
+    }
+
+    public ObservableValue getAnno() {
+        return anno;
+    }
+
+    public ObservableValue getDurata() {
+        return durata;
+    }
+
+    public StringProperty getGenere() {
+        return genere;
+    }
+
 }
