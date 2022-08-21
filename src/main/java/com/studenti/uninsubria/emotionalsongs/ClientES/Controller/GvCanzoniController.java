@@ -6,6 +6,8 @@ import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.CanzoneEntity;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,7 +26,7 @@ import java.util.ResourceBundle;
 public class GvCanzoniController extends Application implements Initializable {
 
     @FXML
-    private TextField txtFieldTitolo,txtFieldAutoreAnno;
+    private TextField txtFieldRicerca;
     @FXML
     private TableView<TableModel> tbViewCanzoni;
     @FXML
@@ -78,6 +80,47 @@ public class GvCanzoniController extends Application implements Initializable {
             tblColumnGenere.setCellValueFactory(tableModelCanzoniStringCellDataFeatures -> tableModelCanzoniStringCellDataFeatures.getValue().getGenere());
 
             tbViewCanzoni.setItems(data);
+
+            FilteredList<TableModel> filteredList = new FilteredList<>(data, b -> true);
+
+            /**
+             * viene utilizzato addListener per ricevere ogni cambiamento nel TextField di ricerca;
+             * Utilizzando la Lambda Expression, il nostro TextField diventerà anche i predicato della filteredList
+            */
+
+            txtFieldRicerca.textProperty().addListener((observable,oldValue,newValue)->{
+
+                filteredList.setPredicate(tableModel -> {
+
+                    /**Controlla se il TextField è vuoto,bianco o nullo.
+                     * Nel caso la ricerca non vada a buon fine lascia i record pre-esistenti
+                    */
+                    if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                        return true;
+                    }
+
+                    /**
+                     * Inizializziamo una stringa in lower case per semplificare la ricerca,
+                     * che verrà in seguito confrontata con Titolo, Autore e Anno.
+                     * Nel caso troviamo un riscontro restituisce true altrimenti restituisce false
+                     */
+
+                    String reserch = newValue.toLowerCase();
+
+                    if(tableModel.getTitolo().toString().toLowerCase().indexOf(reserch) > -1){
+                        return true;
+                    }else if(tableModel.getAutore().toString().toLowerCase().indexOf(reserch) > -1){
+                        return true;
+                    }else if(tableModel.getAnno().toString().toLowerCase().indexOf(reserch)> -1){
+                        return true;
+                    }else
+                        return false;
+                });
+            });
+
+            SortedList<TableModel> sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(tbViewCanzoni.comparatorProperty());
+            tbViewCanzoni.setItems(sortedList);
 
         } catch (SQLException e) {
 
