@@ -79,7 +79,7 @@ public class PlaylistModel {
      * @param utenteRegistratoID
      */
 
-    public void setUtenteRegistrato(int utenteRegistratoID) {
+    public void setUtenteRegistratoID(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }
 

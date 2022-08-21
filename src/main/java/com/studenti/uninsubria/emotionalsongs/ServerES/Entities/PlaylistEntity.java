@@ -32,28 +32,30 @@ public class PlaylistEntity {
      * @throws IOException
      * @throws SQLException
      */
-    public void Create(PlaylistModel playlistModel, UtenteRegistratoModel utenteRegistratoModel) throws IOException, SQLException {
+    public int Create(PlaylistModel playlistModel, UtenteRegistratoModel utenteRegistratoModel) throws IOException, SQLException {
 
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
-
+        int createdPlaylistId = 0;
 
         try{
             connection = connectionFactory.getConnection();
-            statement = connectionFactory.getStatement(connection);
 
             sb.append("INSERT INTO \"EmotionalSongs\".\"Playlist\"(");
             sb.append("\"NomePlaylist\", \"UtenteRegistratoID\")");
             sb.append("VALUES (?, ?);");
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString(), Statement.RETURN_GENERATED_KEYS);
 
-            preparedStatement.setString(1,playlistModel.getNomePlaylist());
-            preparedStatement.setInt(2,utenteRegistratoModel.getUtenteRegistratoID());
+            preparedStatement.setString(1, playlistModel.getNomePlaylist());
+            preparedStatement.setInt(2, utenteRegistratoModel.getUtenteRegistratoID());
 
-            int res = preparedStatement.executeUpdate();
-
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
             connection.close();
+
+            while(resultSet.next())
+                createdPlaylistId = resultSet.getInt(1);
 
         }catch(Exception ex){
 
@@ -67,6 +69,7 @@ public class PlaylistEntity {
 
         }
 
+        return createdPlaylistId;
     }
 
     /**
@@ -98,6 +101,46 @@ public class PlaylistEntity {
             connection.close();
 
             return  resultSet;
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+            throw ex;
+
+        }finally {
+
+            if(connection != null && !connection.isClosed())
+                connection.close();
+
+        }
+    }
+
+    /**
+     * Verifica che esiste giò una playlist con il nome passato per l'utente
+     * @return boolean
+     * @throws IOException
+     * @throws SQLException
+     */
+    public static boolean checkPlaylistExists(String nomePlaylist, int utenteId) throws IOException, SQLException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+
+        try{
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT * FROM \"EmotionalSongs\".\"Playlist\" ");
+            sb.append("WHERE \"Playlist\".\"UtenteRegistratoID\" = ").append(utenteId);
+            sb.append(" AND \"Playlist\".\"NomePlaylist\" = '").append(nomePlaylist).append("'");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+
+            return resultSet.next();
 
         }catch(Exception ex){
 
