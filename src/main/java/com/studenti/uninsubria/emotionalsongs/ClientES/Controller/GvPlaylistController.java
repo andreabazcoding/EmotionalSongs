@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
  * @author Nour Faraj
  */
 
-public class PlaylistSelectorController extends Application implements Initializable {
+public class GvPlaylistController extends Application implements Initializable {
 
     @FXML
     private ListView lviewSelezionePlaylist;
@@ -45,7 +45,7 @@ public class PlaylistSelectorController extends Application implements Initializ
      */
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/PlaylistSelectorView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/GvPlaylist.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Selezione playlist");
         stage.setScene(scene);

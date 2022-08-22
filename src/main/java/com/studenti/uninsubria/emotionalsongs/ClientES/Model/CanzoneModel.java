@@ -13,7 +13,7 @@ public class CanzoneModel {
     private String autore;
     private String album;
     private int anno;
-    private int durata;
+    private double durata;
     private String genere;
 
     // </editor-fold>
@@ -24,7 +24,7 @@ public class CanzoneModel {
 
     }
 
-    public CanzoneModel(int canzoneID, String titolo, String autore, String album, int anno, int durata, String genere) {
+    public CanzoneModel(int canzoneID, String titolo, String autore, String album, int anno, double durata, String genere) {
 
         this.canzoneID = canzoneID;
         this.titolo = titolo;
@@ -138,7 +138,7 @@ public class CanzoneModel {
      * @return
      */
 
-    public int getDurata() {
+    public double getDurata() {
         return durata;
     }
 
@@ -147,7 +147,7 @@ public class CanzoneModel {
      * @param durata
      */
 
-    public void setDurata(int durata) {
+    public void setDurata(double durata) {
         this.durata = durata;
     }
 
