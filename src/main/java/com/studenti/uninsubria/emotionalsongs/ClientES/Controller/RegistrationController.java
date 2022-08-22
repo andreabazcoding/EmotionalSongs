@@ -30,7 +30,7 @@ public class RegistrationController extends Application {
     @FXML
     private Button btnIndietro, btnRegistrati;
     @FXML
-    private Label lblError;
+    private Label lblError, lblConferma;
     @FXML
     private RadioButton rbtnVia;
     @FXML
@@ -104,6 +104,8 @@ public class RegistrationController extends Application {
         } else {
             if (registraUtente(utenteRegistratoEntity)) {
                 System.out.println("LOG: L'utente è stato registrato correttamente");
+                clearAll();
+                lblConferma.setVisible(true);
             }
         }
     }
@@ -122,5 +124,19 @@ public class RegistrationController extends Application {
         return true;
     }
 
+
+    public void clearAll(){
+        txtNome.clear();
+        txtCognome.clear();
+        txtEmail.clear();
+        txtUsername.clear();
+        txtCodiceFiscale.clear();
+        txtVia.clear();
+        txtNrCivico.clear();
+        txtComune.clear();
+        txtProvincia.clear();
+        txtCAP.clear();
+        passPassword.clear();
+    }
 
 }

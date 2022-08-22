@@ -25,7 +25,7 @@ public class UtenteRegistratoEntity {
 
             sb.append("INSERT INTO \"EmotionalSongs\".\"UtenteRegistrato\"(");
             sb.append("\"Nome\", \"Cognome\",\"CodiceFiscale\", \"Indirizzo\", \"Email\", \"Username\", \"Password\")");
-            sb.append("VALUES (?, ?, ?, ?, ?, ?);");
+            sb.append("VALUES (?, ?, ?, ?, ?, ?, ?);");
 
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
             preparedStatement.setString(1, utenteRegistrato.getNome());
