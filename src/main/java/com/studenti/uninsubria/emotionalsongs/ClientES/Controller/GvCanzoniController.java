@@ -1,8 +1,12 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.CanzoneEntity;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
+import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +27,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class GvCanzoniController extends Application implements Initializable {
+public class GvCanzoniController extends Controller implements Initializable {
 
     @FXML
     private TextField txtFieldRicerca;
@@ -42,28 +46,22 @@ public class GvCanzoniController extends Application implements Initializable {
     @FXML
     private TableColumn<TableModel, String> tblColumnGenere;
 
-    CanzoneEntity canzoneEntity = new CanzoneEntity();
 
-    private ResultSet rs = null;
-
-    ObservableList<TableModel> data ;
-
-
-    public GvCanzoniController() {
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/GvCanzoni.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        CanzoneEntity canzoneEntity = new CanzoneEntity();
+        UtenteRegistratoModel utenteRegistratoModel= new UtenteRegistratoModel();
+        PlaylistModel playlistModel = new PlaylistModel();
+        ResultSet rs = null;
+        ObservableList<TableModel> data ;
+
         try {
-            rs = canzoneEntity.allSongs();
+
+            if(utenteRegistratoModel.getUtenteRegistratoID() != 0)
+                rs = canzoneEntity.allSongs(playlistModel.getPlaylistID(),utenteRegistratoModel.getUtenteRegistratoID());
+            else
+                rs = canzoneEntity.allSongs();
+
             data = FXCollections.observableArrayList();
 
             while(rs.next()){
@@ -122,11 +120,7 @@ public class GvCanzoniController extends Application implements Initializable {
             sortedList.comparatorProperty().bind(tbViewCanzoni.comparatorProperty());
             tbViewCanzoni.setItems(sortedList);
 
-        } catch (SQLException e) {
-
-            throw new RuntimeException(e);
-
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
 
             throw new RuntimeException(e);
 
@@ -134,4 +128,8 @@ public class GvCanzoniController extends Application implements Initializable {
 
     }
 
+    @Override
+    public void LoadContent() {
+
+    }
 }
