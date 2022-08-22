@@ -21,7 +21,7 @@ import java.sql.SQLException;
  * @author Andrea Basilico
  */
 
-public class RegistrationController extends Application {
+public class RegistrationController extends Controller {
 
     @FXML
     private TextField txtNome, txtCognome, txtCodiceFiscale, txtVia, txtNrCivico, txtComune, txtProvincia, txtCAP, txtUsername, txtEmail;
@@ -39,13 +39,6 @@ public class RegistrationController extends Application {
     private UtenteRegistratoModel utenteRegistratoModel;
     private ConnectionFactory connectionFactory;
     private UtenteRegistratoEntity utenteRegistratoEntity;
-
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        launch();
-    }
 
     /**
      * @param stage
@@ -106,6 +99,7 @@ public class RegistrationController extends Application {
                 System.out.println("LOG: L'utente è stato registrato correttamente");
                 clearAll();
                 lblConferma.setVisible(true);
+                changeView("CreaPlaylist.fxml", getUserId());
             }
         }
     }
@@ -125,6 +119,9 @@ public class RegistrationController extends Application {
     }
 
 
+    /**
+     * Svuota tutti i campi precedentemente compilati.
+     */
     public void clearAll(){
         txtNome.clear();
         txtCognome.clear();
@@ -139,4 +136,8 @@ public class RegistrationController extends Application {
         passPassword.clear();
     }
 
+    @Override
+    public void LoadContent() {
+
+    }
 }
