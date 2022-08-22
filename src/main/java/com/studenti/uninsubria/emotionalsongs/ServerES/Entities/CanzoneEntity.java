@@ -47,6 +47,71 @@ public class CanzoneEntity {
         }
     }
 
+    public ResultSet allSongs() throws SQLException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\"");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\"");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(connection != null && !connection.isClosed())
+                connection.close();
+        }
+        return resultSet;
+    }
+
+    public ResultSet allSongs(int playlistID, int utenteRegistratoID) throws SQLException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\"");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\" INNER JOIN \"EmotionalSongs\".\"CrossPlaylistCanzoni\"");
+            sb.append("ON \"Canzone\".\"CanzoneID\" = \"CrossPlaylistCanzoni\".\"CanzoneID\"");
+            sb.append("INNER JOIN \"EmotionalSongs\".\"Playlist\"");
+            sb.append("ON \"Playlist\".\"PlaylistID\" = \"CrossPlaylistCanzoni\".\"PlaylistID\"");
+            sb.append("WHERE \"Playlist\".\"PlaylistID\" =").append(playlistID);
+            sb.append("AND \"Playlist\".\"UtenteRegistratoID\" =").append(utenteRegistratoID);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(connection != null && !connection.isClosed())
+                connection.close();
+        }
+        return resultSet;
+    }
+
     public List<CanzoneModel> SerchingByTitle(String titolo) throws SQLException, IOException  {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -91,36 +156,6 @@ public class CanzoneEntity {
         }
 
         return listCanzone;
-    }
-
-    public ResultSet allSongs() throws SQLException, IOException {
-
-        StringBuilder sb = new StringBuilder();
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        Connection connection = null;
-        ResultSet resultSet = null;
-
-        try {
-            connection = connectionFactory.getConnection();
-
-            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\"");
-            sb.append("FROM \"EmotionalSongs\".\"Canzone\"");
-
-            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
-
-            resultSet = preparedStatement.executeQuery();
-
-            connection.close();
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-            throw ex;
-        }
-        finally {
-            if(connection != null && !connection.isClosed())
-                connection.close();
-        }
-        return resultSet;
     }
 
     public List<CanzoneModel> ExtractAllInfo() throws SQLException, IOException  {
