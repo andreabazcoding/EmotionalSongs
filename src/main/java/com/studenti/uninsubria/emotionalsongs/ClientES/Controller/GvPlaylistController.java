@@ -1,8 +1,11 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,7 +31,11 @@ public class GvPlaylistController extends Application implements Initializable {
     // <editor-fold desc="Attributi FXML">
 
     @FXML
-    private ListView lviewSelezionePlaylist;
+    private TableView<TableModel> tbViewPlaylist;
+    @FXML
+    private TableColumn<TableModel, String> tblColumnTitoloPlaylist;
+    @FXML
+    private TableColumn<TableModel, String> tblColumnUsername;
 
     @FXML
     private Button btnSelezionaPlaylist;
@@ -66,6 +73,7 @@ public class GvPlaylistController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        /*
         try {
             ResultSet resultSet = PlaylistEntity.allPlaylists();
             while (resultSet.next()) {
@@ -76,6 +84,28 @@ public class GvPlaylistController extends Application implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        */
+
+        PlaylistEntity playlistEntity = new PlaylistEntity();
+        try {
+            ResultSet rs = PlaylistEntity.allPlaylists();
+            ObservableList<TableModel> data;
+            data = FXCollections.observableArrayList();
+
+            while(rs.next()){
+                data.add(new TableModel(rs.getString(2), rs.getString(3)));
+            }
+
+            tblColumnTitoloPlaylist.setCellValueFactory(tableModelPlaylistStringCellDataFeatures -> tableModelPlaylistStringCellDataFeatures.getValue().getNomePlaylist());
+            tblColumnUsername.setCellValueFactory(tableModelPlaylistStringCellDataFeatures -> tableModelPlaylistStringCellDataFeatures.getValue().getUsername());
+
+            tbViewPlaylist.setItems(data);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -84,7 +114,9 @@ public class GvPlaylistController extends Application implements Initializable {
      */
     public void btnSelezionaPlaylistClicked(MouseEvent mouseEvent) {
         if(btnSelezionaPlaylist.isPressed()) {
-            //do something
+            /*
+            legge id della playlist, nome playist e username creatore
+             */
         }
     }
 
