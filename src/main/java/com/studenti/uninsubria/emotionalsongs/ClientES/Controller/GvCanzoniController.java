@@ -46,21 +46,14 @@ public class GvCanzoniController extends Controller implements Initializable {
     @FXML
     private TableColumn<TableModel, String> tblColumnGenere;
 
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         CanzoneEntity canzoneEntity = new CanzoneEntity();
-        UtenteRegistratoModel utenteRegistratoModel= new UtenteRegistratoModel();
-        PlaylistModel playlistModel = new PlaylistModel();
         ResultSet rs = null;
         ObservableList<TableModel> data ;
 
         try {
 
-            if(utenteRegistratoModel.getUtenteRegistratoID() != 0)
-                rs = canzoneEntity.allSongs(playlistModel.getPlaylistID(),utenteRegistratoModel.getUtenteRegistratoID());
-            else
-                rs = canzoneEntity.allSongs();
+            rs = canzoneEntity.allSongs();
 
             data = FXCollections.observableArrayList();
 
@@ -84,7 +77,7 @@ public class GvCanzoniController extends Controller implements Initializable {
             /**
              * viene utilizzato addListener per ricevere ogni cambiamento nel TextField di ricerca;
              * Utilizzando la Lambda Expression, il nostro TextField diventerà anche i predicato della filteredList
-            */
+             */
 
             txtFieldRicerca.textProperty().addListener((observable,oldValue,newValue)->{
 
@@ -92,7 +85,7 @@ public class GvCanzoniController extends Controller implements Initializable {
 
                     /**Controlla se il TextField è vuoto,bianco o nullo.
                      * Nel caso la ricerca non vada a buon fine lascia i record pre-esistenti
-                    */
+                     */
                     if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
                         return true;
                     }
@@ -125,11 +118,8 @@ public class GvCanzoniController extends Controller implements Initializable {
             throw new RuntimeException(e);
 
         }
-
     }
 
     @Override
-    public void LoadContent() {
-
-    }
+    public void LoadContent() { }
 }

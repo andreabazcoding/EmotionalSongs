@@ -73,6 +73,54 @@ public class PlaylistEntity {
     }
 
     /**
+     * Estrae le informazioni della playlist desiderata
+     * @return PlaylistModel
+     * @throws IOException
+     * @throws SQLException
+     */
+    public static PlaylistModel Read(int playlistId) throws IOException, SQLException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+
+        PlaylistModel playlistmodel = new PlaylistModel();
+
+        try{
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"PlaylistID\", \"NomePlaylist\", \"UtenteRegistratoID\"");
+            sb.append("FROM \"EmotionalSongs\".\"Playlist\"");
+            sb.append("WHERE \"Playlist\".\"PlaylistID\" = ").append(playlistId);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+
+            while(resultSet.next()){
+                playlistmodel.setPlaylistID(resultSet.getInt(1));
+                playlistmodel.setNomePlaylist(resultSet.getString(2));
+                playlistmodel.setUtenteRegistratoID(resultSet.getInt(3));
+            }
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+            throw ex;
+
+        }finally {
+
+            if(connection != null && !connection.isClosed())
+                connection.close();
+
+        }
+
+        return playlistmodel;
+    }
+
+    /**
      * Effettua la connessione al database ed esegue la query per estrarre tutte le playlist
      * @return resultset
      * @throws IOException

@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 /**
@@ -67,7 +68,7 @@ public abstract class Controller {
     /**
      * Loads the content of the view
      */
-    public abstract void LoadContent();
+    public abstract void LoadContent() throws SQLException, IOException;
 
     /**
      * Loads the child view in the content area
@@ -109,25 +110,9 @@ public abstract class Controller {
             viewController.setContentArea(this.contentArea);
             viewController.setUserId(userId);
             viewController.setEntityId(entityId);
+            viewController.LoadContent();
         }catch (Exception ex){
             throw new RuntimeException(ex);
         }
     }
-
-    public void LoadSubView(BorderPane subBorderPane, String viewName){
-        try{
-            FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(getClass().getResource(path + viewName)));
-
-            subBorderPane.getChildren().removeAll();
-            Parent view = fxml.load();
-            this.contentArea.getChildren().setAll(view);
-
-            Controller viewController = fxml.getController();
-            viewController.setUserId(userId);
-            viewController.setEntityId(entityId);
-        }catch (Exception ex){
-            throw new RuntimeException(ex);
-        }
-    }
-
 }

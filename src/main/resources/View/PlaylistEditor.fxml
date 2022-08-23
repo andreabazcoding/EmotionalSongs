@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="604.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.PlaylistEditorController">
-   <AnchorPane layoutX="-132.0" layoutY="-179.0" prefHeight="200.0" prefWidth="200.0" />
-   <BorderPane fx:id="borderPaneListCanzoniPlaylist" layoutX="14.0" layoutY="47.0" prefHeight="546.0" prefWidth="727.0" />
+   <BorderPane fx:id="borderPaneListCanzoniPlaylist" layoutX="14.0" layoutY="47.0" prefHeight="546.0" prefWidth="727.0">
+      <center>
+          <TableView fx:id="tbViewCanzoni" layoutY="75.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                  <TableColumn fx:id="tblColumnTitolo" editable="false" prefWidth="121.0" sortable="false" text="Titolo" />
+                  <TableColumn fx:id="tblColumnAutore" prefWidth="121.0" text="Autore" />
+                  <TableColumn fx:id="tblColumnAlbum" prefWidth="121.0" text="Album" />
+                  <TableColumn fx:id="tblColumnAnno" prefWidth="121.0" text="Anno" />
+                  <TableColumn fx:id="tblColumnDurata" prefWidth="121.0" text="Durata" />
+                  <TableColumn fx:id="tblColumnGenere" prefWidth="121.0" text="Genere" />
+              </columns>
+          </TableView>
+      </center></BorderPane>
    <Label fx:id="lblNomePlaylist" layoutX="14.0" layoutY="21.0" prefHeight="18.0" prefWidth="727.0" text="NomePlaylist">
       <font>
          <Font size="14.0" />
