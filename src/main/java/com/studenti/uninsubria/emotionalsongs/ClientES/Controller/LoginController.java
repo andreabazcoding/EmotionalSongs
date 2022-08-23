@@ -1,13 +1,18 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 
 /**
@@ -15,49 +20,40 @@ import java.sql.SQLException;
  * @author Zuffellato Cristian
  */
 
-public class LoginController {
+public class LoginController extends Controller implements Initializable {
 
     @FXML
-    private Label lblUsername, lblPassword;
+    private Label lblUsername, lblPassword,lblLoginMessage;
     @FXML
     private TextField txtFieldUsername;
     @FXML
     private PasswordField pssFieldPassword;
     @FXML
-    private Button btnAccedi,btnOspite;
+    private Button btnAccedi;
 
-    private UtenteRegistratoEntity utenteRegistratoEntity;
-    private ConnectionFactory connectionFactory;
 
-    /**
-     * Verifica l'accesso: controlla la correttezza dei campi inseriti respetto i vincoli del Database
-     *
-     * @param event
-     */
-    public void btnAccediClicked(ActionEvent event) throws SQLException, IOException {
 
-        if(btnAccedi.isPressed()){
-
-            String username = txtFieldUsername.getText().trim();
-            String password = pssFieldPassword.getText().trim();
-
-            if(username.isBlank() || password.isBlank()){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Dialog");
-                alert.setContentText("Campi mancanti, inserire username e password per accedere");
-                alert.showAndWait();
-            }
-
-        }
+    @Override
+    public void LoadContent() {
 
     }
 
-    public void btnOspiteClicked(ActionEvent event){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        if(btnOspite.isPressed()){
+    }
 
+    public void btnAccediClicked(ActionEvent e) throws SQLException, IOException {
+
+        UtenteRegistratoEntity utenteRegistratoEntity = new UtenteRegistratoEntity();
+
+        if(txtFieldUsername.getText().isBlank() && pssFieldPassword.getText().isBlank() ) {
+            lblLoginMessage.setText("Inserisci username e password: ");
+        }else if(utenteRegistratoEntity.AuthenticateUser(txtFieldUsername.getText(),pssFieldPassword.getText() )== 1){
+            lblLoginMessage.setText("Benvenuto: ");
+        }else{
+            lblLoginMessage.setText("Username e/o password errati! ");
         }
-
     }
 
 }
