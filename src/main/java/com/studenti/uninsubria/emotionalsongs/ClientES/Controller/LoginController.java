@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class LoginController extends Controller implements Initializable {
 
+    // <editor-fold desc="Attributi FXML">
     @FXML
     private Label lblUsername, lblPassword,lblLoginMessage;
     @FXML
@@ -31,8 +32,9 @@ public class LoginController extends Controller implements Initializable {
     @FXML
     private Button btnAccedi;
 
+    // </editor-fold>
 
-
+    // <editor-fold desc="Methods">
     @Override
     public void LoadContent() {
 
@@ -55,5 +57,7 @@ public class LoginController extends Controller implements Initializable {
             lblLoginMessage.setText("Username e/o password errati! ");
         }
     }
+
+    // </editor-fold>
 
 }

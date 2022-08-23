@@ -16,11 +16,23 @@ import java.sql.SQLException;
  * @author luqmanasghar
  */
 public class CreaPlaylistController extends Controller {
+
+    // <editor-fold desc="Attributi FXML">
     public TextField txtNomePlaylist;
     public Button btnCreaPlaylist;
     public BorderPane borderPaneListCanzoniPlaylist;
     public Label lblErrorMessage;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
+
+    /**
+     * Creazione di una playlist
+     * @param actionEvent
+     * @throws SQLException
+     * @throws IOException
+     */
     public void btnCreaPlaylistPressed(ActionEvent actionEvent) throws SQLException, IOException {
 
         PlaylistModel playlistModel = new PlaylistModel();
@@ -52,4 +64,8 @@ public class CreaPlaylistController extends Controller {
     public void LoadContent() {
 
     }
+
+    // </editor-fold>
+
+
 }

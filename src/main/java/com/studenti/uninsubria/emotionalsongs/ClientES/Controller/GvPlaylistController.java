@@ -25,11 +25,17 @@ import java.util.ResourceBundle;
 
 public class GvPlaylistController extends Application implements Initializable {
 
+    // <editor-fold desc="Attributi FXML">
+
     @FXML
     private ListView lviewSelezionePlaylist;
 
     @FXML
     private Button btnSelezionaPlaylist;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
 
     /**
      * @param args
@@ -81,4 +87,7 @@ public class GvPlaylistController extends Application implements Initializable {
             //do something
         }
     }
+
+    // </editor-fold>
+
 }

@@ -11,12 +11,15 @@ import java.net.Socket;
 
 public class ApplicationServer {
 
-    public ApplicationServer() {}
-
+    // <editor-fold desc="Attributi">
     ServerSocket sSocket;
     Socket connection = null;
     int clientPort;
     InetAddress IPClient;
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
+    public ApplicationServer() {}
 
     public synchronized void handle()
     {
@@ -48,4 +51,7 @@ public class ApplicationServer {
             }
         }
     }
+
+    // </editor-fold>
+
 }

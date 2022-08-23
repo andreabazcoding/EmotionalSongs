@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableValue;
  */
 public class TableModel {
 
+    // <editor-fold desc="Attributi">
     private StringProperty emozione;
     private IntegerProperty numeroUtenti;
     private FloatProperty media;
@@ -21,6 +22,9 @@ public class TableModel {
     private DoubleProperty durata;
     private StringProperty genere;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Costruttori">
 
     /**
      * Costruttore per TableModelEmozioni
@@ -42,6 +46,10 @@ public class TableModel {
         this.durata = new SimpleDoubleProperty(durata);
         this.genere = new SimpleStringProperty(genere);
     }
+
+    // </editor-fold>
+
+    // <editor-fold desc="Getters&Setters">
 
     public StringProperty emozioneProperty() {
         return emozione;
@@ -126,5 +134,7 @@ public class TableModel {
     public StringProperty getGenere() {
         return genere;
     }
+
+    // </editor-fold>
 
 }

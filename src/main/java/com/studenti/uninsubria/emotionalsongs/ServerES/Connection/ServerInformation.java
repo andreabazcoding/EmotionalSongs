@@ -10,12 +10,17 @@ import java.util.Properties;
  */
 public class ServerInformation {
 
+    // <editor-fold desc="Attributi">
     private String protocol;
     private String username;
     private String db;
     private String ipServer;
     private String Password;
     private int port;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Costruttore">
 
     /**
      * Reads the properties from config and populates
@@ -51,6 +56,10 @@ public class ServerInformation {
                 inputStream.close();
         }
     }
+
+    // </editor-fold>
+
+    // <editor-fold desc="Getters&Setters">
 
     public void setProtocol(String protocol) {
         this.protocol = protocol;
@@ -104,6 +113,9 @@ public class ServerInformation {
         return getProtocol() + getIpServer() + ":" + getPort() + "/" + getDb();
     }
 
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
     @Override
     public String toString() {
         return "ServerInformation{" +
@@ -115,4 +127,6 @@ public class ServerInformation {
                 ", port=" + port +
                 '}';
     }
+
+    // </editor-fold>
 }

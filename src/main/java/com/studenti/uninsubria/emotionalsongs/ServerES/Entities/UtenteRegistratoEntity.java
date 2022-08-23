@@ -10,11 +10,25 @@ import java.sql.*;
  * @author luqmanasghar
  */
 public class UtenteRegistratoEntity {
+
+    // <editor-fold desc="Attributi">
     private Connection connection;
     private Statement statement;
 
-    public UtenteRegistratoEntity(){ }
+    // </editor-fold>
 
+    // <editor-fold desc="Costruttore">
+    public UtenteRegistratoEntity(){ }
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
+
+    /**
+     * Creazione di utenteRegistratoEntity a partire da
+     * @param utenteRegistrato
+     * @throws SQLException
+     * @throws IOException
+     */
     public void Create(UtenteRegistratoModel utenteRegistrato) throws SQLException, IOException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -87,4 +101,7 @@ public class UtenteRegistratoEntity {
 
         return userId;
     }
+
+    // </editor-fold>
+
 }

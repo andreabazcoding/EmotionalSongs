@@ -15,14 +15,24 @@ import java.util.Objects;
  */
 public abstract class Controller {
 
+    // <editor-fold desc="Attributi">
+
     public static final String path = "/View/";
 
     private int userId;
 
     private int entityId;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Attributi FXML">
+
     @FXML
     protected StackPane contentArea;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Getters&Setters">
 
     public StackPane getContentArea() {
         return contentArea;
@@ -64,6 +74,10 @@ public abstract class Controller {
     public void setEntityId(int entityId) {
         this.entityId = entityId;
     }
+
+    // </editor-fold>
+
+    // <editor-fold desc="Methods that change or load view">
 
     /**
      * Loads the content of the view
@@ -115,4 +129,8 @@ public abstract class Controller {
             throw new RuntimeException(ex);
         }
     }
+    // </editor-fold>
+
 }
+
+

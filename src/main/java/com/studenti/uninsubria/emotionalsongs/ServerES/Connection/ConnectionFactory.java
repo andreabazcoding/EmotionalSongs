@@ -11,8 +11,12 @@ import java.sql.Statement;
  */
 public class ConnectionFactory {
 
+    // <editor-fold desc="Attributi">
     private final ServerInformation serverInformation;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Costruttore">
     public ConnectionFactory(String username, String password) throws IOException {
         serverInformation = new ServerInformation();
         serverInformation.setUsername(username);
@@ -23,6 +27,9 @@ public class ConnectionFactory {
         serverInformation = new ServerInformation();
     }
 
+    // </editor-fold>
+
+    // <editor-fold desc="Getters">
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(serverInformation.getConnectionString(),
                     serverInformation.getUsername(),
@@ -37,5 +44,7 @@ public class ConnectionFactory {
         Connection connection = getConnection();
         return connection.createStatement();
     }
+
+    // </editor-fold>
 
 }

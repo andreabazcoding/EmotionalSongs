@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 
 public class GvCanzoniController extends Controller implements Initializable {
 
+    // <editor-fold desc="Attributi FXML">
+
     @FXML
     private TextField txtFieldRicerca;
     @FXML
@@ -38,6 +40,10 @@ public class GvCanzoniController extends Controller implements Initializable {
     private TableColumn<TableModel, Double> tblColumnDurata;
     @FXML
     private TableColumn<TableModel, String> tblColumnGenere;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CanzoneEntity canzoneEntity = new CanzoneEntity();
@@ -115,4 +121,7 @@ public class GvCanzoniController extends Controller implements Initializable {
 
     @Override
     public void LoadContent() { }
+
+    // </editor-fold>
+
 }

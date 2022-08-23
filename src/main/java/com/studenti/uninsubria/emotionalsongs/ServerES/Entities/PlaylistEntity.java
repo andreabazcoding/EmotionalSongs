@@ -15,9 +15,13 @@ import java.sql.*;
 
 public class PlaylistEntity {
 
+    // <editor-fold desc="Attributi">
     private Connection connection;
     private Statement statement;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Costruttore">
     /**
      * Costruttore vuoto
      */
@@ -25,6 +29,9 @@ public class PlaylistEntity {
 
     }
 
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
     /**
      * Effettua la connessione al database ed esegue la query di inserimento di una nuova playlist
      * @param playlistModel dati playlist
@@ -203,4 +210,5 @@ public class PlaylistEntity {
         }
     }
 
+    // </editor-fold>
 }

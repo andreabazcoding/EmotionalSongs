@@ -13,6 +13,14 @@ import java.util.List;
  */
 public class CanzoneEntity {
 
+    // <editor-fold desc="Methods">
+
+    /**
+     * Creazione di canzoneEntity a partire da Canzone Model
+     * @param canzone
+     * @throws SQLException
+     * @throws IOException
+     */
     public void Create(CanzoneModel canzone) throws SQLException, IOException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -47,6 +55,12 @@ public class CanzoneEntity {
         }
     }
 
+    /**
+     * Estrazione delle informazioni delle canzoni
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public ResultSet allSongs() throws SQLException, IOException {
 
         StringBuilder sb = new StringBuilder();
@@ -77,6 +91,12 @@ public class CanzoneEntity {
         return resultSet;
     }
 
+    /**
+     * Estrazione delle informazioni delle canzoni filtrate per playlist
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public ResultSet allSongs(int playlistID, int utenteRegistratoID) throws SQLException, IOException {
 
         StringBuilder sb = new StringBuilder();
@@ -365,5 +385,6 @@ public class CanzoneEntity {
         return resultSet;
     }
 
+    // </editor-fold>
 
 }

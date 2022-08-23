@@ -13,12 +13,19 @@ import java.util.List;
 
 public class EmozioniEntity {
 
+    // <editor-fold desc="Attributi">
     private Connection connection;
     private Statement statement;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Costruttore">
     public EmozioniEntity() {
     }
 
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
     public void Create(EmozioneModel emozioneModel) throws SQLException, IOException {
 
         StringBuilder sb = new StringBuilder();
@@ -131,4 +138,7 @@ public class EmozioniEntity {
         }
         return listEmozioni;
     }
+
+    // </editor-fold>
+
 }

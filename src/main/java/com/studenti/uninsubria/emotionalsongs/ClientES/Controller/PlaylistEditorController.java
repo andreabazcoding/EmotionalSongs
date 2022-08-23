@@ -21,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PlaylistEditorController extends Controller {
+
+    // <editor-fold desc="Attributi FXML">
     public BorderPane borderPaneListCanzoniPlaylist;
     public Label lblNomePlaylist;
     @FXML
@@ -37,6 +39,10 @@ public class PlaylistEditorController extends Controller {
     private TableColumn<TableModel, Double> tblColumnDurata;
     @FXML
     private TableColumn<TableModel, String> tblColumnGenere;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
 
     /**
      * Loads the content of the view
@@ -75,4 +81,7 @@ public class PlaylistEditorController extends Controller {
 
         }
     }
+
+    // </editor-fold>
+
 }

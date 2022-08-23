@@ -9,6 +9,8 @@ import java.net.Socket;
 
 public class ClientHandler extends Thread {
 
+    // <editor-fold desc="Attributi">
+
     static int connectionId = 0;
 
     Socket connection = null;
@@ -22,6 +24,9 @@ public class ClientHandler extends Thread {
     ObjectInputStream ois;
     ObjectOutputStream oos;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
     public ClientHandler(Socket sk) {
         this.connection = sk;
         connectionId++;
@@ -75,4 +80,6 @@ public class ClientHandler extends Thread {
             System.err.println(e);
         }
     }
+    // </editor-fold>
+
 }

@@ -26,11 +26,22 @@ import java.util.ResourceBundle;
      */
     public class InserimentoEmozioneController implements Initializable {
 
+        // <editor-fold desc="Attributi ">
+
         UtenteRegistratoModel utenteRegistratoModel = new UtenteRegistratoModel();
         EmozioneModel emozioneModel = new EmozioneModel();
         EmozioniEntity emozioniEntity = new EmozioniEntity();
         //da modificare
         CanzoneModel canzoneModel = new CanzoneModel(1,"The Twist", "Chubby Checker", "Twist With Chubby Checker", 1960, 155, "r&b");
+
+        /**
+         * Array contenente le 9 emozioni.
+         */
+        private String[] Emozioni = { "Stupore", "Solennità", "Tenerezza", "Nostalgia", "Calma", "Potere", "Gioia", "Tensione", "Tristezza" };
+
+        // </editor-fold>
+
+        // <editor-fold desc="Attributi FXML">
 
         /**
          * La ChoiceBox contenente le 9 emozioni selezionabili.
@@ -71,10 +82,9 @@ import java.util.ResourceBundle;
         String Emozione, Commento;
         int Intensita;
 
-        /**
-         * Array contenente le 9 emozioni.
-         */
-        private String[] Emozioni = { "Stupore", "Solennità", "Tenerezza", "Nostalgia", "Calma", "Potere", "Gioia", "Tensione", "Tristezza" };
+        // </editor-fold>
+
+        // <editor-fold desc="Methods ">
 
         /**
          * Inizializza la ChoiceBox e lo Slider, associandogli un listener per leggere il valore dell' intensità.
@@ -161,8 +171,10 @@ import java.util.ResourceBundle;
             lblConferma.setVisible(true);
         }
 
-
         public void previousView() throws IOException {
         }
+
+        // </editor-fold>
+
     }
 

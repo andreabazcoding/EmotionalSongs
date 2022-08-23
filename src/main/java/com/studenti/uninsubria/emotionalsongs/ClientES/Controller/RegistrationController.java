@@ -23,6 +23,7 @@ import java.sql.SQLException;
 
 public class RegistrationController extends Controller {
 
+    // <editor-fold desc="Attributi FXML">
     @FXML
     private TextField txtNome, txtCognome, txtCodiceFiscale, txtVia, txtNrCivico, txtComune, txtProvincia, txtCAP, txtUsername, txtEmail;
     @FXML
@@ -36,9 +37,16 @@ public class RegistrationController extends Controller {
     @FXML
     private RadioButton rbtnPiazza;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Attributi">
     private UtenteRegistratoModel utenteRegistratoModel;
     private ConnectionFactory connectionFactory;
     private UtenteRegistratoEntity utenteRegistratoEntity;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
 
     /**
      * @param stage
@@ -140,4 +148,7 @@ public class RegistrationController extends Controller {
     public void LoadContent() {
 
     }
+
+    // </editor-fold>
+
 }

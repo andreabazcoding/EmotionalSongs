@@ -13,13 +13,18 @@ import java.util.ResourceBundle;
 
 public class MainViewController extends Controller implements Initializable {
 
+    // <editor-fold desc="Attributi FXML">
     public Button btnAccedi;
     public Button btnRegistrati;
     public Button btnPlaylist;
     public Button btnHome;
     public Button btnCreaPlaylist;
 
+    // </editor-fold>
+
     private int userId;
+
+    // <editor-fold desc="Methods">
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,4 +78,7 @@ public class MainViewController extends Controller implements Initializable {
     public void LoadContent() {
 
     }
+
+    // </editor-fold>
+
 }

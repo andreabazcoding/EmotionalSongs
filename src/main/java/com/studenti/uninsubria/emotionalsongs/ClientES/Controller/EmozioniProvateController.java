@@ -30,29 +30,32 @@ import java.util.ResourceBundle;
  */
 public class EmozioniProvateController extends Application implements Initializable {
 
-    CanzoneModel canzoneModel = new CanzoneModel(1,"The Twist", "Chubby Checker", "Twist With Chubby Checker", 1960, 155, "r&b");
-    EmozioniEntity emozioniEntity = new EmozioniEntity();
-
+    // <editor-fold desc="Attributi FXML">
     @FXML
     TableView<TableModel> tbViewEmozioniProvate;
-
     @FXML
     TableColumn<TableModel, String> colEmozione;
-
     @FXML
     TableColumn<TableModel, Integer> colNumeroUtenti;
-
     @FXML
     TableColumn<TableModel, Integer> colMedia;
-
     @FXML
     TableColumn<TableModel, String> colAnnotazione;
-
     @FXML
     Label lblSelectedSong;
 
+    // </editor-fold>
+
+    // <editor-fold desc="Attributi ">
+
+    CanzoneModel canzoneModel = new CanzoneModel(1,"The Twist", "Chubby Checker", "Twist With Chubby Checker", 1960, 155, "r&b");
+    EmozioniEntity emozioniEntity = new EmozioniEntity();
     ObservableList<TableModel> data;
     ResultSet rs = null;
+
+    // </editor-fold>
+
+    // <editor-fold desc="Methods">
 
     /**
      * @param args
@@ -66,6 +69,7 @@ public class EmozioniProvateController extends Application implements Initializa
      * @throws IOException
      * @throws SQLException
      */
+
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/EmozioniProvateView.fxml"));
@@ -75,6 +79,7 @@ public class EmozioniProvateController extends Application implements Initializa
         stage.setResizable(false);
         stage.show();
     }
+
 
     /**
      * Imposta il titolo della canzone selezionata e popola la tabella del prospetto emozioni con il resultset ritornato da emotionProspect()
@@ -105,4 +110,7 @@ public class EmozioniProvateController extends Application implements Initializa
             e.printStackTrace();
         }
     }
+
+    // </editor-fold>
+
 }
