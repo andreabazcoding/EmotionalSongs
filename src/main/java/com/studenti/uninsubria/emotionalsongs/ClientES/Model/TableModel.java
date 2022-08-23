@@ -22,6 +22,11 @@ public class TableModel {
     private DoubleProperty durata;
     private StringProperty genere;
 
+    //necessari per tableview in GvPlaylistController
+    private IntegerProperty playlistId;
+    private StringProperty nomePlaylist;
+    private StringProperty username;
+
     // </editor-fold>
 
     // <editor-fold desc="Costruttori">
@@ -45,6 +50,12 @@ public class TableModel {
         this.anno = new SimpleIntegerProperty(anno);
         this.durata = new SimpleDoubleProperty(durata);
         this.genere = new SimpleStringProperty(genere);
+    }
+
+    public TableModel(/*Integer playlistId,*/ String nomePlaylist, String username) {
+        //this.playlistId = new SimpleIntegerProperty(playlistId);
+        this.nomePlaylist = new SimpleStringProperty(nomePlaylist);
+        this.username = new SimpleStringProperty(username);
     }
 
     // </editor-fold>
@@ -134,6 +145,9 @@ public class TableModel {
     public StringProperty getGenere() {
         return genere;
     }
+
+    public StringProperty getNomePlaylist() { return nomePlaylist; }
+    public StringProperty getUsername() { return username; }
 
     // </editor-fold>
 
