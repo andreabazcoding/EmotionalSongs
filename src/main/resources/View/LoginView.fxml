@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneLogin" prefHeight="557.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.LoginController">
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="aPaneLogin" prefHeight="557.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.LoginController">
    <children>
       <Label fx:id="lblPassword" layoutX="226.0" layoutY="266.0" text="Password: ">
          <font>
@@ -36,4 +37,4 @@
       </PasswordField>
       <Label fx:id="lblLoginMessage" alignment="CENTER" layoutX="227.0" layoutY="183.0" prefHeight="17.0" prefWidth="255.0" />
    </children>
-</Pane>
+</AnchorPane>
