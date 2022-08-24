@@ -30,16 +30,33 @@ public class ConnectionFactory {
     // </editor-fold>
 
     // <editor-fold desc="Getters">
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(serverInformation.getConnectionString(),
                     serverInformation.getUsername(),
                     serverInformation.getPassword());
     }
 
+    /**
+     *
+     * @param connection
+     * @return
+     * @throws SQLException
+     */
     public Statement getStatement(Connection connection) throws SQLException {
         return connection.createStatement();
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public Statement getStatement() throws SQLException {
         Connection connection = getConnection();
         return connection.createStatement();

@@ -20,6 +20,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ *  Classe controller di "GvCanzoni"
+ *  Mostra il prospetto delle canzoni
+ */
 public class GvCanzoniController extends Controller implements Initializable {
 
     // <editor-fold desc="Attributi FXML">
@@ -45,6 +49,11 @@ public class GvCanzoniController extends Controller implements Initializable {
 
     // <editor-fold desc="Methods">
 
+    /**
+     * Popola la TableView con le canzoni e permette la ricerca per Titolo,Autore ed Anno
+     * @param url
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CanzoneEntity canzoneEntity = new CanzoneEntity();
         ResultSet rs = null;
@@ -71,29 +80,26 @@ public class GvCanzoniController extends Controller implements Initializable {
 
             tbViewCanzoni.setItems(data);
 
+            //viene utilizzato addListener per ricevere ogni cambiamento nel TextField di ricerca;
+            //Utilizzando la Lambda Expression, il nostro TextField diventerà anche i predicato della filteredList
+
             FilteredList<TableModel> filteredList = new FilteredList<>(data, b -> true);
-
-            /**
-             * viene utilizzato addListener per ricevere ogni cambiamento nel TextField di ricerca;
-             * Utilizzando la Lambda Expression, il nostro TextField diventerà anche i predicato della filteredList
-             */
-
             txtFieldRicerca.textProperty().addListener((observable,oldValue,newValue)->{
 
                 filteredList.setPredicate(tableModel -> {
 
-                    /**Controlla se il TextField è vuoto,bianco o nullo.
-                     * Nel caso la ricerca non vada a buon fine lascia i record pre-esistenti
-                     */
+                    // Controlla se il TextField è vuoto,bianco o nullo.
+                    // Nel caso la ricerca non vada a buon fine lascia i record pre-esistenti
+
                     if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
                         return true;
                     }
 
-                    /**
-                     * Inizializziamo una stringa in lower case per semplificare la ricerca,
-                     * che verrà in seguito confrontata con Titolo, Autore e Anno.
-                     * Nel caso troviamo un riscontro restituisce true altrimenti restituisce false
-                     */
+
+                     //Inizializziamo una stringa in lower case per semplificare la ricerca,
+                     //che verrà in seguito confrontata con Titolo, Autore e Anno.
+                     //Nel caso troviamo un riscontro restituisce true altrimenti restituisce false
+
 
                     String reserch = newValue.toLowerCase();
 
@@ -119,6 +125,9 @@ public class GvCanzoniController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Loads the content of the view
+     */
     @Override
     public void LoadContent() { }
 

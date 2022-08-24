@@ -3,7 +3,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 public class EmozioneProvabileModel {
 
     // <editor-fold desc="Attributi">
-
     private int emozioneID;
     private String nomeEmozione;
 
@@ -28,7 +27,6 @@ public class EmozioneProvabileModel {
      * Legge emozioniID
      * @return
      */
-
     public int getEmozioneID() {
         return emozioneID;
     }
@@ -37,7 +35,6 @@ public class EmozioneProvabileModel {
      * Assegna emozioniID
      * @param emozioneID
      */
-
     public void setEmozioneID(int emozioneID) {
         this.emozioneID = emozioneID;
     }
@@ -46,7 +43,6 @@ public class EmozioneProvabileModel {
      * Legge nomeEmozione
      * @return
      */
-
     public String getNomeEmozione() {
         return nomeEmozione;
     }
@@ -55,7 +51,6 @@ public class EmozioneProvabileModel {
      * Assegna nomeEmozione
      * @param nomeEmozione
      */
-
     public void setNomeEmozione(String nomeEmozione) {
         this.nomeEmozione = nomeEmozione;
     }

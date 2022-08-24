@@ -27,61 +27,32 @@ import java.util.ResourceBundle;
     public class InserimentoEmozioneController implements Initializable {
 
         // <editor-fold desc="Attributi ">
-
         UtenteRegistratoModel utenteRegistratoModel = new UtenteRegistratoModel();
         EmozioneModel emozioneModel = new EmozioneModel();
         EmozioniEntity emozioniEntity = new EmozioniEntity();
         //da modificare
         CanzoneModel canzoneModel = new CanzoneModel(1,"The Twist", "Chubby Checker", "Twist With Chubby Checker", 1960, 155, "r&b");
-
-        /**
-         * Array contenente le 9 emozioni.
-         */
+        String Emozione, Commento;
+        int Intensita;
         private String[] Emozioni = { "Stupore", "Solennità", "Tenerezza", "Nostalgia", "Calma", "Potere", "Gioia", "Tensione", "Tristezza" };
 
         // </editor-fold>
 
         // <editor-fold desc="Attributi FXML">
 
-        /**
-         * La ChoiceBox contenente le 9 emozioni selezionabili.
-         */
+        // La ChoiceBox contenente le 9 emozioni selezionabili.
         @FXML
         private ChoiceBox<String> CbEmozioni;
-
-        /**
-         *Il bottone Salva.
-         */
         @FXML
         private Button btnSave;
-
-        /**
-         * Lo Slider per selezionare l' intensità dell' emozione.
-         */
         @FXML
         private Slider Slider;
-
-        /**
-         * La Label che indica la canzone selezionata.
-         */
         @FXML
         private Label lblCanzoneSelezionata;
-
-        /**
-         * La Label che conferma l' inserimento.
-         */
         @FXML
         private Label lblConferma;
-
-        /**
-         * La TextArea per il commento opzionale.
-         */
         @FXML
         private TextArea txtCommento;
-
-        String Emozione, Commento;
-        int Intensita;
-
         // </editor-fold>
 
         // <editor-fold desc="Methods ">
@@ -171,6 +142,10 @@ import java.util.ResourceBundle;
             lblConferma.setVisible(true);
         }
 
+        /**
+         * Permette di tornare alla view Precedente
+         * @throws IOException
+         */
         public void previousView() throws IOException {
         }
 

@@ -32,6 +32,7 @@ public class PlaylistEntity {
     // </editor-fold>
 
     // <editor-fold desc="Methods">
+
     /**
      * Effettua la connessione al database ed esegue la query di inserimento di una nuova playlist
      * @param playlistModel dati playlist

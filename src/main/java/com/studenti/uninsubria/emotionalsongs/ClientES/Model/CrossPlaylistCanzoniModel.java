@@ -3,7 +3,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 public class CrossPlaylistCanzoniModel {
 
     // <editor-fold desc="Attributi">
-
     private int crossPlaylistCanzoniID;
     private int canzoneID;
     private int playlistID;
@@ -13,7 +12,6 @@ public class CrossPlaylistCanzoniModel {
     // <editor-fold desc="Costruttori">
 
     public CrossPlaylistCanzoniModel() {
-
     }
 
     public CrossPlaylistCanzoniModel(int crossPlaylistCanzoniID, int canzoneID, int playlistID) {
@@ -30,7 +28,6 @@ public class CrossPlaylistCanzoniModel {
      * Legge crossPlaylistCanzoniID
      * @return
      */
-
     public int getCrossPlaylistCanzoniID() {
         return crossPlaylistCanzoniID;
     }
@@ -39,7 +36,6 @@ public class CrossPlaylistCanzoniModel {
      * Assegna crossPlaylistCanzoniID
      * @param crossPlaylistCanzoniID
      */
-
     public void setCrossPlaylistCanzoniID(int crossPlaylistCanzoniID) {
         this.crossPlaylistCanzoniID = crossPlaylistCanzoniID;
     }
@@ -48,7 +44,6 @@ public class CrossPlaylistCanzoniModel {
      * Legge canzoneID
      * @return
      */
-
     public int getCanzoneID() {
         return canzoneID;
     }
@@ -57,7 +52,6 @@ public class CrossPlaylistCanzoniModel {
      * Assegna canzoneID
      * @param canzoneID
      */
-
     public void setCanzoneID(int canzoneID) {
         this.canzoneID = canzoneID;
     }
@@ -66,7 +60,6 @@ public class CrossPlaylistCanzoniModel {
      * Legge playlistID
      * @return
      */
-
     public int getPlaylistID() {
         return playlistID;
     }
@@ -75,7 +68,6 @@ public class CrossPlaylistCanzoniModel {
      * Assegna playlistID
      * @param playlistID
      */
-
     public void setPlaylistID(int playlistID) {
         this.playlistID = playlistID;
     }

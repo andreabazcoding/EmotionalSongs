@@ -26,6 +26,13 @@ public class EmozioniEntity {
     // </editor-fold>
 
     // <editor-fold desc="Methods">
+
+    /**
+     * Creazione di EmozioneEntity a partire da EmozioneModel
+     * @param emozioneModel
+     * @throws SQLException
+     * @throws IOException
+     */
     public void Create(EmozioneModel emozioneModel) throws SQLException, IOException {
 
         StringBuilder sb = new StringBuilder();
@@ -60,6 +67,13 @@ public class EmozioniEntity {
         }
     }
 
+    /**
+     * Prospetto delle emozioni provate dagli utenti con media di intensità per ogni canzone
+     * @param canzoneID
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public ResultSet EmotionProspect(int canzoneID) throws SQLException, IOException {
 
         StringBuilder sb = new StringBuilder();

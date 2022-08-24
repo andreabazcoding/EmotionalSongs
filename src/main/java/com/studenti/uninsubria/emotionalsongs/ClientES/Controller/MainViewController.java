@@ -26,6 +26,11 @@ public class MainViewController extends Controller implements Initializable {
 
     // <editor-fold desc="Methods">
 
+    /**
+     * Popola la MainView con la pane GvCanzoni permettendo di vedere la lista delle canzoni
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -41,35 +46,60 @@ public class MainViewController extends Controller implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Permetto lo switch sulla view GvCanzoni
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnHomePressed(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/GvCanzoni.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
 
+    /**
+     * Permetto lo switch sulla view LoginView
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnAccediPressed(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/LoginView.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
 
+    /**
+     * Permetto lo switch sulla view RegistrationView
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnRegistratiPressed(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/RegistratiView.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
 
+    /**
+     * Permetto lo switch sulla view GvPlaylist
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnPlaylistPressed(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/PlaylistEditor.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
 
+    /**
+     * Permetto lo switch sulla view CreaPlaylist
+     * @param actionEvent
+     * @throws IOException
+     */
     public void btnCreaNuovaPlaylistPressed(javafx.event.ActionEvent actionEvent) throws IOException {
         setContentArea(contentArea);
         changeView("CreaPlaylist.fxml", getUserId());
     }
-
 
     /**
      * Loads the content of the view

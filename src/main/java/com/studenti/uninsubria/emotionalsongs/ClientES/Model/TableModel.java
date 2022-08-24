@@ -5,16 +5,23 @@ import javafx.beans.value.ObservableValue;
 
 /**
  * Gestisce i dati contenuti nella tabella del prospetto emozioni di una canzone
+ * Gestisce i dati contenuti nella tabella di GvCanzoni
+ * Gestisce i dati contenuti nella tabello di GvPlaylist
+ *
  * @author Nour Faraj
  * @author Andrea Basilico
+ * @author Cristian Zuffellato
  */
 public class TableModel {
 
     // <editor-fold desc="Attributi">
+
+    // necessari per tabella EmozioniProvateController
     private StringProperty emozione;
     private IntegerProperty numeroUtenti;
     private FloatProperty media;
 
+    //necessari per tableview GvCanzoniController
     private StringProperty titolo;
     private StringProperty autore;
     private StringProperty album;
@@ -43,6 +50,15 @@ public class TableModel {
         this.media = new SimpleFloatProperty(media);
     }
 
+    /**
+     * Costruttore per TableModelCanzone
+     * @param titolo
+     * @param autore
+     * @param album
+     * @param anno
+     * @param durata
+     * @param genere
+     */
     public TableModel(String titolo, String autore, String album, Integer anno, Double durata, String genere) {
         this.titolo = new SimpleStringProperty(titolo);
         this.autore = new SimpleStringProperty(autore);
@@ -52,6 +68,11 @@ public class TableModel {
         this.genere = new SimpleStringProperty(genere);
     }
 
+    /**
+     * Costruttore per TableModelPlaylist
+     * @param nomePlaylist
+     * @param username
+     */
     public TableModel(/*Integer playlistId,*/ String nomePlaylist, String username) {
         //this.playlistId = new SimpleIntegerProperty(playlistId);
         this.nomePlaylist = new SimpleStringProperty(nomePlaylist);
@@ -122,31 +143,64 @@ public class TableModel {
         return media;
     }
 
+    /**
+     * legge il titolo
+     * @return
+     */
     public StringProperty getTitolo() {
         return titolo;
     }
 
+    /**
+     * legge l'autore
+     * @return
+     */
     public StringProperty getAutore() {
         return autore;
     }
 
+    /**
+     * legge l'album
+     * @return
+     */
     public StringProperty getAlbum() {
         return album;
     }
 
+    /**
+     * legge il'anno
+     * @return
+     */
     public ObservableValue getAnno() {
         return anno;
     }
 
+    /**
+     * legge la durata
+     * @return
+     */
     public ObservableValue getDurata() {
         return durata;
     }
 
+    /**
+     * legge il genere
+     * @return
+     */
     public StringProperty getGenere() {
         return genere;
     }
 
+    /**
+     * legge il nome della playlist
+     * @return
+     */
     public StringProperty getNomePlaylist() { return nomePlaylist; }
+
+    /**
+     * legge l'username
+      * @return
+     */
     public StringProperty getUsername() { return username; }
 
     // </editor-fold>

@@ -35,6 +35,10 @@ public class LoginController extends Controller implements Initializable {
     // </editor-fold>
 
     // <editor-fold desc="Methods">
+
+    /**
+     * Loads the content of the view
+     */
     @Override
     public void LoadContent() {
 
@@ -45,6 +49,12 @@ public class LoginController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Controlla l'accesso dell'utente
+     * @param e
+     * @throws SQLException
+     * @throws IOException
+     */
     public void btnAccediClicked(ActionEvent e) throws SQLException, IOException {
 
         UtenteRegistratoEntity utenteRegistratoEntity = new UtenteRegistratoEntity();

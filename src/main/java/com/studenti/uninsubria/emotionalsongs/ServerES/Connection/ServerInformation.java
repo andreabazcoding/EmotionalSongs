@@ -61,54 +61,106 @@ public class ServerInformation {
 
     // <editor-fold desc="Getters&Setters">
 
+    /**
+     * assegna  protocol
+     * @param protocol
+     */
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
 
+    /**
+     * assegna  username
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * assegna db
+     * @param db
+     */
     private void setDb(String db) {
         this.db = db;
     }
 
+    /**
+     * assegna ip
+     * @param ipServer
+     */
     private void setIpServer(String ipServer) {
         this.ipServer = ipServer;
     }
 
+    /**
+     * assegna password
+     * @param password
+     */
     public void setPassword(String password) {
         Password = password;
     }
 
+    /**
+     * assegna port
+     * @param port
+     */
     private void setPort(int port) {
         this.port = port;
     }
 
+    /**
+     * legge protocol
+     * @return
+     */
     public String getProtocol() {
         return protocol;
     }
 
+    /**
+     * legge username
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * legge db
+     * @return
+     */
     public String getDb() {
         return db;
     }
 
+    /**
+     * legge ip
+     * @return
+     */
     public String getIpServer() {
         return ipServer;
     }
 
+    /**
+     * legge password
+     * @return
+     */
     public String getPassword() {
         return Password;
     }
 
+    /**
+     * legge port
+     * @return
+     */
     public int getPort() {
         return port;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getConnectionString(){
         return getProtocol() + getIpServer() + ":" + getPort() + "/" + getDb();
     }
@@ -116,6 +168,7 @@ public class ServerInformation {
     // </editor-fold>
 
     // <editor-fold desc="Methods">
+
     @Override
     public String toString() {
         return "ServerInformation{" +

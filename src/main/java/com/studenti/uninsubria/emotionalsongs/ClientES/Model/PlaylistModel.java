@@ -3,7 +3,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 public class PlaylistModel {
 
     // <editor-fold desc="Attributi">
-
     private int playlistID;
     private String nomePlaylist;
     private int utenteRegistratoID;
@@ -11,7 +10,6 @@ public class PlaylistModel {
     // </editor-fold>
 
     // <editor-fold desc="Costruttori">
-
     public PlaylistModel() {
 
     }
@@ -30,7 +28,6 @@ public class PlaylistModel {
      * Legge playlistID
      * @return
      */
-
     public int getPlaylistID() {
         return playlistID;
     }
@@ -39,7 +36,6 @@ public class PlaylistModel {
      * Assegna playlistID
      * @param playlistID
      */
-
     public void setPlaylistID(int playlistID) {
         this.playlistID = playlistID;
     }
@@ -48,37 +44,30 @@ public class PlaylistModel {
      * Legge nomePlaylist
      * @return
      */
-
     public String getNomePlaylist() {
         return nomePlaylist;
     }
-
 
     /**
      * Assegna nomePlaylist
      * @param nomePlaylist
      */
-
     public void setNomePlaylist(String nomePlaylist) {
         this.nomePlaylist = nomePlaylist;
     }
-
 
     /**
      * Legge utenteRegistrato
      * @return
      */
-
     public int getUtenteRegistratoID() {
         return utenteRegistratoID;
     }
-
 
     /**
      * Assegna utenteRegistratoID
      * @param utenteRegistratoID
      */
-
     public void setUtenteRegistratoID(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }

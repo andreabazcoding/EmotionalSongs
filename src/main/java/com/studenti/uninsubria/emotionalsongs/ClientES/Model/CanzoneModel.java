@@ -7,7 +7,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 public class CanzoneModel {
 
     // <editor-fold desc="Attributi">
-
     private int canzoneID;
     private String titolo;
     private String autore;
@@ -40,12 +39,10 @@ public class CanzoneModel {
 
     // <editor-fold desc="Getters & Setters">
 
-
     /**
      * Legge canzoneID
      * @return
      */
-
     public int getCanzoneID() {
         return canzoneID;
     }
@@ -54,7 +51,6 @@ public class CanzoneModel {
      * Assegna canzoneID
      * @param canzoneID
      */
-
     public void setCanzoneID(int canzoneID) {
         this.canzoneID = canzoneID;
     }
@@ -63,17 +59,14 @@ public class CanzoneModel {
      * Legge titolo
      * @return
      */
-
     public String getTitolo() {
         return titolo;
     }
-
 
     /**
      * Assegna titolo
      * @param titolo
      */
-
     public void setTitolo(String titolo) {
         this.titolo = titolo;
     }
@@ -82,17 +75,14 @@ public class CanzoneModel {
      *Legge autore
      * @return
      */
-
     public String getAutore() {
         return autore;
     }
-
 
     /**
      * Assegna autore
      * @param autore
      */
-
     public void setAutore(String autore) {
         this.autore = autore;
     }
@@ -101,7 +91,6 @@ public class CanzoneModel {
      * Legge album
      * @return
      */
-
     public String getAlbum() {
         return album;
     }
@@ -110,7 +99,6 @@ public class CanzoneModel {
      * Assegna album
      * @param album
      */
-
     public void setAlbum(String album) {
         this.album = album;
     }
@@ -119,7 +107,6 @@ public class CanzoneModel {
      * Legge anno
      * @return
      */
-
     public int getAnno() {
         return anno;
     }
@@ -128,7 +115,6 @@ public class CanzoneModel {
      * Assegna album
      * @param anno
      */
-
     public void setAnno(int anno) {
         this.anno = anno;
     }
@@ -137,7 +123,6 @@ public class CanzoneModel {
      * Legge durata
      * @return
      */
-
     public double getDurata() {
         return durata;
     }
@@ -146,7 +131,6 @@ public class CanzoneModel {
      * Assegna durata
      * @param durata
      */
-
     public void setDurata(double durata) {
         this.durata = durata;
     }
@@ -155,7 +139,6 @@ public class CanzoneModel {
      * Legge genere
      * @return
      */
-
     public String getGenere() {
         return genere;
     }
@@ -164,7 +147,6 @@ public class CanzoneModel {
      * Assegna genere
      * @param genere
      */
-
     public void setGenere(String genere) {
         this.genere = genere;
     }

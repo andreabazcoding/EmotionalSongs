@@ -3,7 +3,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 public class EmozioneModel {
 
     // <editor-fold desc="Attributi">
-
     private int emozioneID;
     private int utenteRegistratoID;
     private int canzoneID;
@@ -38,7 +37,6 @@ public class EmozioneModel {
      * Legge emozioneID
      * @return
      */
-
     public int getEmozioneID() {
         return emozioneID;
     }
@@ -47,7 +45,6 @@ public class EmozioneModel {
      * assegna emozioneID
      * @param emozioneID
      */
-
     public void setEmozioneID(int emozioneID) {
         this.emozioneID = emozioneID;
     }
@@ -56,7 +53,6 @@ public class EmozioneModel {
      * legge utenteRegistratoID
      * @return
      */
-
     public int getUtenteRegistratoID() {
         return utenteRegistratoID;
     }
@@ -65,7 +61,6 @@ public class EmozioneModel {
      * Assegna utenteRegistratoID
      * @param utenteRegistratoID
      */
-
     public void setUtenteRegistratoID(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }
@@ -74,7 +69,6 @@ public class EmozioneModel {
      * Legge canzoneID
      * @return
      */
-
     public int getCanzoneID() {
         return canzoneID;
     }
@@ -83,7 +77,6 @@ public class EmozioneModel {
      * Assegna canzoneID
      * @param canzoneID
      */
-
     public void setCanzoneID(int canzoneID) {
         this.canzoneID = canzoneID;
     }
@@ -92,7 +85,6 @@ public class EmozioneModel {
      * Legge emozioneProvabileID
      * @return
      */
-
     public int getEmozioneProvabileID() {
         return emozioneProvabileID;
     }
@@ -101,7 +93,6 @@ public class EmozioneModel {
      * Assegna emozioneProvabileID
      * @param emozioneProvabileID
      */
-
     public void setEmozioneProvabileID(int emozioneProvabileID) {
         this.emozioneProvabileID = emozioneProvabileID;
     }
@@ -110,7 +101,6 @@ public class EmozioneModel {
      * Legge intesità
      * @return
      */
-
     public int getIntensità() {
         return intensità;
     }
@@ -119,7 +109,6 @@ public class EmozioneModel {
      * Assegna intesità
      * @param intensità
      */
-
     public void setIntensità(int intensità) {
         this.intensità = intensità;
     }
@@ -128,7 +117,6 @@ public class EmozioneModel {
      * Legge annotazioneEmozione
      * @return
      */
-
     public String getAnnotazioneEmozione() {
         return annotazioneEmozione;
     }
@@ -137,7 +125,6 @@ public class EmozioneModel {
      * Assegna annotazioneEmozione
      * @param annotazioneEmozione
      */
-
     public void setAnnotazioneEmozione(String annotazioneEmozione) {
         this.annotazioneEmozione = annotazioneEmozione;
     }

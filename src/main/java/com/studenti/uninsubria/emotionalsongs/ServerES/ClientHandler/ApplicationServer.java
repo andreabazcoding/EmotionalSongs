@@ -18,9 +18,13 @@ public class ApplicationServer {
     InetAddress IPClient;
     // </editor-fold>
 
-    // <editor-fold desc="Methods">
     public ApplicationServer() {}
 
+    // <editor-fold desc="Methods">
+
+    /**
+     *
+     */
     public synchronized void handle()
     {
         try {

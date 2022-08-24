@@ -64,6 +64,14 @@ public class UtenteRegistratoEntity {
         }
     }
 
+    /**
+     * autenticazione dell'utente registrato
+     * @param username
+     * @param password
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public int AuthenticateUser(String username, String password) throws SQLException, IOException  {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();

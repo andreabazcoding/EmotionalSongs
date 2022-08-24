@@ -126,7 +126,6 @@ public class RegistrationController extends Controller {
         return true;
     }
 
-
     /**
      * Svuota tutti i campi precedentemente compilati.
      */
@@ -144,6 +143,9 @@ public class RegistrationController extends Controller {
         passPassword.clear();
     }
 
+    /**
+     * Loads the content of the view
+     */
     @Override
     public void LoadContent() {
 

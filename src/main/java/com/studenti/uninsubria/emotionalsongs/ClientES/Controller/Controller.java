@@ -13,6 +13,7 @@ import java.util.Objects;
 /**
  * @author luqmanasghar
  */
+
 public abstract class Controller {
 
     // <editor-fold desc="Attributi">

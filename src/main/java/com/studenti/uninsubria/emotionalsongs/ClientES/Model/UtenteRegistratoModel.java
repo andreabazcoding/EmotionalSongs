@@ -7,7 +7,6 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 public class UtenteRegistratoModel {
 
     // <editor-fold desc="Attributi">
-
     private int utenteRegistratoID;
     private java.lang.String nome;
     private java.lang.String cognome;
@@ -21,7 +20,6 @@ public class UtenteRegistratoModel {
     // </editor-fold>
 
     // <editor-fold desc="Costruttori">
-
     public UtenteRegistratoModel() {
 
     }
@@ -46,7 +44,6 @@ public class UtenteRegistratoModel {
      * Legge utenteRegistratoID
      * @return
      */
-
     public int getUtenteRegistratoID() {
         return utenteRegistratoID;
     }
@@ -55,7 +52,6 @@ public class UtenteRegistratoModel {
      * Assegna utenteRegistratoID
      * @param utenteRegistratoID
      */
-
     public void setUtenteRegistratoID(int utenteRegistratoID) {
         this.utenteRegistratoID = utenteRegistratoID;
     }
@@ -64,7 +60,6 @@ public class UtenteRegistratoModel {
      * Legge nome
      * @return
      */
-
     public java.lang.String getNome() {
         return nome;
     }
@@ -73,7 +68,6 @@ public class UtenteRegistratoModel {
      * Assegna nome
      * @param nome
      */
-
     public void setNome(java.lang.String nome) {
         this.nome = nome;
     }
@@ -82,7 +76,6 @@ public class UtenteRegistratoModel {
      * Legge cognome
      * @return
      */
-
     public java.lang.String getCognome() {
         return cognome;
     }
@@ -91,7 +84,6 @@ public class UtenteRegistratoModel {
      * Assegna cognome
      * @param cognome
      */
-
     public void setCognome(java.lang.String cognome) {
         this.cognome = cognome;
     }
@@ -100,7 +92,6 @@ public class UtenteRegistratoModel {
      * Legge codiceFiscale
      * @return
      */
-
     public String getCodiceFiscale() {
         return codiceFiscale;
     }
@@ -109,7 +100,6 @@ public class UtenteRegistratoModel {
      * Assegna codiceFiscale
      * @param codiceFiscale
      */
-
     public void setCodiceFiscale(String codiceFiscale) {
         this.codiceFiscale = codiceFiscale;
     }
@@ -118,7 +108,6 @@ public class UtenteRegistratoModel {
      * Legge indirizzo
      * @return
      */
-
     public String getIndirizzo() {
         return indirizzo;
     }
@@ -127,7 +116,6 @@ public class UtenteRegistratoModel {
      * Assegna indirizzo
      * @param string
      */
-
     public void setIndirizzo(String string) {
         this.indirizzo = string;
     }
@@ -136,7 +124,6 @@ public class UtenteRegistratoModel {
      * Legge email
      * @return
      */
-
     public java.lang.String getEmail() {
         return email;
     }
@@ -145,7 +132,6 @@ public class UtenteRegistratoModel {
      * Assegna email
      * @param email
      */
-
     public void setEmail(java.lang.String email) {
         this.email = email;
     }
@@ -154,7 +140,6 @@ public class UtenteRegistratoModel {
      * Legge username
      * @return
      */
-
     public java.lang.String getUsername() {
         return username;
     }
@@ -163,7 +148,6 @@ public class UtenteRegistratoModel {
      * Assegna username
      * @param username
      */
-
     public void setUsername(java.lang.String username) {
         this.username = username;
     }
@@ -172,7 +156,6 @@ public class UtenteRegistratoModel {
      * Legge username
      * @return
      */
-
     public java.lang.String getPassword() {
         return password;
     }
@@ -181,7 +164,6 @@ public class UtenteRegistratoModel {
      * Assegna password
      * @param password
      */
-
     public void setPassword(java.lang.String password) {
         this.password = password;
     }
