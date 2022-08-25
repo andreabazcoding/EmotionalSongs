@@ -75,7 +75,7 @@ public class MainViewController extends Controller implements Initializable {
      * @throws IOException
      */
     public void btnRegistratiPressed(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/RegistratiView.fxml")));
+        Parent fxml = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/RegistrationView.fxml")));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);
     }
