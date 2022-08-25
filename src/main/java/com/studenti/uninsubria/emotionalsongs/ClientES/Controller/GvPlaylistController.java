@@ -1,11 +1,13 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,9 +38,10 @@ public class GvPlaylistController extends Application implements Initializable {
     private TableColumn<TableModel, String> tblColumnTitoloPlaylist;
     @FXML
     private TableColumn<TableModel, String> tblColumnUsername;
-
     @FXML
     private Button btnSelezionaPlaylist;
+
+    PlaylistModel playlistModel = new PlaylistModel();
 
     // </editor-fold>
 
@@ -109,15 +112,15 @@ public class GvPlaylistController extends Application implements Initializable {
     }
 
     /**
-     * Gestisce l'evento di click del mouse sul bottone "Seleziona"
-     * @param mouseEvent
+     * Al click del mouse sul bottone "Seleziona" legge playlistID, nome playlist, username dell' utente.
+     * @param actionEvent
      */
-    public void btnSelezionaPlaylistClicked(MouseEvent mouseEvent) {
-        if(btnSelezionaPlaylist.isPressed()) {
-            /*
-            legge id della playlist, nome playist e username creatore
-             */
-        }
+    public void btnSelezionaPlaylistClicked(ActionEvent actionEvent) {
+
+            String nomePlaylist = tbViewPlaylist.getColumns().get(0).getCellObservableValue(0).getValue().toString();
+            String utentePlaylist = tbViewPlaylist.getColumns().get(1).getCellObservableValue(0).getValue().toString();
+            int playlistID = playlistModel.getPlaylistID();
+
     }
 
     // </editor-fold>

@@ -16,7 +16,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="btnSelezionaPlaylist" layoutX="362.0" layoutY="469.0" mnemonicParsing="false" onMouseClicked="#btnSelezionaPlaylistClicked" text="Seleziona">
+            <Button fx:id="btnSelezionaPlaylist" layoutX="362.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnSelezionaPlaylistClicked" text="Seleziona">
                <font>
                   <Font size="14.0" />
                </font></Button>
