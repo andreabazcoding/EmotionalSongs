@@ -68,13 +68,15 @@ public class TableModel {
         this.genere = new SimpleStringProperty(genere);
     }
 
+
     /**
      * Costruttore per TableModelPlaylist
+     * @param playlistId
      * @param nomePlaylist
      * @param username
      */
-    public TableModel(/*Integer playlistId,*/ String nomePlaylist, String username) {
-        //this.playlistId = new SimpleIntegerProperty(playlistId);
+    public TableModel(Integer playlistId, String nomePlaylist, String username) {
+        this.playlistId = new SimpleIntegerProperty(playlistId);
         this.nomePlaylist = new SimpleStringProperty(nomePlaylist);
         this.username = new SimpleStringProperty(username);
     }
@@ -94,6 +96,22 @@ public class TableModel {
     public FloatProperty mediaProperty() {
         return media;
     }
+
+    public IntegerProperty playlistIdProperty() {
+        return playlistId;
+    }
+
+    /**
+     * Legge playlistId
+     * @return
+     */
+    public int getPlaylistId() { return playlistId.get(); }
+
+    /**
+     * Assegna playlistId
+     * @param playlistId
+     */
+    public void setPlaylistId(int playlistId) { this.playlistId.set(playlistId); }
 
     /**
      * Assegna emozione

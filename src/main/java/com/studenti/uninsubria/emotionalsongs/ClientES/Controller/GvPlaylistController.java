@@ -5,6 +5,7 @@ import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.application.Application;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -96,7 +97,7 @@ public class GvPlaylistController extends Application implements Initializable {
             data = FXCollections.observableArrayList();
 
             while(rs.next()){
-                data.add(new TableModel(rs.getString(2), rs.getString(3)));
+                data.add(new TableModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
 
             tblColumnTitoloPlaylist.setCellValueFactory(tableModelPlaylistStringCellDataFeatures -> tableModelPlaylistStringCellDataFeatures.getValue().getNomePlaylist());
@@ -117,12 +118,14 @@ public class GvPlaylistController extends Application implements Initializable {
      */
     public void btnSelezionaPlaylistClicked(ActionEvent actionEvent) {
 
-            String nomePlaylist = tbViewPlaylist.getColumns().get(0).getCellObservableValue(0).getValue().toString();
-            String utentePlaylist = tbViewPlaylist.getColumns().get(1).getCellObservableValue(0).getValue().toString();
-            int playlistID = playlistModel.getPlaylistID();
+        //String nomePlaylist = tbViewPlaylist.getColumns().get(0).getCellObservableValue(0).getValue().toString();
+        //String utentePlaylist = tbViewPlaylist.getColumns().get(1).getCellObservableValue(0).getValue().toString();
+        //int playlistID = playlistModel.getPlaylistID();
+        //System.out.println(nomePlaylist + "-" + utentePlaylist + "-" + playlistID);
 
+        TableModel tableModel = tbViewPlaylist.getSelectionModel().getSelectedItem();
+        System.out.println(tableModel.getPlaylistId() + "-" + tableModel.getNomePlaylist() + "-" + tableModel.getUsername());
     }
-
     // </editor-fold>
 
 }
