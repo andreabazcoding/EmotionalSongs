@@ -131,51 +131,57 @@ public class CanzoneEntity {
         }
         return resultSet;
     }
-
-    public List<CanzoneModel> SerchingByTitle(String titolo) throws SQLException, IOException  {
+    public ResultSet searchingByTitle(String titolo) throws IOException, SQLException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
         Connection connection = null;
-        CanzoneModel model = null;
-        List<CanzoneModel> listCanzone = new ArrayList<>();
+        ResultSet resultSet = null;
 
         try {
             connection = connectionFactory.getConnection();
 
-            sb.append("SELECT \"CanzoneID\", \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
+            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
             sb.append("FROM \"EmotionalSongs\".\"Canzone\" ");
-            sb.append("WHERE \"Username\" like '%");
+            sb.append("WHERE \"Titolo\" like '%");
             sb.append(titolo);
             sb.append("%';");
 
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
-            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-                model = new CanzoneModel();
-                model.setCanzoneID(resultSet.getInt(1));
-                model.setTitolo(resultSet.getString(2));
-                model.setAutore(resultSet.getString(3));
-                model.setAlbum(resultSet.getString(4));
-                model.setAnno(resultSet.getInt(5));
-                model.setDurata(resultSet.getShort(6));
-                model.setGenere(resultSet.getString(7));
-
-                listCanzone.add(model);
-            }
+            resultSet = preparedStatement.executeQuery();
 
             connection.close();
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-            throw ex;
-        }
-        finally {
-            if(connection != null && !connection.isClosed())
-                connection.close();
-        }
 
-        return listCanzone;
+            } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet distinctYear() throws IOException {
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT DISTINCT \"Anno\"");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\" ");
+            sb.append("ORDER BY \"Anno\" DESC ");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+
     }
 
     public List<CanzoneModel> ExtractAllInfo() throws SQLException, IOException  {
