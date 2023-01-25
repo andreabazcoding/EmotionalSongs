@@ -33,7 +33,7 @@ public class ProvaMainViewController extends Application implements Initializabl
     @FXML
     private VBox vBoxFunzioni;
     @FXML
-    TextField txtFieldRicercaTitolo,getTxtFieldRicercaAutoreEAnno;
+    TextField txtFieldRicercaTitolo, txtFieldRicercaAutore;
     @FXML
     private TableView<TableModel> tbViewCanzoni;
     @FXML
@@ -48,20 +48,86 @@ public class ProvaMainViewController extends Application implements Initializabl
     private TableColumn<TableModel, Double> tblColumnDurata;
     @FXML
     private TableColumn<TableModel, String> tblColumnGenere;
-    @FXML
+    /**@FXML
     public void btnSearch(ActionEvent evt){
-        if(txtFieldRicercaTitolo.getText().isBlank() || txtFieldRicercaTitolo.getText().isEmpty()||txtFieldRicercaTitolo.getText() == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Warning Dialog");
-            alert.setHeaderText("Inserire il titolo di una canzone!");
-            alert.setContentText("Inserisci il titolo di una canzone, il campo è vuoto o nullo");
-            alert.showAndWait();
-        }else{
+
+        /**if(!(txtFieldRicercaTitolo.getText().isBlank()) || !(txtFieldRicercaTitolo.getText().isEmpty())||txtFieldRicercaTitolo.getText() != null){
             CanzoneEntity tmpEntity = new CanzoneEntity();
             ResultSet tmpSet = null;
             ObservableList<TableModel> filtData;
             try{
                 tmpSet = tmpEntity.searchingByTitle(txtFieldRicercaTitolo.getText());
+
+                filtData = FXCollections.observableArrayList();
+
+                while(tmpSet.next()){
+
+                    filtData.add(new TableModel(tmpSet.getString(1),tmpSet.getString(2),
+                            tmpSet.getString(3),tmpSet.getInt(4), tmpSet.getDouble(5),
+                            tmpSet.getString(6)));
+                }
+
+                tblColumnTitolo.setCellValueFactory(tableModelCanzoniStringCellDataFeatures -> tableModelCanzoniStringCellDataFeatures.getValue().getTitolo());
+                tblColumnAutore.setCellValueFactory(tableModelCanzoniStringCellDataFeatures -> tableModelCanzoniStringCellDataFeatures.getValue().getAutore());
+                tblColumnAlbum.setCellValueFactory(tableModelCanzoniStringCellDataFeatures -> tableModelCanzoniStringCellDataFeatures.getValue().getAlbum());
+                tblColumnAnno.setCellValueFactory(tableModelCanzoniIntegerCellDataFeatures -> tableModelCanzoniIntegerCellDataFeatures.getValue().getAnno());
+                tblColumnDurata.setCellValueFactory(tableModelCanzoniDoubleCellDataFeatures -> tableModelCanzoniDoubleCellDataFeatures.getValue().getDurata());
+                tblColumnGenere.setCellValueFactory(tableModelCanzoniStringCellDataFeatures -> tableModelCanzoniStringCellDataFeatures.getValue().getGenere());
+
+                tbViewCanzoni.setItems(filtData);
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        if (!(TxtFieldRicercaAutore.getText().isBlank()) || !(TxtFieldRicercaAutore.getText().isEmpty()) || TxtFieldRicercaAutore.getText() != null && !(cBoxAnno.getSelectionModel().isEmpty())){
+            CanzoneEntity tmpEntity = new CanzoneEntity();
+            ResultSet tmpSet = null;
+            ObservableList<TableModel> filtData;
+            try{
+                int tmpValue = (Integer) cBoxAnno. getSelectionModel().getSelectedItem();
+                tmpSet = tmpEntity.searchingByAuthorAndYear(TxtFieldRicercaAutore.getText(),tmpValue);
+
+                filtData = FXCollections.observableArrayList();
+
+                while(tmpSet.next()){
+
+                    filtData.add(new TableModel(tmpSet.getString(1),tmpSet.getString(2),
+                            tmpSet.getString(3),tmpSet.getInt(4), tmpSet.getDouble(5),
+                            tmpSet.getString(6)));
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+     */
+
+    @FXML
+    public void btnSearch(ActionEvent evt){
+        if((txtFieldRicercaTitolo.getText().trim().isEmpty() || txtFieldRicercaTitolo.getText() == null)
+        && ((txtFieldRicercaAutore.getText().trim().isEmpty() || txtFieldRicercaAutore.getText() == null)
+        || cBoxAnno.getSelectionModel().getSelectedItem() == null)){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Attenzione");
+            alert.setContentText("Popolare almeno uno dei due filtri");
+            alert.showAndWait();
+        }else{
+            CanzoneEntity tmpEntity = new CanzoneEntity();
+            ResultSet tmpSet = null;
+            ObservableList<TableModel> filtData;
+            int tmpValue = 0;
+
+            try{
+                if(cBoxAnno.getSelectionModel().getSelectedItem() != null)
+                    tmpValue = (Integer) cBoxAnno. getSelectionModel().getSelectedItem();
+
+                tmpSet = tmpEntity.getListByFilter(txtFieldRicercaTitolo.getText(), txtFieldRicercaAutore.getText(),tmpValue );
 
                 filtData = FXCollections.observableArrayList();
 
@@ -92,6 +158,23 @@ public class ProvaMainViewController extends Application implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CanzoneEntity canzoneEntity = new CanzoneEntity();
+
+        ObservableList<Integer> options ;
+        ResultSet rsOptions = null;
+        try{
+            rsOptions = canzoneEntity.distinctYear();
+            options = FXCollections.observableArrayList();
+
+            while(rsOptions.next()){
+                options.add(rsOptions.getInt(1));
+            }
+            cBoxAnno.setItems(options);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         ResultSet rs = null;
         ObservableList<TableModel> data ;
 

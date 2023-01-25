@@ -131,6 +131,45 @@ public class CanzoneEntity {
         }
         return resultSet;
     }
+
+    public ResultSet getListByFilter(String titolo, String autore, int anno) throws IOException, SQLException {
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\" ");
+            sb.append("WHERE ");
+            if(!titolo.trim().isEmpty()){
+                sb.append("\"Titolo\" like '%");
+                sb.append(titolo);
+                sb.append("%';");
+            }else{
+                sb.append("\"Autore\" like '%");
+                sb.append(autore);
+                sb.append("%'");
+                if(anno > 0){
+                    sb.append(" AND \"Anno\" =");
+                    sb.append(anno);
+                }
+                sb.append(";");
+            }
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
     public ResultSet searchingByTitle(String titolo) throws IOException, SQLException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -153,6 +192,35 @@ public class CanzoneEntity {
             connection.close();
 
             } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet searchingByAuthorAndYear(String autore, int anno) throws IOException, SQLException {
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\" ");
+            sb.append("WHERE \"Autore\" like '%");
+            sb.append(autore);
+            sb.append("%';");
+            sb.append("AND \"Anno\" =");
+            sb.append(anno);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return resultSet;
