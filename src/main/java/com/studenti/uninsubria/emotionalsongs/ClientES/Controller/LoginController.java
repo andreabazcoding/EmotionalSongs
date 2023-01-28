@@ -1,5 +1,6 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,10 +64,16 @@ public class LoginController extends Controller implements Initializable {
         if(txtFieldUsername.getText().isBlank() && pssFieldPassword.getText().isBlank() ) {
             lblLoginMessage.setText("Inserisci username e password: ");
         }else if(utenteRegistratoEntity.AuthenticateUser(txtFieldUsername.getText(),pssFieldPassword.getText() )== 1){
-            lblLoginMessage.setText("Benvenuto: ");
+            LoadMainView();
         }else{
             lblLoginMessage.setText("Username e/o password errati! ");
         }
+    }
+
+    private void LoadMainView() throws IOException {
+        Stage stage = (Stage) txtFieldUsername.getScene().getWindow();
+        Model.GetInstance().GetViewFactory().CloseStage(stage);
+        Model.GetInstance().GetViewFactory().ShowMainView();
     }
 
     // </editor-fold>
