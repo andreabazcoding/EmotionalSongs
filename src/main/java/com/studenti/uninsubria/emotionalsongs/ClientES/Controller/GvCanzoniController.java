@@ -132,6 +132,8 @@ public class GvCanzoniController implements Initializable {
 
     public void btnSvuota(ActionEvent actionEvent) throws SQLException, IOException {
         try {
+            txtFieldRicercaAutore.setText("");
+            txtFieldRicercaTitolo.setText("");
             tbViewCanzoni.setItems(GetSongsDataList());
         }
         catch (Exception ex){
