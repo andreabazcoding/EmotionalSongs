@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.GvCanzoniController">
+   <children>
+      <TableView fx:id="tbViewCanzoni" layoutY="75.0" prefHeight="525.0" prefWidth="725.0">
+        <columns>
+          <TableColumn fx:id="tblColumnTitolo" editable="false" prefWidth="121.0" sortable="false" text="Titolo" />
+          <TableColumn fx:id="tblColumnAutore" prefWidth="121.0" text="Autore" />
+            <TableColumn fx:id="tblColumnAlbum" prefWidth="121.0" text="Album" />
+            <TableColumn fx:id="tblColumnAnno" prefWidth="121.0" text="Anno" />
+            <TableColumn fx:id="tblColumnDurata" prefWidth="121.0" text="Durata" />
+            <TableColumn fx:id="tblColumnGenere" prefWidth="121.0" text="Genere" />
+        </columns>
+      </TableView>
+      <TextField fx:id="txtFieldRicerca" layoutX="201.0" layoutY="34.0" prefHeight="26.0" prefWidth="324.0" promptText="Titolo, Autore e Anno" />
+      <Label fx:id="lblRicerca" layoutX="147.0" layoutY="39.0" text="Ricerca:" />
+   </children>
+</AnchorPane>
