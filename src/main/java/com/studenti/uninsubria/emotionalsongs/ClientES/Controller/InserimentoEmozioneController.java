@@ -31,7 +31,8 @@ import java.util.ResourceBundle;
         EmozioneModel emozioneModel = new EmozioneModel();
         EmozioniEntity emozioniEntity = new EmozioniEntity();
         //da modificare
-        CanzoneModel canzoneModel = new CanzoneModel(1,"The Twist", "Chubby Checker", "Twist With Chubby Checker", 1960, 155, "r&b");
+        CanzoneModel canzoneModel = new CanzoneModel(1,"Don't Pan Me", "Alberta Hunter", null,
+                                                1922, 0.0, null);
         String Emozione, Commento;
         int Intensita;
         private String[] Emozioni = { "Stupore", "Solennità", "Tenerezza", "Nostalgia", "Calma", "Potere", "Gioia", "Tensione", "Tristezza" };
@@ -56,6 +57,7 @@ import java.util.ResourceBundle;
         // </editor-fold>
 
         // <editor-fold desc="Methods ">
+
 
         /**
          * Inizializza la ChoiceBox e lo Slider, associandogli un listener per leggere il valore dell' intensità.
