@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -39,16 +40,18 @@ public class EmozioniProvateController extends Application implements Initializa
     TableColumn<TableModel, Integer> colNumeroUtenti;
     @FXML
     TableColumn<TableModel, Integer> colMedia;
+
     @FXML
-    TableColumn<TableModel, String> colAnnotazione;
+    Label lblCanzoneSelezionata;
+
     @FXML
-    Label lblSelectedSong;
+    TextArea txtAreaRecCompleta;
 
     // </editor-fold>
 
     // <editor-fold desc="Attributi ">
 
-    CanzoneModel canzoneModel = new CanzoneModel(1,"The Twist", "Chubby Checker", "Twist With Chubby Checker", 1960, 155, "r&b");
+    CanzoneModel canzoneModel = new CanzoneModel(1,"Don't Pan Me", "Alberta Hunter", null, 1922, 0.0, null);
     EmozioniEntity emozioniEntity = new EmozioniEntity();
     ObservableList<TableModel> data;
     ResultSet rs = null;
@@ -89,20 +92,25 @@ public class EmozioniProvateController extends Application implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            lblSelectedSong.setText(canzoneModel.getTitolo()  + " - " + canzoneModel.getAutore());
+            lblCanzoneSelezionata.setText(canzoneModel.getTitolo()  + " - " + canzoneModel.getAutore());
 
             rs = emozioniEntity.EmotionProspect(canzoneModel.getCanzoneID());
             data = FXCollections.observableArrayList();
 
             while (rs.next()){
-                data.add(new TableModel(rs.getString(1), rs.getInt(2), rs.getFloat(3) ));
+                data.add(new TableModel(rs.getString(1), rs.getInt(2), rs.getFloat(3)));
             }
 
            colEmozione.setCellValueFactory(tableModelStringCellDataFeatures -> tableModelStringCellDataFeatures.getValue().getEmozione());
            colNumeroUtenti.setCellValueFactory(tableModelIntegerCellDataFeatures -> tableModelIntegerCellDataFeatures.getValue().getNumeroUtenti());
            colMedia.setCellValueFactory(tableModelFloatCellDataFeatures -> tableModelFloatCellDataFeatures.getValue().getMedia());
-
            tbViewEmozioniProvate.setItems(data);
+
+           txtAreaRecCompleta.setEditable(false);
+           rs = emozioniEntity.getAllComments(canzoneModel.getCanzoneID());
+            while (rs.next()) {
+                String annotazione = rs.getString(1);
+                txtAreaRecCompleta.appendText(annotazione + "\n"); }
 
         } catch (SQLException e) {
             e.printStackTrace();

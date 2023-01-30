@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.GvCanzoniController">
-   <children>
-      <TableView fx:id="tbViewCanzoni" layoutY="75.0" prefHeight="525.0" prefWidth="725.0">
-        <columns>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.GvCanzoniController">
+    <TableView fx:id="tbViewCanzoni" layoutY="72.0" prefHeight="528.0" prefWidth="825.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
+      <columns>
           <TableColumn fx:id="tblColumnTitolo" editable="false" prefWidth="121.0" sortable="false" text="Titolo" />
           <TableColumn fx:id="tblColumnAutore" prefWidth="121.0" text="Autore" />
-            <TableColumn fx:id="tblColumnAlbum" prefWidth="121.0" text="Album" />
-            <TableColumn fx:id="tblColumnAnno" prefWidth="121.0" text="Anno" />
-            <TableColumn fx:id="tblColumnDurata" prefWidth="121.0" text="Durata" />
-            <TableColumn fx:id="tblColumnGenere" prefWidth="121.0" text="Genere" />
-        </columns>
-      </TableView>
-      <TextField fx:id="txtFieldRicerca" layoutX="201.0" layoutY="34.0" prefHeight="26.0" prefWidth="324.0" promptText="Titolo, Autore e Anno" />
-      <Label fx:id="lblRicerca" layoutX="147.0" layoutY="39.0" text="Ricerca:" />
-   </children>
+          <TableColumn fx:id="tblColumnAlbum" prefWidth="121.0" text="Album" />
+          <TableColumn fx:id="tblColumnAnno" prefWidth="121.0" text="Anno" />
+          <TableColumn fx:id="tblColumnDurata" prefWidth="121.0" text="Durata" />
+          <TableColumn fx:id="tblColumnGenere" prefWidth="121.0" text="Genere" />
+      </columns>
+    </TableView>
+
+    <Label fx:id="lblRicercaTitolo" alignment="CENTER" layoutX="103.0" layoutY="14.0" text="Ricerca per Titolo:">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtFieldRicercaTitolo" alignment="CENTER" layoutX="30.0" layoutY="32.0" prefHeight="28.0" prefWidth="250.0" promptText="Inserisci Titolo">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </TextField>
+    <Label fx:id="lblRicercaAutoreEAnno" alignment="CENTER" layoutX="344.0" layoutY="14.0" prefHeight="17.0" prefWidth="145.0" text="Ricerca per Autore e Anno:">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtFieldRicercaAutore" alignment="CENTER" layoutX="291.0" layoutY="32.0" prefHeight="28.0" prefWidth="250.0" promptText="Inserisci Autore">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </TextField>
+    <Button fx:id="btnRicerca" alignment="CENTER" layoutX="728.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnSearch" prefWidth="75.0" text="Ricerca">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Button>
+    <ComboBox fx:id="cBoxAnno" layoutX="551.0" layoutY="33.0" prefWidth="90.0" promptText="Anno" />
+    <Button fx:id="btnSvuota" alignment="CENTER" layoutX="647.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnSvuota" prefWidth="75.0" text="Svuota">
+        <font>
+            <Font size="13.0" />
+        </font>
+    </Button>
 </AnchorPane>

@@ -70,7 +70,7 @@ public class EmozioniEntity {
     /**
      * Prospetto delle emozioni provate dagli utenti con media di intensità per ogni canzone
      * @param canzoneID
-     * @return
+     * @return resultSet
      * @throws SQLException
      * @throws IOException
      */
@@ -93,6 +93,47 @@ public class EmozioniEntity {
             sb.append(canzoneID);
             sb.append(" GROUP BY \"EmozioneProvabile\".\"NomeEmozione\"");
 
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+        finally {
+            if(connection != null && !connection.isClosed())
+                connection.close();
+        }
+
+        return resultSet;
+    }
+
+
+    /**
+     * Estrazione di tutti i commenti relativi alla canzone selezionata
+     * @param canzoneID
+     * @return resultSet
+     * @throws SQLException
+     * @throws IOException
+     */
+    public ResultSet getAllComments(int canzoneID) throws SQLException, IOException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = connectionFactory.getConnection();
+
+            sb.append("SELECT \"AnnotazioneEmozione\" ");
+            sb.append("FROM \"EmotionalSongs\".\"Emozione\" ");
+            sb.append("WHERE \"Emozione\".\"CanzoneID\" =");
+            sb.append(canzoneID);
+            sb.append("AND \"AnnotazioneEmozione\" != '' ");
 
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
 
@@ -111,6 +152,9 @@ public class EmozioniEntity {
 
         return resultSet;
     }
+
+
+
 
     public List<EmozioneModel> FeltEmotions(CanzoneModel canzoneModel, EmozioneProvabileModel emozioneProvabileModel) throws IOException, SQLException {
 

@@ -137,17 +137,19 @@ public class TableModel {
         this.media.set(media);
     }
 
+
+
     /**
      * Legge emozione
-     * @return
+     * @return emozione
      */
     public StringProperty getEmozione() {
         return emozione;
     }
 
     /**
-     * Legge numeroUtenti
-     * @return
+     * Legge numero utenti per emozione
+     * @return numeroUtenti
      */
     public ObservableValue getNumeroUtenti() {
         return numeroUtenti;
@@ -155,15 +157,16 @@ public class TableModel {
 
     /**
      * Legge media
-     * @return
+     * @return media
      */
     public ObservableValue getMedia() {
         return media;
     }
 
+
     /**
      * legge il titolo
-     * @return
+     * @return titolo
      */
     public StringProperty getTitolo() {
         return titolo;
@@ -171,7 +174,7 @@ public class TableModel {
 
     /**
      * legge l'autore
-     * @return
+     * @return autore
      */
     public StringProperty getAutore() {
         return autore;
@@ -179,15 +182,15 @@ public class TableModel {
 
     /**
      * legge l'album
-     * @return
+     * @return album
      */
     public StringProperty getAlbum() {
         return album;
     }
 
     /**
-     * legge il'anno
-     * @return
+     * legge l'anno
+     * @return anno
      */
     public ObservableValue getAnno() {
         return anno;
@@ -195,7 +198,7 @@ public class TableModel {
 
     /**
      * legge la durata
-     * @return
+     * @return durata
      */
     public ObservableValue getDurata() {
         return durata;
@@ -203,7 +206,7 @@ public class TableModel {
 
     /**
      * legge il genere
-     * @return
+     * @return genere
      */
     public StringProperty getGenere() {
         return genere;
@@ -211,13 +214,13 @@ public class TableModel {
 
     /**
      * legge il nome della playlist
-     * @return
+     * @return nomePlaylist
      */
     public StringProperty getNomePlaylist() { return nomePlaylist; }
 
     /**
      * legge l'username
-      * @return
+      * @return username
      */
     public StringProperty getUsername() { return username; }
 
