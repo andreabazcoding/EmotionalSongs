@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="aPaneLogin" prefHeight="557.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.LoginController">
+   <children>
+      <Label fx:id="lblPassword" layoutX="226.0" layoutY="266.0" text="Password: ">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUsername" layoutX="225.0" layoutY="230.0" text="Username: ">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFieldUsername" layoutX="311.0" layoutY="226.0">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnAccedi" contentDisplay="CENTER" layoutX="328.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnAccediClicked" prefHeight="22.0" prefWidth="53.0" text="Accedi">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="pssFieldPassword" layoutX="311.0" layoutY="262.0">
+         <font>
+            <Font name="Calibri Bold" size="12.0" />
+         </font>
+      </PasswordField>
+      <Label fx:id="lblLoginMessage" alignment="CENTER" layoutX="227.0" layoutY="183.0" prefHeight="17.0" prefWidth="255.0" />
+   </children>
+</AnchorPane>
