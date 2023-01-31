@@ -19,15 +19,23 @@ public class MenuController implements Initializable{
     public Button btnCreaPlaylist;
     public Button btnCanzoni;
 
+    /**
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AddListeners();
     }
 
+    /**
+     * Adds event listeners
+     */
     public void AddListeners(){
         btnPlaylist.setOnAction(actionEvent -> onPlaylist());
         btnCanzoni.setOnAction(actionEvent -> onCanzoni());
         btnAccedi.setOnAction(actionEvent -> onAccedi());
+        btnCreaPlaylist.setOnAction(actionEvent -> onCreaPlaylist());
     }
 
     private void onPlaylist() {
@@ -41,4 +49,6 @@ public class MenuController implements Initializable{
     private void onAccedi() {
         Model.GetInstance().GetViewFactory().getSelectedMenuItem().set("Accedi");
     }
+
+    private void onCreaPlaylist() { Model.GetInstance().GetViewFactory().getSelectedMenuItem().set("CreaPlaylist"); }
 }

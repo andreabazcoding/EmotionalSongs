@@ -7,16 +7,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
  * @author Asghar Luqman
  */
-public class MainViewController implements Initializable {
+public class MainViewController extends Controller implements Initializable {
+
     private int userId;
 
     public BorderPane mainViewParent;
-
 
     /**
      * Popola la MainView con la pane GvCanzoni permettendo di vedere la lista delle canzoni
@@ -25,6 +26,7 @@ public class MainViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         Model.GetInstance().GetViewFactory().getSelectedMenuItem()
                 .addListener((observableValue, oldVal, newVal) -> {
                     switch (newVal){
@@ -38,9 +40,26 @@ public class MainViewController implements Initializable {
                                 e.printStackTrace();
                             }
                         }
+                        case "CreaPlaylist" -> {
+                            try {
+                                Stage stage = (Stage)mainViewParent.getScene().getWindow();
+                                Model.GetInstance().GetViewFactory().CloseStage(stage);
+                                Model.GetInstance().GetViewFactory().ShowCreaPlaylistView();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         default -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvCanzoniView());
                     }
                 });
     }
 
+    /**
+     * @throws SQLException
+     * @throws IOException
+     */
+    @Override
+    public void LoadContent() throws SQLException, IOException {
+
+    }
 }
