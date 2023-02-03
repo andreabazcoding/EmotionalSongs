@@ -1,11 +1,14 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.View;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EditPlaylistController;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.MainViewController;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.MenuController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +21,7 @@ public class ViewFactory {
     private final StringProperty SelectedMenuItem;
     private AnchorPane GvCanzoniView;
     private AnchorPane GvPlaylistView;
+    private VBox MenuView;
 
 
     public ViewFactory(){
@@ -48,6 +52,20 @@ public class ViewFactory {
         return GvPlaylistView;
     }
 
+    public VBox GetMenuView(int userId) throws IOException {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
+            MenuController menuController = new MenuController();
+            menuController.setUserId(userId);
+            loader.setController(menuController);
+            MenuView = loader.load();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return MenuView;
+    }
+
     public StringProperty getSelectedMenuItem() {
         return SelectedMenuItem;
     }
@@ -59,8 +77,16 @@ public class ViewFactory {
         CreateStage(loader);
     }
 
+    public void ShowMainView(int userId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainView.fxml"));
+        MainViewController mainViewController = new MainViewController();
+        mainViewController.setUserId(userId);
+        loader.setController(mainViewController);
+        CreateStage(loader);
+    }
+
     /**
-     * Permetto lo switch sulla view LoginView
+     * Permette lo switch sulla view LoginView
      * @throws IOException
      */
     public void ShowLoginView() throws IOException {
@@ -68,12 +94,17 @@ public class ViewFactory {
         CreateStage(loader);
     }
 
+
     /**
-     * Permetto lo switch sulla view CreaPlaylistView
+     * Permette lo switch sulla view EditPlaylistView
+     * @param userId
      * @throws IOException
      */
-    public void ShowCreaPlaylistView() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/CreaPlaylist.fxml"));
+    public void ShowEditPlaylistView(int userId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EditPlaylistView.fxml"));
+        EditPlaylistController editPlaylistController = new EditPlaylistController();
+        editPlaylistController.setUserId(userId);
+        loader.setController(editPlaylistController);
         CreateStage(loader);
     }
 

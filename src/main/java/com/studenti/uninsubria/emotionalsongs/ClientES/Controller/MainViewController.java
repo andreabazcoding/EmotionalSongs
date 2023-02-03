@@ -15,8 +15,6 @@ import java.util.ResourceBundle;
  */
 public class MainViewController extends Controller implements Initializable {
 
-    private int userId;
-
     public BorderPane mainViewParent;
 
     /**
@@ -26,7 +24,13 @@ public class MainViewController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try {
+            mainViewParent.setLeft(Model.GetInstance().GetViewFactory().GetMenuView(getUserId()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //stampa prova
+        System.out.println("User ID: " + getUserId());
         Model.GetInstance().GetViewFactory().getSelectedMenuItem()
                 .addListener((observableValue, oldVal, newVal) -> {
                     switch (newVal){
@@ -42,9 +46,10 @@ public class MainViewController extends Controller implements Initializable {
                         }
                         case "CreaPlaylist" -> {
                             try {
+                                System.out.println("Case CreaPlaylist");
                                 Stage stage = (Stage)mainViewParent.getScene().getWindow();
                                 Model.GetInstance().GetViewFactory().CloseStage(stage);
-                                Model.GetInstance().GetViewFactory().ShowCreaPlaylistView();
+                                Model.GetInstance().GetViewFactory().ShowEditPlaylistView(getUserId());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

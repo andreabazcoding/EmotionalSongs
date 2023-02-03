@@ -52,7 +52,8 @@ public class LoginController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        //stampa prova
+        System.out.println("User ID: " + getUserId());
     }
 
     /**
@@ -84,7 +85,7 @@ public class LoginController extends Controller implements Initializable {
     private void LoadMainView() throws IOException {
         Stage stage = (Stage) txtFieldUsername.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);
-        Model.GetInstance().GetViewFactory().ShowMainView();
+        Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
     }
 
     // </editor-fold>
