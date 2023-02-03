@@ -3,6 +3,7 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.View.ViewFactory;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.EmozioniEntity;
 import javafx.application.Application;
@@ -12,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +27,7 @@ import java.util.ResourceBundle;
  * @author Nour Faraj
  * @author Andrea Basilico
  */
-public class EmozioniProvateController extends Application implements Initializable {
+public class EmozioniProvateController extends Controller implements Initializable {
 
     // <editor-fold desc="Attributi FXML">
     @FXML
@@ -51,13 +49,16 @@ public class EmozioniProvateController extends Application implements Initializa
 
     // <editor-fold desc="Attributi ">
 
-    CanzoneModel canzoneModel = new CanzoneModel(1,"Don't Pan Me", "Alberta Hunter", null, 1922, 0.0, null);
+
+    public EmozioniProvateController() {
+
+    }
+
     EmozioniEntity emozioniEntity = new EmozioniEntity();
     ObservableList<TableModel> data;
     ResultSet rs = null;
 
     // </editor-fold>
-
     // <editor-fold desc="Methods">
 
     /**
@@ -67,12 +68,17 @@ public class EmozioniProvateController extends Application implements Initializa
         launch();
     }
 
+    @Override
+    public void LoadContent() throws SQLException, IOException {
+
+    }
+
+
     /**
      * @param stage
      * @throws IOException
      * @throws SQLException
      */
-
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/View/EmozioniProvateView.fxml"));
@@ -85,32 +91,44 @@ public class EmozioniProvateController extends Application implements Initializa
 
 
     /**
-     * Imposta il titolo della canzone selezionata e popola la tabella del prospetto emozioni con il resultset ritornato da emotionProspect()
+     * Popola la tabella del prospetto emozioni con il resultset ritornato da emotionProspect()
      * @param url
      * @param resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            lblCanzoneSelezionata.setText(canzoneModel.getTitolo()  + " - " + canzoneModel.getAutore());
 
-            rs = emozioniEntity.EmotionProspect(canzoneModel.getCanzoneID());
+            txtAreaRecCompleta.setEditable(false);
+            lblCanzoneSelezionata.setText(getTitolo() + " - " + getAutore() + " - " + getAnno());
+
+            System.out.println(getCanzoneId()); //stampa di controllo
+            rs = emozioniEntity.EmotionProspect(getCanzoneId());
             data = FXCollections.observableArrayList();
 
-            while (rs.next()){
-                data.add(new TableModel(rs.getString(1), rs.getInt(2), rs.getFloat(3)));
-            }
+            if(!rs.next()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Informazione");
+                alert.setHeaderText(null);
+                alert.setContentText("Non sono presenti feedback emozionali per questa canzone!");
+                alert.showAndWait();
+            } else {
+                    do {
+                    data.add(new TableModel(rs.getString(1), rs.getInt(2), rs.getFloat(3)));
 
-           colEmozione.setCellValueFactory(tableModelStringCellDataFeatures -> tableModelStringCellDataFeatures.getValue().getEmozione());
-           colNumeroUtenti.setCellValueFactory(tableModelIntegerCellDataFeatures -> tableModelIntegerCellDataFeatures.getValue().getNumeroUtenti());
-           colMedia.setCellValueFactory(tableModelFloatCellDataFeatures -> tableModelFloatCellDataFeatures.getValue().getMedia());
-           tbViewEmozioniProvate.setItems(data);
+                    colEmozione.setCellValueFactory(tableModelStringCellDataFeatures -> tableModelStringCellDataFeatures.getValue().getEmozione());
+                    colNumeroUtenti.setCellValueFactory(tableModelIntegerCellDataFeatures -> tableModelIntegerCellDataFeatures.getValue().getNumeroUtenti());
+                    colMedia.setCellValueFactory(tableModelFloatCellDataFeatures -> tableModelFloatCellDataFeatures.getValue().getMedia());
+                    tbViewEmozioniProvate.setItems(data);
 
-           txtAreaRecCompleta.setEditable(false);
-           rs = emozioniEntity.getAllComments(canzoneModel.getCanzoneID());
-            while (rs.next()) {
-                String annotazione = rs.getString(1);
-                txtAreaRecCompleta.appendText(annotazione + "\n"); }
+                     } while(rs.next());
+
+                rs = emozioniEntity.getAllComments(getCanzoneId());
+                while (rs.next()) {
+                    String annotazione = rs.getString(1);
+                    txtAreaRecCompleta.appendText(annotazione + "\n");
+                     }
+                }
 
         } catch (SQLException e) {
             e.printStackTrace();

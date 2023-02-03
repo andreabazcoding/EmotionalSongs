@@ -71,7 +71,7 @@ public class CanzoneEntity {
         try {
             connection = connectionFactory.getConnection();
 
-            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\"");
+            sb.append("SELECT \"CanzoneID\", \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
             sb.append("FROM \"EmotionalSongs\".\"Canzone\"");
 
             PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
@@ -141,16 +141,16 @@ public class CanzoneEntity {
         try {
             connection = connectionFactory.getConnection();
 
-            sb.append("SELECT \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
+            sb.append("SELECT \"CanzoneID\", \"Titolo\", \"Autore\", \"Album\", \"Anno\", \"Durata\", \"Genere\" ");
             sb.append("FROM \"EmotionalSongs\".\"Canzone\" ");
             sb.append("WHERE ");
             if(!titolo.trim().isEmpty()){
                 sb.append("\"Titolo\" like '%");
-                sb.append(titolo);
+                sb.append(titolo.replaceAll("'", "''"));
                 sb.append("%';");
             }else{
                 sb.append("\"Autore\" like '%");
-                sb.append(autore);
+                sb.append(autore.replaceAll("'", "''"));
                 sb.append("%'");
                 if(anno > 0){
                     sb.append(" AND \"Anno\" =");
@@ -170,6 +170,7 @@ public class CanzoneEntity {
         }
         return resultSet;
     }
+
     public ResultSet searchingByTitle(String titolo) throws IOException, SQLException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();

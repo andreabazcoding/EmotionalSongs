@@ -1,20 +1,18 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
-import javafx.application.Application;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +27,7 @@ import java.util.ResourceBundle;
  * @author Nour Faraj
  */
 
-public class GvPlaylistController extends Application implements Initializable {
+public class GvPlaylistController extends Controller implements Initializable {
 
     // <editor-fold desc="Attributi FXML">
 
@@ -42,8 +40,6 @@ public class GvPlaylistController extends Application implements Initializable {
     @FXML
     private Button btnSelezionaPlaylist;
 
-    PlaylistModel playlistModel = new PlaylistModel();
-
     // </editor-fold>
 
     // <editor-fold desc="Methods">
@@ -53,6 +49,11 @@ public class GvPlaylistController extends Application implements Initializable {
      */
     public static void main(String[] args) {
         launch();
+    }
+
+    @Override
+    public void LoadContent() throws SQLException, IOException {
+
     }
 
     /**
@@ -77,20 +78,7 @@ public class GvPlaylistController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /*
-        try {
-            ResultSet resultSet = PlaylistEntity.allPlaylists();
-            while (resultSet.next()) {
-                lviewSelezionePlaylist.getItems().add(resultSet.getString(2) + " [" + resultSet.getString(3) + "]");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        */
 
-        PlaylistEntity playlistEntity = new PlaylistEntity();
         try {
             ResultSet rs = PlaylistEntity.allPlaylists();
             ObservableList<TableModel> data;
@@ -99,10 +87,8 @@ public class GvPlaylistController extends Application implements Initializable {
             while(rs.next()){
                 data.add(new TableModel(rs.getInt(1), rs.getString(2), rs.getString(3)));
             }
-
             tblColumnTitoloPlaylist.setCellValueFactory(tableModelPlaylistStringCellDataFeatures -> tableModelPlaylistStringCellDataFeatures.getValue().getNomePlaylist());
             tblColumnUsername.setCellValueFactory(tableModelPlaylistStringCellDataFeatures -> tableModelPlaylistStringCellDataFeatures.getValue().getUsername());
-
             tbViewPlaylist.setItems(data);
 
         } catch (IOException e) {
@@ -113,19 +99,17 @@ public class GvPlaylistController extends Application implements Initializable {
     }
 
     /**
-     * Al click del mouse sul bottone "Seleziona" legge playlistID, nome playlist, username dell' utente.
+     * Al click del mouse sul bottone "Seleziona" apre la playlist selezionata.
      * @param actionEvent
      */
-    public void btnSelezionaPlaylistClicked(ActionEvent actionEvent) {
-
-        //String nomePlaylist = tbViewPlaylist.getColumns().get(0).getCellObservableValue(0).getValue().toString();
-        //String utentePlaylist = tbViewPlaylist.getColumns().get(1).getCellObservableValue(0).getValue().toString();
-        //int playlistID = playlistModel.getPlaylistID();
-        //System.out.println(nomePlaylist + "-" + utentePlaylist + "-" + playlistID);
-
+    public void btnSelezionaPlaylistClicked(ActionEvent actionEvent) throws IOException {
         TableModel tableModel = tbViewPlaylist.getSelectionModel().getSelectedItem();
-        System.out.println(tableModel.getPlaylistId() + "-" + tableModel.getNomePlaylist() + "-" + tableModel.getUsername());
-    }
-    // </editor-fold>
+        int playlistId = tableModel.getPlaylistId();
+        String nomePlaylist = tableModel.getNomePlaylist().get();
 
+        ((Node)actionEvent.getSource()).getScene().getWindow().hide();
+        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(playlistId, nomePlaylist);
+    }
+
+    // </editor-fold>
 }

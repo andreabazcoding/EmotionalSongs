@@ -128,6 +128,49 @@ public class PlaylistEntity {
         return playlistmodel;
     }
 
+
+    /**
+     * Estrae le canzoni presenti in una specifica playlist
+     * @param playlistId
+     * @return resultSet
+     * @throws IOException
+     * @throws SQLException
+     */
+    public static ResultSet getSongs(int playlistId) throws IOException, SQLException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        Connection connection = null;
+        Statement statement = null;
+
+        try{
+            connection = connectionFactory.getConnection();
+            statement = connectionFactory.getStatement(connection);
+
+            sb.append("SELECT \"Canzone\".\"CanzoneID\", \"Titolo\", \"Autore\", \"Anno\"");
+            sb.append("FROM \"EmotionalSongs\".\"Canzone\"");
+            sb.append("INNER JOIN \"EmotionalSongs\".\"CrossPlaylistCanzoni\"");
+            sb.append("ON \"Canzone\".\"CanzoneID\" = \"CrossPlaylistCanzoni\".\"CanzoneID\"");
+            sb.append("WHERE \"CrossPlaylistCanzoni\".\"PlaylistID\" = ").append(playlistId);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            connection.close();
+
+            return  resultSet;
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+            throw ex;
+
+        }finally {
+            if(connection != null && !connection.isClosed())
+                connection.close();
+        }
+    }
+
+
     /**
      * Effettua la connessione al database ed esegue la query per estrarre tutte le playlist
      * @return resultset

@@ -34,6 +34,9 @@ public class TableModel {
     private StringProperty nomePlaylist;
     private StringProperty username;
 
+    private IntegerProperty canzoneId;
+
+
     // </editor-fold>
 
     // <editor-fold desc="Costruttori">
@@ -70,6 +73,20 @@ public class TableModel {
 
 
     /**
+     * Costruttore per TableModelCanzone in PlaylistViewer
+     * @param titolo
+     * @param autore
+     * @param anno
+     */
+    public TableModel(int CanzoneID, String titolo, String autore,  Integer anno) {
+        this.canzoneId = new SimpleIntegerProperty(CanzoneID);
+        this.titolo = new SimpleStringProperty(titolo);
+        this.autore = new SimpleStringProperty(autore);
+        this.anno = new SimpleIntegerProperty(anno);
+    }
+
+
+    /**
      * Costruttore per TableModelPlaylist
      * @param playlistId
      * @param nomePlaylist
@@ -80,6 +97,25 @@ public class TableModel {
         this.nomePlaylist = new SimpleStringProperty(nomePlaylist);
         this.username = new SimpleStringProperty(username);
     }
+
+    /**
+     * Costruttore per TableModelCanzone
+     * @param CanzoneId
+     * @param titolo
+     * @param autore
+     * @param album
+     * @param anno
+     * @param durata
+     * @param genere
+     */
+    public TableModel(int CanzoneId, String titolo , String autore, String album, int anno, double durata, String genere) {
+        this.canzoneId = new SimpleIntegerProperty(CanzoneId);
+        this.titolo = new SimpleStringProperty(titolo);
+        this.album = new SimpleStringProperty(album);
+        this.durata = new SimpleDoubleProperty(durata);
+        this.genere = new SimpleStringProperty(genere);
+        this.autore = new SimpleStringProperty(autore);
+        this.anno = new SimpleIntegerProperty(anno);    }
 
     // </editor-fold>
 
@@ -223,6 +259,11 @@ public class TableModel {
       * @return username
      */
     public StringProperty getUsername() { return username; }
+
+
+    public ObservableValue getCanzoneId() {
+        return canzoneId;
+    }
 
     // </editor-fold>
 
