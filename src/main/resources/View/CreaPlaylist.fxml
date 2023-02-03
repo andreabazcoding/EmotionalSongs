@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="576.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.CreaPlaylistController">
+<Pane prefHeight="576.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-132.0" layoutY="-179.0" prefHeight="200.0" prefWidth="200.0" />
       <TextField fx:id="txtNomePlaylist" layoutX="14.0" layoutY="17.0" prefHeight="27.0" prefWidth="552.0" promptText="Nome Playlist">
@@ -16,7 +16,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="btnCreaPlaylist" layoutX="577.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnCreaPlaylistPressed" text="Crea Playlist">
+      <Button fx:id="btnCreaPlaylist" layoutX="577.0" layoutY="17.0" mnemonicParsing="false" text="Crea Playlist">
          <font>
             <Font size="14.0" />
          </font>
