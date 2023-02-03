@@ -114,6 +114,15 @@ public class ViewFactory {
     }
 
     /**
+     * Permetto lo switch sulla view CreaPlaylistView
+     * @throws IOException
+     */
+    public void ShowCreaPlaylistView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/CreaPlaylist.fxml"));
+        CreateStage(loader);
+    }
+
+    /**
      * Permetto lo switch sulla view RegistrationView
      * @throws IOException
      */

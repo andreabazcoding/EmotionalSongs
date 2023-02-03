@@ -46,6 +46,10 @@ public class LoginController extends Controller implements Initializable {
 
     }
 
+    /**
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -63,13 +67,20 @@ public class LoginController extends Controller implements Initializable {
 
         if(txtFieldUsername.getText().isBlank() && pssFieldPassword.getText().isBlank() ) {
             lblLoginMessage.setText("Inserisci username e password: ");
-        }else if(utenteRegistratoEntity.AuthenticateUser(txtFieldUsername.getText(),pssFieldPassword.getText() )== 1){
-            LoadMainView();
-        }else{
-            lblLoginMessage.setText("Username e/o password errati! ");
+        }else {
+            setUserId(utenteRegistratoEntity.AuthenticateUser(txtFieldUsername.getText(),pssFieldPassword.getText()));
+            if(getUserId() != 0) {
+                LoadMainView();
+            }else{
+                lblLoginMessage.setText("Username e/o password errati! ");
+            }
         }
     }
 
+    /**
+     * Closes this stage and shows the main view
+     * @throws IOException
+     */
     private void LoadMainView() throws IOException {
         Stage stage = (Stage) txtFieldUsername.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);
