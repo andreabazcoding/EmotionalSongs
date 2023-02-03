@@ -1,6 +1,5 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
-import com.studenti.uninsubria.emotionalsongs.Main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +28,12 @@ public abstract class Controller extends Application {
     private Parent root;
 
     private int userId;
-
+    public int canzoneId;
+    public int playlistId;
+    public String nomePlaylist;
+    public String titolo;
+    public String autore;
+    public int anno;
     private int entityId;
 
     // </editor-fold>
@@ -51,7 +55,6 @@ public abstract class Controller extends Application {
         this.contentArea = contentArea;
     }
 
-
     /**
      * Returns the current users Id
      * @return
@@ -67,6 +70,30 @@ public abstract class Controller extends Application {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public int getCanzoneId() { return canzoneId; }
+
+    public void setCanzoneId(int canzoneId) { this.canzoneId = canzoneId; }
+
+    public String getTitolo() { return titolo; }
+
+    public void setTitolo(String titolo) { this.titolo = titolo; }
+
+    public String getAutore() { return autore; }
+
+    public void setAutore(String autore) { this.autore = autore; }
+
+    public int getAnno() { return anno; }
+
+    public void setAnno(int anno) { this.anno = anno; }
+
+    public int getPlaylistId() { return playlistId; }
+
+    public void setPlaylistId(int playlistId) { this.playlistId = playlistId; }
+
+    public String getNomePlaylist() { return nomePlaylist; }
+
+    public void setNomePlaylist(String nomePlaylist) { this.nomePlaylist = nomePlaylist; }
 
     /**
      * Returns the entityId

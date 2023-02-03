@@ -1,5 +1,6 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.CanzoneEntity;
 import javafx.collections.FXCollections;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
  *  Classe controller di "GvCanzoni"
  *  Mostra il prospetto delle canzoni
  */
-public class GvCanzoniController implements Initializable {
+public class GvCanzoniController extends Controller implements Initializable {
     public Button btnSvuota;
 
     // <editor-fold desc="Attributi FXML">
@@ -73,9 +74,9 @@ public class GvCanzoniController implements Initializable {
 
                 while(tmpSet.next()){
 
-                    filtData.add(new TableModel(tmpSet.getString(1),tmpSet.getString(2),
-                            tmpSet.getString(3),tmpSet.getInt(4), tmpSet.getDouble(5),
-                            tmpSet.getString(6)));
+                    filtData.add(new TableModel(tmpSet.getInt(1), tmpSet.getString(2),tmpSet.getString(3),
+                            tmpSet.getString(4),tmpSet.getInt(5), tmpSet.getDouble(6),
+                            tmpSet.getString(7)));
                 }
 
                 tblColumnTitolo.setCellValueFactory(tableModelCanzoniStringCellDataFeatures -> tableModelCanzoniStringCellDataFeatures.getValue().getTitolo());
@@ -149,9 +150,9 @@ public class GvCanzoniController implements Initializable {
             data = FXCollections.observableArrayList();
 
             while(rs.next()){
-                data.add(new TableModel(rs.getString(1),rs.getString(2),
-                        rs.getString(3),rs.getInt(4), rs.getDouble(5),
-                        rs.getString(6)));
+                data.add(new TableModel(rs.getInt(1), rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getInt(5), rs.getDouble(6),
+                        rs.getString(7)));
             }
         }
         catch (Exception ex){
@@ -159,6 +160,35 @@ public class GvCanzoniController implements Initializable {
         }
 
         return data;
+    }
+
+
+    /**
+     * Al click del bottone apre il prospetto delle emozioni per la canzone selezionata
+     * @param actionEvent
+     * @throws IOException
+     */
+    public void btnProspettoEmozioniClicked (ActionEvent actionEvent) throws IOException {
+
+        TableModel tableModel = tbViewCanzoni.getSelectionModel().getSelectedItem();
+
+        int canzoneId = (int) tableModel.getCanzoneId().getValue();
+        String titolo = tableModel.getTitolo().get();
+        String autore = tableModel.getAutore().get();
+        int anno = (int) tableModel.getAnno().getValue();
+
+        //stampe di controllo
+        System.out.println(canzoneId);
+        System.out.println(titolo);
+        System.out.println(autore);
+        System.out.println(anno);
+
+        Model.GetInstance().GetViewFactory().ShowProspectView(canzoneId, titolo, autore, anno);
+    }
+
+    @Override
+    public void LoadContent() throws SQLException, IOException {
+
     }
 
     // </editor-fold>

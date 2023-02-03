@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.GvCanzoniController">
-    <TableView fx:id="tbViewCanzoni" layoutY="72.0" prefHeight="528.0" prefWidth="825.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.GvCanzoniController">
+    <TableView fx:id="tbViewCanzoni" layoutY="72.0" prefHeight="443.0" prefWidth="831.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
       <columns>
-          <TableColumn fx:id="tblColumnTitolo" editable="false" prefWidth="121.0" sortable="false" text="Titolo" />
-          <TableColumn fx:id="tblColumnAutore" prefWidth="121.0" text="Autore" />
-          <TableColumn fx:id="tblColumnAlbum" prefWidth="121.0" text="Album" />
-          <TableColumn fx:id="tblColumnAnno" prefWidth="121.0" text="Anno" />
-          <TableColumn fx:id="tblColumnDurata" prefWidth="121.0" text="Durata" />
-          <TableColumn fx:id="tblColumnGenere" prefWidth="121.0" text="Genere" />
+          <TableColumn fx:id="tblColumnTitolo" editable="false" prefWidth="163.0" sortable="false" text="Titolo" />
+          <TableColumn fx:id="tblColumnAutore" prefWidth="178.0" text="Autore" />
+          <TableColumn fx:id="tblColumnAlbum" prefWidth="142.0" text="Album" />
+          <TableColumn fx:id="tblColumnAnno" prefWidth="99.0" text="Anno" />
+          <TableColumn fx:id="tblColumnDurata" prefWidth="85.0" text="Durata" />
+          <TableColumn fx:id="tblColumnGenere" prefWidth="141.0" text="Genere" />
       </columns>
     </TableView>
 
@@ -31,12 +31,12 @@
             <Font size="13.0" />
         </font>
     </TextField>
-    <Label fx:id="lblRicercaAutoreEAnno" alignment="CENTER" layoutX="344.0" layoutY="14.0" prefHeight="17.0" prefWidth="145.0" text="Ricerca per Autore e Anno:">
+    <Label fx:id="lblRicercaAutoreEAnno" alignment="CENTER" layoutX="344.0" layoutY="14.0" prefHeight="19.0" prefWidth="160.0" text="Ricerca per Autore e Anno:">
         <font>
             <Font size="13.0" />
         </font>
     </Label>
-    <TextField fx:id="txtFieldRicercaAutore" alignment="CENTER" layoutX="291.0" layoutY="32.0" prefHeight="28.0" prefWidth="250.0" promptText="Inserisci Autore">
+    <TextField fx:id="txtFieldRicercaAutore" alignment="CENTER" layoutX="291.0" layoutY="32.0" prefHeight="28.0" prefWidth="250.0" promptText="Inserisci Autore e Seleziona Anno">
         <font>
             <Font size="13.0" />
         </font>
@@ -52,4 +52,10 @@
             <Font size="13.0" />
         </font>
     </Button>
+   <Label fx:id="lblInfo" layoutX="14.0" layoutY="526.0" prefHeight="19.0" prefWidth="597.0" text="Per vedere il prospetto delle emozioni di una canzone, cliccare su una canzone e poi sul bottone.">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font>
+   </Label>
+   <Button fx:id="btnSelezionaCanzone" layoutX="620.0" layoutY="523.0" mnemonicParsing="false" onAction="#btnProspettoEmozioniClicked" text="Vedi prospetto delle emozioni" />
 </AnchorPane>

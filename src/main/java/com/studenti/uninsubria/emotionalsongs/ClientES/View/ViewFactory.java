@@ -1,6 +1,9 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.View;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EmozioniProvateController;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.MainViewController;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.PlaylistViewerController;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +51,7 @@ public class ViewFactory {
         return GvPlaylistView;
     }
 
+
     public StringProperty getSelectedMenuItem() {
         return SelectedMenuItem;
     }
@@ -56,6 +60,47 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainView.fxml"));
         MainViewController mainViewController = new MainViewController();
         loader.setController(mainViewController);
+        CreateStage(loader);
+    }
+
+
+    /**
+     * Permette lo switch sulla view PlaylistViewer
+     * @param playlistId l' id della playlist selezionata
+     * @param nomePlaylist il nome della playlist selezionata
+     */
+    public void ShowPlaylistViewer(int playlistId, String nomePlaylist) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PlaylistViewer.fxml"));
+        PlaylistViewerController playlistViewerController = new PlaylistViewerController();
+        playlistViewerController.setPlaylistId(playlistId);
+        playlistViewerController.setNomePlaylist(nomePlaylist);
+        loader.setController(playlistViewerController);
+        CreateStage(loader);
+    }
+
+
+    /**
+     * Permette lo switch sulla view EmozioniProvateView
+     * @param titolo il titolo della canzone selezionata
+     * @param autore l' autore della canzone selezionata
+     * @param anno l' anno della canzone selezionata
+     * @throws IOException
+     */
+    public void ShowProspectView(int canzoneId, String titolo, String autore, int anno) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmozioniProvateView.fxml"));
+        EmozioniProvateController emozioniProvateController = new EmozioniProvateController();
+
+        //stampe di controllo
+        System.out.println(canzoneId);
+        System.out.println(titolo);
+        System.out.println(autore);
+        System.out.println(anno);
+
+        emozioniProvateController.setCanzoneId(canzoneId);
+        emozioniProvateController.setTitolo(titolo);
+        emozioniProvateController.setAutore(autore);
+        emozioniProvateController.setAnno(anno);
+        loader.setController(emozioniProvateController);
         CreateStage(loader);
     }
 
