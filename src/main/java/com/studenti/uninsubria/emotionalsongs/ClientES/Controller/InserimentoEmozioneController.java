@@ -66,9 +66,6 @@ import java.util.ResourceBundle;
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-            //stampa controllo
-            System.out.println(getUserId() + " in inserimento emozione");
-
             lblConferma.setVisible(false);
             lblCanzoneSelezionata.setText(getAutore() + ", " + getTitolo() + ", " + getAnno());
             CbEmozioni.getItems().addAll(Emozioni);

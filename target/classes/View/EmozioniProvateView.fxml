@@ -24,7 +24,7 @@
                   <TableColumn fx:id="colMedia" editable="false" prefWidth="258.0" text="Media Intensità" />
               </columns>
             </TableView>
-            <Label fx:id="lblRecenzioneCompleta" layoutX="25.0" layoutY="383.0" text="Recensioni complete: ">
+            <Label fx:id="lblRecensioneCompleta" layoutX="25.0" layoutY="383.0" text="Recensioni complete: ">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>

@@ -54,8 +54,6 @@ public class PlaylistViewerController extends Controller implements Initializabl
     @FXML
     Label lblNomePlaylist;
 
-    //int userID = getUserId();
-
     public static void main(String[] args) {
         launch();
     }
@@ -78,16 +76,9 @@ public class PlaylistViewerController extends Controller implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         lblNomePlaylist.setText(getNomePlaylist());
-
-        //stampa di controllo
-        System.out.println(getUserId() + " in PlaylistViewer");
-
         if(getUserId() == 0) {
             btnFeedback.setDisable(true);
         }
-
-        //stampa di controllo
-        System.out.println(getPlaylistId());
 
         try {
             //query per estrarre le canzoni di una specifica playlist
@@ -119,7 +110,6 @@ public class PlaylistViewerController extends Controller implements Initializabl
         Stage stage = (Stage) btnGoBack.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);
         Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
-        System.out.println(getUserId()  + " tornando indietro da playlistViewer");
     }
 
     /**
@@ -154,7 +144,6 @@ public class PlaylistViewerController extends Controller implements Initializabl
         int userId = getUserId();
 
         TableModel tableModel = tbViewCanzoni.getSelectionModel().getSelectedItem();
-
         if (tableModel == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Nessuna canzone selezionata");

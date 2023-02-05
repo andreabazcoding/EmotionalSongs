@@ -39,7 +39,6 @@ public class MenuController extends Controller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListeners();
-        /*
         if (getUserId() == 0) {
             btnCreaPlaylist.setDisable(true);
         } else {
@@ -47,7 +46,6 @@ public class MenuController extends Controller implements Initializable{
             btnAccedi.setText("Accesso effettuato");
             lblAccesso.setText("Accesso effettuato");
         }
-         */
     }
 
     public void setMainViewParent(BorderPane mainViewParent) {

@@ -53,7 +53,6 @@ public class ViewFactory {
     }
 
     public AnchorPane GetGvPlaylistView(int userId) {
-        System.out.println("GetGvPlaylistView() - User ID: " + userId);
         if(GvPlaylistView == null){
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GvPlaylist.fxml"));
@@ -131,12 +130,6 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmozioniProvateView.fxml"));
         EmozioniProvateController emozioniProvateController = new EmozioniProvateController();
 
-        //stampe di controllo
-        System.out.println(canzoneId);
-        System.out.println(titolo);
-        System.out.println(autore);
-        System.out.println(anno);
-
         emozioniProvateController.setCanzoneId(canzoneId);
         emozioniProvateController.setTitolo(titolo);
         emozioniProvateController.setAutore(autore);
@@ -153,17 +146,9 @@ public class ViewFactory {
      * @param anno l' anno della canzone selezionata
      * @param userId l' Id dell' utente corrente
      */
-    //solo se utente registrato
     public void ShowInserimentoEmozioneView(int canzoneId, String titolo, String autore, int anno, int userId) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/InserimentoEmozioneView.fxml"));
         InserimentoEmozioneController inserimentoEmozioneController = new InserimentoEmozioneController();
-
-        //stampe di controllo
-        System.out.println(userId);
-        System.out.println(canzoneId);
-        System.out.println(titolo);
-        System.out.println(autore);
-        System.out.println(anno);
 
         inserimentoEmozioneController.setUserId(userId);
         inserimentoEmozioneController.setCanzoneId(canzoneId);

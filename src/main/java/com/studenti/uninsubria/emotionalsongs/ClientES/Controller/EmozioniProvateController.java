@@ -102,7 +102,6 @@ public class EmozioniProvateController extends Controller implements Initializab
             txtAreaRecCompleta.setEditable(false);
             lblCanzoneSelezionata.setText(getTitolo() + " - " + getAutore() + " - " + getAnno());
 
-            System.out.println(getCanzoneId()); //stampa di controllo
             rs = emozioniEntity.EmotionProspect(getCanzoneId());
             data = FXCollections.observableArrayList();
 

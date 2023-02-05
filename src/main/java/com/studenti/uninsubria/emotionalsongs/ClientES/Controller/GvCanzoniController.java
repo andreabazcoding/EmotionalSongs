@@ -172,18 +172,20 @@ public class GvCanzoniController extends Controller implements Initializable {
 
         TableModel tableModel = tbViewCanzoni.getSelectionModel().getSelectedItem();
 
-        int canzoneId = (int) tableModel.getCanzoneId().getValue();
-        String titolo = tableModel.getTitolo().get();
-        String autore = tableModel.getAutore().get();
-        int anno = (int) tableModel.getAnno().getValue();
+        if (tableModel == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Nessuna canzone selezionata");
+            alert.setHeaderText(null);
+            alert.setContentText("Selezionare una canzone e poi premere il bottone.");
+            alert.showAndWait();
+        } else {
+            int canzoneId = (int) tableModel.getCanzoneId().getValue();
+            String titolo = tableModel.getTitolo().get();
+            String autore = tableModel.getAutore().get();
+            int anno = (int) tableModel.getAnno().getValue();
 
-        //stampe di controllo
-        System.out.println(canzoneId);
-        System.out.println(titolo);
-        System.out.println(autore);
-        System.out.println(anno);
-
-        Model.GetInstance().GetViewFactory().ShowProspectView(canzoneId, titolo, autore, anno);
+            Model.GetInstance().GetViewFactory().ShowProspectView(canzoneId, titolo, autore, anno);
+        }
     }
 
     @Override

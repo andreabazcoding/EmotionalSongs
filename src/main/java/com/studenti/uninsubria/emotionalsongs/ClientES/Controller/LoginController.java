@@ -55,9 +55,6 @@ public class LoginController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //stampa prova
-        System.out.println("User ID: " + getUserId());
-
         btnRegistrati.setBackground(null);
     }
 
