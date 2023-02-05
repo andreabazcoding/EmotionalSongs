@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.PropertySheet;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +34,8 @@ public class LoginController extends Controller implements Initializable {
     private PasswordField pssFieldPassword;
     @FXML
     private Button btnAccedi;
+    @FXML
+    private Button btnRegistrati;
 
     // </editor-fold>
 
@@ -54,6 +57,8 @@ public class LoginController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //stampa prova
         System.out.println("User ID: " + getUserId());
+
+        btnRegistrati.setBackground(null);
     }
 
     /**
@@ -77,6 +82,18 @@ public class LoginController extends Controller implements Initializable {
             }
         }
     }
+
+    /**
+     * Al click del bottone apre la finestra della registrazione.
+     * @param e
+     * @throws IOException
+     */
+    public void btnRegistratiClicked(ActionEvent e) throws IOException {
+        Stage stage = (Stage) txtFieldUsername.getScene().getWindow();
+        Model.GetInstance().GetViewFactory().CloseStage(stage);
+        Model.GetInstance().GetViewFactory().ShowRegistrationView();
+    }
+
 
     /**
      * Closes this stage and shows the main view

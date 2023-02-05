@@ -79,6 +79,8 @@ public class GvPlaylistController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        System.out.println(getUserId() + " in GvPlaylist");
+
         try {
             ResultSet rs = PlaylistEntity.allPlaylists();
             ObservableList<TableModel> data;
@@ -106,9 +108,11 @@ public class GvPlaylistController extends Controller implements Initializable {
         TableModel tableModel = tbViewPlaylist.getSelectionModel().getSelectedItem();
         int playlistId = tableModel.getPlaylistId();
         String nomePlaylist = tableModel.getNomePlaylist().get();
+        int userId = getUserId();
+        System.out.println(userId + " passato da GvPlaylist a PlaylistViewer");
 
         ((Node)actionEvent.getSource()).getScene().getWindow().hide();
-        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(playlistId, nomePlaylist);
+        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(userId, playlistId, nomePlaylist);
     }
 
     // </editor-fold>

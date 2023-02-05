@@ -2,6 +2,7 @@ package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.EmozioniEntity;
 import javafx.beans.value.ChangeListener;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,15 +26,12 @@ import java.util.ResourceBundle;
      * ed eventualmente un commento opzionale.
      * Infine effettua il salvataggio del feedback sul database.
      */
-    public class InserimentoEmozioneController implements Initializable {
+    public class InserimentoEmozioneController extends Controller implements Initializable {
 
         // <editor-fold desc="Attributi ">
         UtenteRegistratoModel utenteRegistratoModel = new UtenteRegistratoModel();
         EmozioneModel emozioneModel = new EmozioneModel();
         EmozioniEntity emozioniEntity = new EmozioniEntity();
-        //da modificare
-        CanzoneModel canzoneModel = new CanzoneModel(1,"Don't Pan Me", "Alberta Hunter", null,
-                                                1922, 0.0, null);
         String Emozione, Commento;
         int Intensita;
         private String[] Emozioni = { "Stupore", "Solennità", "Tenerezza", "Nostalgia", "Calma", "Potere", "Gioia", "Tensione", "Tristezza" };
@@ -67,7 +66,11 @@ import java.util.ResourceBundle;
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-            lblCanzoneSelezionata.setText(canzoneModel.getAutore() + ", " + canzoneModel.getTitolo());
+            //stampa controllo
+            System.out.println(getUserId() + " in inserimento emozione");
+
+            lblConferma.setVisible(false);
+            lblCanzoneSelezionata.setText(getAutore() + ", " + getTitolo() + ", " + getAnno());
             CbEmozioni.getItems().addAll(Emozioni);
             CbEmozioni.setOnAction(this::leggiEmozione);
             Slider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -133,8 +136,8 @@ import java.util.ResourceBundle;
                     emozioneProvabileID = 9;
             }
 
-            emozioneModel.setUtenteRegistratoID(4);   //emozioneModel.setUtenteRegistratoID(utenteRegistratoModel.getUtenteRegistratoID());
-            emozioneModel.setCanzoneID(canzoneModel.getCanzoneID());
+            emozioneModel.setUtenteRegistratoID(getUserId());
+            emozioneModel.setCanzoneID(getCanzoneId());
             emozioneModel.setEmozioneProvabileID(emozioneProvabileID);
             emozioneModel.setIntensità(Intensita);
             emozioneModel.setAnnotazioneEmozione(Commento);
@@ -142,13 +145,24 @@ import java.util.ResourceBundle;
             emozioniEntity.Create(emozioneModel);
 
             lblConferma.setVisible(true);
+            CbEmozioni.valueProperty().setValue(null);
+            Slider.valueProperty().setValue(1);
+            txtCommento.setText("");
         }
 
         /**
-         * Permette di tornare alla view Precedente
+         * Permette di tornare alla view principale
          * @throws IOException
          */
-        public void previousView() throws IOException {
+        public void loadMainView() throws IOException {
+            Stage stage = (Stage) btnSave.getScene().getWindow();
+            Model.GetInstance().GetViewFactory().CloseStage(stage);
+            Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+        }
+
+        @Override
+        public void LoadContent() throws SQLException, IOException {
+
         }
 
         // </editor-fold>

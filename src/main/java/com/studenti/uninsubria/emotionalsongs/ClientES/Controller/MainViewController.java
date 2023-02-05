@@ -25,16 +25,17 @@ public class MainViewController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            mainViewParent.setLeft(Model.GetInstance().GetViewFactory().GetMenuView(getUserId()));
+            mainViewParent.setLeft(Model.GetInstance().GetViewFactory().GetMenuView(getUserId(), mainViewParent));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         //stampa prova
         System.out.println("User ID: " + getUserId());
+        /*
         Model.GetInstance().GetViewFactory().getSelectedMenuItem()
                 .addListener((observableValue, oldVal, newVal) -> {
                     switch (newVal){
-                        case "Playlist" -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvPlaylistView());
+                        case "Playlist" -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvPlaylistView(getUserId()));
                         case "Accedi" -> {
                             try {
                                 Stage stage = (Stage)mainViewParent.getScene().getWindow();
@@ -57,6 +58,7 @@ public class MainViewController extends Controller implements Initializable {
                         default -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvCanzoniView());
                     }
                 });
+         */
     }
 
     /**

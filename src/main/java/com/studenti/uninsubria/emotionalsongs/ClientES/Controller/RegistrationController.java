@@ -1,5 +1,6 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.Main;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
@@ -138,7 +139,11 @@ public class RegistrationController extends Controller {
                 System.out.println("LOG: L'utente è stato registrato correttamente");
                 clearAll();
                 lblConferma.setVisible(true);
-                changeView("CreaPlaylist.fxml", getUserId());
+                setUserId(utenteRegistratoEntity.AuthenticateUser(utenteRegistratoModel.getUsername(), utenteRegistratoModel.getPassword()));
+                Stage stage = (Stage) txtUsername.getScene().getWindow();
+                Model.GetInstance().GetViewFactory().CloseStage(stage);
+                Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+                System.out.println(getUserId() + " ritornato da Registrazione");
             }
         }
     }

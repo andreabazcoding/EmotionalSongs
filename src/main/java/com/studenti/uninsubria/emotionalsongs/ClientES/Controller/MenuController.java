@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +27,10 @@ public class MenuController extends Controller implements Initializable{
     private Button btnCreaPlaylist;
     @FXML
     private Button btnCanzoni;
+    @FXML
+    Label lblAccesso;
+
+    private BorderPane mainViewParent;
 
     /**
      * @param url
@@ -33,12 +39,19 @@ public class MenuController extends Controller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addListeners();
+        /*
         if (getUserId() == 0) {
             btnCreaPlaylist.setDisable(true);
         } else {
             btnAccedi.setDisable(true);
             btnAccedi.setText("Accesso effettuato");
+            lblAccesso.setText("Accesso effettuato");
         }
+         */
+    }
+
+    public void setMainViewParent(BorderPane mainViewParent) {
+        this.mainViewParent = mainViewParent;
     }
 
     public void addListeners() {
@@ -50,21 +63,36 @@ public class MenuController extends Controller implements Initializable{
 
     @FXML
     private void onPlaylist() {
-        Model.GetInstance().GetViewFactory().getSelectedMenuItem().set("Playlist");
+        mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvPlaylistView(getUserId()));
     }
 
     @FXML
     private void onCanzoni() {
-        Model.GetInstance().GetViewFactory().getSelectedMenuItem().set("Canzoni");
+        mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvCanzoniView());
     }
 
     @FXML
     private void onAccedi() {
-        Model.GetInstance().GetViewFactory().getSelectedMenuItem().set("Accedi");
+        try {
+            Stage stage = (Stage)mainViewParent.getScene().getWindow();
+            Model.GetInstance().GetViewFactory().CloseStage(stage);
+            Model.GetInstance().GetViewFactory().ShowLoginView();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    private void onCreaPlaylist() { Model.GetInstance().GetViewFactory().getSelectedMenuItem().set("CreaPlaylist"); }
+    private void onCreaPlaylist() {
+        try {
+            System.out.println("Case CreaPlaylist");
+            Stage stage = (Stage)mainViewParent.getScene().getWindow();
+            Model.GetInstance().GetViewFactory().CloseStage(stage);
+            Model.GetInstance().GetViewFactory().ShowEditPlaylistView(getUserId());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void LoadContent() throws SQLException, IOException {

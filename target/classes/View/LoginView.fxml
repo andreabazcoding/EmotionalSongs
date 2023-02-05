@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="aPaneLogin" prefHeight="229.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.LoginController">
+<AnchorPane fx:id="aPaneLogin" prefHeight="229.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.LoginController">
    <children>
       <Label fx:id="lblPassword" layoutX="110.0" layoutY="96.0" text="Password: ">
          <font>
-            <Font name="Calibri Bold" size="12.0" />
+            <Font name="Calibri Bold" size="13.0" />
          </font>
       </Label>
       <Label fx:id="lblUsername" layoutX="109.0" layoutY="63.0" text="Username: ">
          <font>
-            <Font name="Calibri Bold" size="12.0" />
+            <Font name="Calibri Bold" size="13.0" />
          </font>
       </Label>
       <TextField fx:id="txtFieldUsername" layoutX="207.0" layoutY="59.0">
@@ -24,9 +24,9 @@
             <Font name="Calibri Bold" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="btnAccedi" contentDisplay="CENTER" layoutX="215.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnAccediClicked" prefHeight="22.0" prefWidth="53.0" text="Accedi">
+      <Button fx:id="btnAccedi" contentDisplay="CENTER" layoutX="248.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnAccediClicked" prefHeight="27.0" prefWidth="64.0" text="Accedi">
          <font>
-            <Font name="Calibri Bold" size="12.0" />
+            <Font name="Calibri Bold" size="13.0" />
          </font>
       </Button>
       <PasswordField fx:id="pssFieldPassword" layoutX="207.0" layoutY="92.0">
@@ -35,5 +35,15 @@
          </font>
       </PasswordField>
       <Label fx:id="lblLoginMessage" alignment="CENTER" layoutX="114.0" layoutY="171.0" prefHeight="15.0" prefWidth="255.0" />
+      <Button fx:id="btnRegistrati" layoutX="274.0" layoutY="193.0" mnemonicParsing="false" onAction="#btnRegistratiClicked" text="Registrati" underline="true">
+         <font>
+            <Font name="Calibri Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblInfo" layoutX="165.0" layoutY="198.0" text="Non hai un account?">
+         <font>
+            <Font name="Calibri" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

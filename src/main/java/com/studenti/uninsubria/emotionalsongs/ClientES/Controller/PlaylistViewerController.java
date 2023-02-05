@@ -16,10 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,9 +49,12 @@ public class PlaylistViewerController extends Controller implements Initializabl
     Button btnGoBack;
 
     @FXML
+    Button btnFeedback;
+
+    @FXML
     Label lblNomePlaylist;
 
-    int userID = getUserId();
+    //int userID = getUserId();
 
     public static void main(String[] args) {
         launch();
@@ -78,6 +78,13 @@ public class PlaylistViewerController extends Controller implements Initializabl
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         lblNomePlaylist.setText(getNomePlaylist());
+
+        //stampa di controllo
+        System.out.println(getUserId() + " in PlaylistViewer");
+
+        if(getUserId() == 0) {
+            btnFeedback.setDisable(true);
+        }
 
         //stampa di controllo
         System.out.println(getPlaylistId());
@@ -109,9 +116,10 @@ public class PlaylistViewerController extends Controller implements Initializabl
      * @throws IOException
      */
     public void goBack(ActionEvent actionEvent) throws IOException {
-        ((Node)actionEvent.getSource()).getScene().getWindow().hide();
-        ViewFactory viewFactory = new ViewFactory();
-        viewFactory.ShowMainView(); //viewFactory.showMainView(userId);
+        Stage stage = (Stage) btnGoBack.getScene().getWindow();
+        Model.GetInstance().GetViewFactory().CloseStage(stage);
+        Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+        System.out.println(getUserId()  + " tornando indietro da playlistViewer");
     }
 
     /**
@@ -122,18 +130,41 @@ public class PlaylistViewerController extends Controller implements Initializabl
     public void btnProspettoEmozioniClicked (ActionEvent actionEvent) throws IOException {
         TableModel tableModel = tbViewCanzoni.getSelectionModel().getSelectedItem();
 
-        int canzoneId = (int) tableModel.getCanzoneId().getValue();
-        String titolo = tableModel.getTitolo().get();
-        String autore = tableModel.getAutore().get();
-        int anno = (int) tableModel.getAnno().getValue();
+        if(tableModel == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Nessuna canzone selezionata");
+            alert.setHeaderText(null);
+            alert.setContentText("Selezionare una canzone e poi premere il bottone.");
+            alert.showAndWait();
+        } else {
+            int canzoneId = (int) tableModel.getCanzoneId().getValue();
+            String titolo = tableModel.getTitolo().get();
+            String autore = tableModel.getAutore().get();
+            int anno = (int) tableModel.getAnno().getValue();
 
-        //stampe di controllo
-        System.out.println(canzoneId);
-        System.out.println(titolo);
-        System.out.println(autore);
-        System.out.println(anno);
-
-        Model.GetInstance().GetViewFactory().ShowProspectView(canzoneId, titolo, autore, anno);
+            Model.GetInstance().GetViewFactory().ShowProspectView(canzoneId, titolo, autore, anno);
+        }
     }
 
+
+    public void btnFeedbackClicked (ActionEvent actionEvent) {
+        int userId = getUserId();
+
+        TableModel tableModel = tbViewCanzoni.getSelectionModel().getSelectedItem();
+
+        if (tableModel == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Nessuna canzone selezionata");
+            alert.setHeaderText(null);
+            alert.setContentText("Selezionare una canzone e poi premere il bottone.");
+            alert.showAndWait();
+        } else {
+            int canzoneId = (int) tableModel.getCanzoneId().getValue();
+            String titolo = tableModel.getTitolo().get();
+            String autore = tableModel.getAutore().get();
+            int anno = (int) tableModel.getAnno().getValue();
+
+            Model.GetInstance().GetViewFactory().ShowInserimentoEmozioneView(canzoneId, titolo, autore, anno, userId); //test
+        }
+    }
 }
