@@ -146,7 +146,10 @@ public class PlaylistViewerController extends Controller implements Initializabl
         }
     }
 
-
+    /**
+     * Al click del bottone apre la view per l' inserimento del feedback
+     * @param actionEvent
+     */
     public void btnFeedbackClicked (ActionEvent actionEvent) {
         int userId = getUserId();
 
@@ -164,7 +167,7 @@ public class PlaylistViewerController extends Controller implements Initializabl
             String autore = tableModel.getAutore().get();
             int anno = (int) tableModel.getAnno().getValue();
 
-            Model.GetInstance().GetViewFactory().ShowInserimentoEmozioneView(canzoneId, titolo, autore, anno, userId); //test
+            Model.GetInstance().GetViewFactory().ShowInserimentoEmozioneView(canzoneId, titolo, autore, anno, userId);
         }
     }
 }

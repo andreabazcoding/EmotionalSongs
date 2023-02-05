@@ -109,9 +109,10 @@ public class ViewFactory {
      * @param playlistId l' id della playlist selezionata
      * @param nomePlaylist il nome della playlist selezionata
      */
-    public void ShowPlaylistViewer(int playlistId, String nomePlaylist) {
+    public void ShowPlaylistViewer(int userId, int playlistId, String nomePlaylist) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PlaylistViewer.fxml"));
         PlaylistViewerController playlistViewerController = new PlaylistViewerController();
+        playlistViewerController.setUserId(userId);
         playlistViewerController.setPlaylistId(playlistId);
         playlistViewerController.setNomePlaylist(nomePlaylist);
         loader.setController(playlistViewerController);
@@ -141,6 +142,35 @@ public class ViewFactory {
         emozioniProvateController.setAutore(autore);
         emozioniProvateController.setAnno(anno);
         loader.setController(emozioniProvateController);
+        CreateStage(loader);
+    }
+
+    /**
+     * Permette lo switch sulla view InserimentoEmozioneView
+     * @param canzoneId l' Id della canzone selezionata
+     * @param titolo il titolo della canzone selezionata
+     * @param autore l' autore della canzone selezionata
+     * @param anno l' anno della canzone selezionata
+     * @param userId l' Id dell' utente corrente
+     */
+    //solo se utente registrato
+    public void ShowInserimentoEmozioneView(int canzoneId, String titolo, String autore, int anno, int userId) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/InserimentoEmozioneView.fxml"));
+        InserimentoEmozioneController inserimentoEmozioneController = new InserimentoEmozioneController();
+
+        //stampe di controllo
+        System.out.println(userId);
+        System.out.println(canzoneId);
+        System.out.println(titolo);
+        System.out.println(autore);
+        System.out.println(anno);
+
+        inserimentoEmozioneController.setUserId(userId);
+        inserimentoEmozioneController.setCanzoneId(canzoneId);
+        inserimentoEmozioneController.setTitolo(titolo);
+        inserimentoEmozioneController.setAutore(autore);
+        inserimentoEmozioneController.setAnno(anno);
+        loader.setController(inserimentoEmozioneController);
         CreateStage(loader);
     }
 

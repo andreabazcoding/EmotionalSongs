@@ -114,11 +114,12 @@ public class GvPlaylistController extends Controller implements Initializable {
      */
     public void onSelezionaPlaylist(ActionEvent actionEvent) throws IOException {
         TableModel tableModel = tbViewPlaylist.getSelectionModel().getSelectedItem();
+        int userId = getUserId();
         int playlistId = tableModel.getPlaylistId();
         String nomePlaylist = tableModel.getNomePlaylist().get();
 
         ((Node)actionEvent.getSource()).getScene().getWindow().hide();
-        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(playlistId, nomePlaylist);
+        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(userId, playlistId, nomePlaylist);
     }
 
     // </editor-fold>
