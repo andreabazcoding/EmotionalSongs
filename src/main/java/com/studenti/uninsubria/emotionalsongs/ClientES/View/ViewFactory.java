@@ -1,16 +1,13 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.View;
 
-import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EditPlaylistController;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EmozioniProvateController;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.MainViewController;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.MenuController;
-import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.PlaylistViewerController;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.*;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -55,10 +52,28 @@ public class ViewFactory {
         return GvPlaylistView;
     }
 
-    public VBox GetMenuView(int userId) throws IOException {
+    public AnchorPane GetGvPlaylistView(int userId) {
+        System.out.println("GetGvPlaylistView() - User ID: " + userId);
+        if(GvPlaylistView == null){
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GvPlaylist.fxml"));
+                GvPlaylistController gvPlaylistController = new GvPlaylistController();
+                gvPlaylistController.setUserId(userId);
+                loader.setController(gvPlaylistController);
+                GvPlaylistView = loader.load();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        }
+        return GvPlaylistView;
+    }
+
+    public VBox GetMenuView(int userId, BorderPane mainViewParent) throws IOException {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
             MenuController menuController = new MenuController();
+            menuController.setMainViewParent(mainViewParent);
             menuController.setUserId(userId);
             loader.setController(menuController);
             MenuView = loader.load();
@@ -81,6 +96,13 @@ public class ViewFactory {
         CreateStage(loader);
     }
 
+    public void ShowMainView(int userId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainView.fxml"));
+        MainViewController mainViewController = new MainViewController();
+        mainViewController.setUserId(userId);
+        loader.setController(mainViewController);
+        CreateStage(loader);
+    }
 
     /**
      * Permette lo switch sulla view PlaylistViewer
@@ -119,14 +141,6 @@ public class ViewFactory {
         emozioniProvateController.setAutore(autore);
         emozioniProvateController.setAnno(anno);
         loader.setController(emozioniProvateController);
-        CreateStage(loader);
-    }
-
-    public void ShowMainView(int userId) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainView.fxml"));
-        MainViewController mainViewController = new MainViewController();
-        mainViewController.setUserId(userId);
-        loader.setController(mainViewController);
         CreateStage(loader);
     }
 
