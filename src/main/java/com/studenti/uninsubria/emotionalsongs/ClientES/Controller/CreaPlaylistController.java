@@ -4,18 +4,21 @@ import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 /**
  * @author luqmanasghar
  */
-public class CreaPlaylistController extends Controller {
+public class CreaPlaylistController extends Controller implements Initializable {
 
     // <editor-fold desc="Attributi FXML">
     public TextField txtNomePlaylist;
@@ -27,13 +30,32 @@ public class CreaPlaylistController extends Controller {
 
     // <editor-fold desc="Methods">
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //stampa prova
+        System.out.println("User ID: " + getUserId());
+
+        addListeners();
+    }
+
+    private void addListeners() {
+        btnCreaPlaylist.setOnAction(actionEvent -> {
+            try {
+                btnCreaPlaylistPressed();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
     /**
      * Creazione di una playlist
-     * @param actionEvent
      * @throws SQLException
      * @throws IOException
      */
-    public void btnCreaPlaylistPressed(ActionEvent actionEvent) throws SQLException, IOException {
+    public void btnCreaPlaylistPressed() throws SQLException, IOException {
 
         PlaylistModel playlistModel = new PlaylistModel();
         PlaylistEntity playlistEntity = new PlaylistEntity();

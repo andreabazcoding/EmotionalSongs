@@ -1,7 +1,9 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -58,6 +60,7 @@ public class MainViewController extends Controller implements Initializable {
                         default -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvCanzoniView());
                     }
                 });
+
          */
     }
 

@@ -78,9 +78,7 @@ public class GvPlaylistController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        System.out.println(getUserId() + " in GvPlaylist");
-
+        addListeners();
         try {
             ResultSet rs = PlaylistEntity.allPlaylists();
             ObservableList<TableModel> data;
@@ -100,19 +98,27 @@ public class GvPlaylistController extends Controller implements Initializable {
         }
     }
 
+    private void addListeners() {
+        btnSelezionaPlaylist.setOnAction(actionEvent -> {
+            try {
+                onSelezionaPlaylist(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
     /**
      * Al click del mouse sul bottone "Seleziona" apre la playlist selezionata.
      * @param actionEvent
      */
-    public void btnSelezionaPlaylistClicked(ActionEvent actionEvent) throws IOException {
+    public void onSelezionaPlaylist(ActionEvent actionEvent) throws IOException {
         TableModel tableModel = tbViewPlaylist.getSelectionModel().getSelectedItem();
         int playlistId = tableModel.getPlaylistId();
         String nomePlaylist = tableModel.getNomePlaylist().get();
-        int userId = getUserId();
-        System.out.println(userId + " passato da GvPlaylist a PlaylistViewer");
 
         ((Node)actionEvent.getSource()).getScene().getWindow().hide();
-        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(userId, playlistId, nomePlaylist);
+        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(playlistId, nomePlaylist);
     }
 
     // </editor-fold>

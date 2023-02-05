@@ -32,6 +32,8 @@ public class MenuController extends Controller implements Initializable{
 
     private BorderPane mainViewParent;
 
+    private BorderPane mainViewParent;
+
     /**
      * @param url
      * @param resourceBundle
@@ -48,6 +50,10 @@ public class MenuController extends Controller implements Initializable{
             lblAccesso.setText("Accesso effettuato");
         }
          */
+    }
+
+    public void setMainViewParent(BorderPane mainViewParent) {
+        this.mainViewParent = mainViewParent;
     }
 
     public void setMainViewParent(BorderPane mainViewParent) {
