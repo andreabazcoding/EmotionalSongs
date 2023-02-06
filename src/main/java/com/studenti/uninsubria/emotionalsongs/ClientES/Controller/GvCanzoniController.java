@@ -43,6 +43,8 @@ public class GvCanzoniController extends Controller implements Initializable {
     private TableColumn<TableModel, Double> tblColumnDurata;
     @FXML
     private TableColumn<TableModel, String> tblColumnGenere;
+    @FXML
+    private Button btnRicerca, btnSelezionaCanzone;
 
     // </editor-fold>
 
@@ -98,6 +100,7 @@ public class GvCanzoniController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addListeners();
         CanzoneEntity canzoneEntity = new CanzoneEntity();
 
         ObservableList<Integer> options ;
@@ -128,6 +131,26 @@ public class GvCanzoniController extends Controller implements Initializable {
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void addListeners() {
+        btnRicerca.setOnAction(actionEvent -> btnSearch(actionEvent));
+        btnSelezionaCanzone.setOnAction(actionEvent -> {
+            try {
+                btnProspettoEmozioniClicked(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        btnSvuota.setOnAction(actionEvent -> {
+            try {
+                btnSvuota(actionEvent);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 
@@ -187,6 +210,8 @@ public class GvCanzoniController extends Controller implements Initializable {
             Model.GetInstance().GetViewFactory().ShowProspectView(canzoneId, titolo, autore, anno);
         }
     }
+
+    public TableView getTbViewCanzoni() { return tbViewCanzoni; }
 
     @Override
     public void LoadContent() throws SQLException, IOException {

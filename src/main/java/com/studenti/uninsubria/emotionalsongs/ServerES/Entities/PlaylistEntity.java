@@ -1,5 +1,7 @@
 package com.studenti.uninsubria.emotionalsongs.ServerES.Entities;
 
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
+import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CrossPlaylistCanzoniModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.PlaylistModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Connection.ConnectionFactory;
@@ -78,6 +80,47 @@ public class PlaylistEntity {
         }
 
         return createdPlaylistId;
+    }
+
+    /**
+     * Effettua la connessione al database ed esegue la query di inserimento di una corrispondenza canzone-playlist
+     * @param crossPlaylistCanzoniModel
+     * @throws IOException
+     * @throws SQLException
+     */
+    public void CreateCrossPlaylist(CrossPlaylistCanzoniModel crossPlaylistCanzoniModel) throws IOException, SQLException {
+
+        StringBuilder sb = new StringBuilder();
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+
+        try{
+            connection = connectionFactory.getConnection();
+
+            sb.append("INSERT INTO \"EmotionalSongs\".\"CrossPlaylistCanzoni\"(");
+            sb.append("\"CanzoneID\", \"PlaylistID\")");
+            sb.append("VALUES (?, ?);");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sb.toString(), Statement.RETURN_GENERATED_KEYS);
+
+            preparedStatement.setInt(1, crossPlaylistCanzoniModel.getCanzoneID());
+            preparedStatement.setInt(2, crossPlaylistCanzoniModel.getPlaylistID());
+
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            connection.close();
+
+        }catch(Exception ex){
+
+            ex.printStackTrace();
+            throw ex;
+
+        }finally {
+
+            if(connection != null && !connection.isClosed())
+                connection.close();
+
+        }
+
     }
 
     /**

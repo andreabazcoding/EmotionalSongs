@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.GvCanzoniController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <TableView fx:id="tbViewCanzoni" layoutY="72.0" prefHeight="443.0" prefWidth="831.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="72.0">
       <columns>
           <TableColumn fx:id="tblColumnTitolo" editable="false" prefWidth="163.0" sortable="false" text="Titolo" />
@@ -41,13 +41,13 @@
             <Font size="13.0" />
         </font>
     </TextField>
-    <Button fx:id="btnRicerca" alignment="CENTER" layoutX="728.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnSearch" prefWidth="75.0" text="Ricerca">
+    <Button fx:id="btnRicerca" alignment="CENTER" layoutX="728.0" layoutY="33.0" mnemonicParsing="false" prefWidth="75.0" text="Ricerca">
         <font>
             <Font size="13.0" />
         </font>
     </Button>
     <ComboBox fx:id="cBoxAnno" layoutX="551.0" layoutY="33.0" prefWidth="90.0" promptText="Anno" />
-    <Button fx:id="btnSvuota" alignment="CENTER" layoutX="647.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnSvuota" prefWidth="75.0" text="Svuota">
+    <Button fx:id="btnSvuota" alignment="CENTER" layoutX="647.0" layoutY="33.0" mnemonicParsing="false" prefWidth="75.0" text="Svuota">
         <font>
             <Font size="13.0" />
         </font>
@@ -57,5 +57,5 @@
          <Font name="System Bold" size="13.0" />
       </font>
    </Label>
-   <Button fx:id="btnSelezionaCanzone" layoutX="620.0" layoutY="523.0" mnemonicParsing="false" onAction="#btnProspettoEmozioniClicked" text="Vedi prospetto delle emozioni" />
+   <Button fx:id="btnSelezionaCanzone" layoutX="620.0" layoutY="523.0" mnemonicParsing="false" text="Vedi prospetto delle emozioni" />
 </AnchorPane>

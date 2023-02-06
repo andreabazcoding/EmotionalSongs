@@ -38,6 +38,7 @@ public class MenuController extends Controller implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvCanzoniView());
         addListeners();
         if (getUserId() == 0) {
             btnCreaPlaylist.setDisable(true);
@@ -83,7 +84,6 @@ public class MenuController extends Controller implements Initializable{
     @FXML
     private void onCreaPlaylist() {
         try {
-            System.out.println("Case CreaPlaylist");
             Stage stage = (Stage)mainViewParent.getScene().getWindow();
             Model.GetInstance().GetViewFactory().CloseStage(stage);
             Model.GetInstance().GetViewFactory().ShowEditPlaylistView(getUserId());

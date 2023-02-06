@@ -33,35 +33,6 @@ public class MainViewController extends Controller implements Initializable {
         }
         //stampa prova
         System.out.println("User ID: " + getUserId());
-        /*
-        Model.GetInstance().GetViewFactory().getSelectedMenuItem()
-                .addListener((observableValue, oldVal, newVal) -> {
-                    switch (newVal){
-                        case "Playlist" -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvPlaylistView(getUserId()));
-                        case "Accedi" -> {
-                            try {
-                                Stage stage = (Stage)mainViewParent.getScene().getWindow();
-                                Model.GetInstance().GetViewFactory().CloseStage(stage);
-                                Model.GetInstance().GetViewFactory().ShowLoginView();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        case "CreaPlaylist" -> {
-                            try {
-                                System.out.println("Case CreaPlaylist");
-                                Stage stage = (Stage)mainViewParent.getScene().getWindow();
-                                Model.GetInstance().GetViewFactory().CloseStage(stage);
-                                Model.GetInstance().GetViewFactory().ShowEditPlaylistView(getUserId());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        default -> mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvCanzoniView());
-                    }
-                });
-
-         */
     }
 
     /**

@@ -4,6 +4,7 @@ import com.studenti.uninsubria.emotionalsongs.ClientES.Controller.*;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author luqmanasghar
@@ -31,13 +33,31 @@ public class ViewFactory {
     public AnchorPane GetGvCanzoniView() {
         if(GvCanzoniView == null){
             try{
-                GvCanzoniView = new FXMLLoader(getClass().getResource("/View/GvCanzoni.fxml")).load();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GvCanzoni.fxml"));
+                GvCanzoniController gvCanzoniController = new GvCanzoniController();
+                loader.setController(gvCanzoniController);
+                GvCanzoniView = loader.load();
             }
             catch(Exception ex){
                 ex.printStackTrace();
             }
         }
         return GvCanzoniView;
+    }
+
+    public ArrayList<Object> GetGvCanzoniView(ArrayList<Object> arrayList) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GvCanzoni.fxml"));
+            GvCanzoniController gvCanzoniController = new GvCanzoniController();
+            loader.setController(gvCanzoniController);
+            GvCanzoniView = loader.load();
+            arrayList.add(gvCanzoniController);
+            arrayList.add(GvCanzoniView);
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return arrayList;
     }
 
     public AnchorPane GetGvPlaylistView() {
