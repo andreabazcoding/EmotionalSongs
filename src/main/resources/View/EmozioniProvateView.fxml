@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" > <!--fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EmozioniProvateController"-->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"> <!--fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.EmozioniProvateController"-->
    <children>
       <Pane fx:id="paneEmozioneProvate" prefHeight="500.0" prefWidth="700.0">
          <children>
@@ -17,19 +17,19 @@
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <TableView fx:id="tbViewEmozioniProvate" layoutX="25.0" layoutY="43.0" prefHeight="332.0" prefWidth="650.0">
+            <TableView fx:id="tbViewEmozioniProvate" layoutX="25.0" layoutY="43.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="650.0">
               <columns>
                 <TableColumn fx:id="colEmozione" editable="false" prefWidth="214.0" text="Emozione" />
                 <TableColumn fx:id="colNumeroUtenti" editable="false" prefWidth="176.0" text="Numero Utenti" />
                   <TableColumn fx:id="colMedia" editable="false" prefWidth="258.0" text="Media Intensità" />
               </columns>
             </TableView>
-            <Label fx:id="lblRecensioneCompleta" layoutX="25.0" layoutY="383.0" text="Recensioni complete: ">
+            <Label fx:id="lblRecensioneCompleta" layoutX="27.0" layoutY="322.0" text="Recensioni complete: ">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtAreaRecCompleta" layoutX="25.0" layoutY="401.0" prefHeight="76.0" prefWidth="650.0" />
+            <TextArea fx:id="txtAreaRecCompleta" layoutX="25.0" layoutY="341.0" prefHeight="136.0" prefWidth="650.0" />
             <Label fx:id="lblCanzoneSelezionata" layoutX="91.0" layoutY="15.0">
                <font>
                   <Font size="13.0" />
