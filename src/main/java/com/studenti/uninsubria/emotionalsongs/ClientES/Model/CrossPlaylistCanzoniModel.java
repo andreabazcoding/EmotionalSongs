@@ -1,5 +1,15 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
+/**
+ * Classe per gestire le playlist e le canzoni al loro interno.
+ * @author Asghar Luqman
+ * @author Zuffellato Cristian
+ */
 public class CrossPlaylistCanzoniModel {
 
     // <editor-fold desc="Attributi">

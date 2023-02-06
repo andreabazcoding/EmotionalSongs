@@ -1,5 +1,10 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.CanzoneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.EmozioneModel;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
@@ -19,12 +24,11 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
     /**
+     * Classe controller per la view "InserimentoEmozioneView"
+     * La classe gestisce l' inserimento di un feedback emozionale da parte di un utente registrato
+     * ed effettua il salvataggio del feedback sul database.
      * @author Nour Faraj
      * @author Andrea Basilico
-     * La classe gestisce l' inserimento di un feedback emozionale da parte di un utente registrato;
-     * l' utente inserisce l' emozione provata, l' intensità di tale emozione
-     * ed eventualmente un commento opzionale.
-     * Infine effettua il salvataggio del feedback sul database.
      */
     public class InserimentoEmozioneController extends Controller implements Initializable {
 

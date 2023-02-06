@@ -1,5 +1,10 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.TableModel;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.CanzoneEntity;
@@ -17,8 +22,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
- *  Classe controller di "GvCanzoni"
- *  Mostra il prospetto delle canzoni
+ * Classe controller per la view "GvCanzoni"
+ * Mostra l' elenco di canzoni disponibili e permette la ricerca di un brano.
+ * @author Asghar Luqman
+ * @author Zuffellato Cristian
  */
 public class GvCanzoniController extends Controller implements Initializable {
     public Button btnSvuota;
@@ -50,6 +57,10 @@ public class GvCanzoniController extends Controller implements Initializable {
 
     // <editor-fold desc="Methods">
 
+    /**
+     * Al click del bottone "Cerca" effettua la ricerca nel database.
+     * @param evt
+     */
     @FXML
     public void btnSearch(ActionEvent evt) {
         if((txtFieldRicercaTitolo.getText().trim().isEmpty() || txtFieldRicercaTitolo.getText() == null)
@@ -154,6 +165,12 @@ public class GvCanzoniController extends Controller implements Initializable {
     }
 
 
+    /**
+     * Al click del bottone "Svuota" svuota i campi della ricerca.
+     * @param actionEvent
+     * @throws SQLException
+     * @throws IOException
+     */
     public void btnSvuota(ActionEvent actionEvent) throws SQLException, IOException {
         try {
             txtFieldRicercaAutore.setText("");
@@ -165,6 +182,12 @@ public class GvCanzoniController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Estre dal database tutte le canzoni.
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     */
     public ObservableList<TableModel> GetSongsDataList() throws SQLException, IOException {
         CanzoneEntity canzoneEntity = new CanzoneEntity();
         ObservableList<TableModel> data = null;

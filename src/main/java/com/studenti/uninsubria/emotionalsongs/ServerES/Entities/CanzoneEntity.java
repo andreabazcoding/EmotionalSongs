@@ -8,7 +8,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 /**
+ * La classe contiene i metodi per eseguire operazioni sulla tabella Canzone nel database.
  * @author luqmanasghar
  */
 public class CanzoneEntity {
@@ -16,7 +22,7 @@ public class CanzoneEntity {
     // <editor-fold desc="Methods">
 
     /**
-     * Creazione di canzoneEntity a partire da Canzone Model
+     * Effettua la connessione al database ed esegue la query per l' inserimento di una canzone nel database.
      * @param canzone
      * @throws SQLException
      * @throws IOException
@@ -132,6 +138,12 @@ public class CanzoneEntity {
         return resultSet;
     }
 
+    /**
+     * Effettua la connessione al database ed esegue la query di estrazione delle canzoni
+     * filtrate in base alla ricerca.
+     * @throws SQLException
+     * @throws IOException
+     */
     public ResultSet getListByFilter(String titolo, String autore, int anno) throws IOException, SQLException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -227,6 +239,11 @@ public class CanzoneEntity {
         return resultSet;
     }
 
+    /**
+     * Effettua la connessione al database ed esegue la query di estrazione degli anni distinti
+     * @throws SQLException
+     * @throws IOException
+     */
     public ResultSet distinctYear() throws IOException {
         StringBuilder sb = new StringBuilder();
         ConnectionFactory connectionFactory = new ConnectionFactory();

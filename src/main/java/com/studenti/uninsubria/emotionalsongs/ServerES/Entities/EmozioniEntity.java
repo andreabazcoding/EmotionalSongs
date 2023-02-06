@@ -11,6 +11,15 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
+/**
+ * La classe contiene i metodi per eseguire operazioni sulla tabella Emozione nel database.
+ * @author Nour Faraj
+ */
 public class EmozioniEntity {
 
     // <editor-fold desc="Attributi">
@@ -28,7 +37,7 @@ public class EmozioniEntity {
     // <editor-fold desc="Methods">
 
     /**
-     * Creazione di EmozioneEntity a partire da EmozioneModel
+     * Effettua la connessione al database ed esegue la query per l' inserimento di una recensione.
      * @param emozioneModel
      * @throws SQLException
      * @throws IOException
@@ -68,7 +77,7 @@ public class EmozioniEntity {
     }
 
     /**
-     * Prospetto delle emozioni provate dagli utenti con media di intensità per ogni canzone
+     * Effettua la connessione al database ed esegue la query per l' estrazione del prospetto emotivo.
      * @param canzoneID
      * @return resultSet
      * @throws SQLException
