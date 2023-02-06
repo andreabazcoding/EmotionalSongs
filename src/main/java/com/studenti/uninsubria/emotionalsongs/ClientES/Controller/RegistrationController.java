@@ -153,6 +153,12 @@ public class RegistrationController extends Controller {
         }
     }
 
+    public void btnIndietroClicked(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) btnIndietro.getScene().getWindow();
+        Model.GetInstance().GetViewFactory().CloseStage(stage);
+        Model.GetInstance().GetViewFactory().ShowMainView();
+    }
+
     /**
      * Richiama i metodi AuthenticateUser per l'autenticazioni con le credenziali e Create per l'inserimento delle informazioni nel database
      * Ritorna TRUE se esegue i metodi con successo

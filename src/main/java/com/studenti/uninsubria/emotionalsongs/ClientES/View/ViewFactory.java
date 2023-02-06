@@ -79,7 +79,6 @@ public class ViewFactory {
     }
 
     public AnchorPane GetGvPlaylistView(int userId) {
-        if(GvPlaylistView == null){
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GvPlaylist.fxml"));
                 GvPlaylistController gvPlaylistController = new GvPlaylistController();
@@ -90,7 +89,6 @@ public class ViewFactory {
             catch(Exception ex){
                 ex.printStackTrace();
             }
-        }
         return GvPlaylistView;
     }
 
