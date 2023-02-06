@@ -1,5 +1,10 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +20,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 /**
+ * Classe astratta che gestisce i dati utilizzati da tutti i controller
  * @author luqmanasghar
  */
 

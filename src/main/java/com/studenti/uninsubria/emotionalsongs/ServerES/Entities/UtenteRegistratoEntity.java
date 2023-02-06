@@ -6,7 +6,13 @@ import com.studenti.uninsubria.emotionalsongs.ClientES.Model.UtenteRegistratoMod
 import java.io.IOException;
 import java.sql.*;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 /**
+ * La classe contiene i metodi per eseguire operazioni sulla tabella UtenteRegistrato nel database.
  * @author luqmanasghar
  */
 public class UtenteRegistratoEntity {
@@ -24,7 +30,7 @@ public class UtenteRegistratoEntity {
     // <editor-fold desc="Methods">
 
     /**
-     * Creazione di utenteRegistratoEntity a partire da
+     * Effettua la connessione al database ed esegue la query di inserimento di un utente nel database.
      * @param utenteRegistrato
      * @throws SQLException
      * @throws IOException

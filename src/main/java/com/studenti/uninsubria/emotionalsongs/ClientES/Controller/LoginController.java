@@ -1,5 +1,10 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.Model;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.UtenteRegistratoEntity;
 import javafx.event.ActionEvent;
@@ -19,6 +24,8 @@ import java.util.ResourceBundle;
 
 
 /**
+ * Classe controller per la view "LoginView"
+ * Permette all' utente di accedere o in alternativa di aprire la finestra di registrazione.
  * @author Asghar Luqman
  * @author Zuffellato Cristian
  */

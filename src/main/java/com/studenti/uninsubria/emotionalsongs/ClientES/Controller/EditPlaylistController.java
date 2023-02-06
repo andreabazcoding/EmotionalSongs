@@ -1,5 +1,10 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Controller;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 import com.studenti.uninsubria.emotionalsongs.ClientES.Model.*;
 import com.studenti.uninsubria.emotionalsongs.ServerES.Entities.PlaylistEntity;
 import javafx.collections.ObservableList;
@@ -23,6 +28,7 @@ import java.util.ResourceBundle;
 /**
  * Classe controller di "EditPlaylistView"
  * Permette la creazione di una nuova playlist
+ * @author  Andrea Basilico
  */
 public class EditPlaylistController extends Controller implements Initializable {
 
@@ -88,6 +94,11 @@ public class EditPlaylistController extends Controller implements Initializable 
         });
     }
 
+    /**
+     * Al click del bottone "Aggiungi canzone" aggiunge la canzone alla playlist.
+     * @param actionEvent
+     * @throws IOException
+     */
     public void onAggiungiCanzone(ActionEvent actionEvent) throws IOException {
 
         TableModel tableModel = (TableModel) tbViewCanzoni.getSelectionModel().getSelectedItem();
@@ -114,6 +125,9 @@ public class EditPlaylistController extends Controller implements Initializable 
         }
     }
 
+    /**
+     * Al click del bottone "Rimuovi canzone" rimuove la canzone dalla playlist.
+     */
     public void onRimuoviCanzone() {
         int selectedId = lviewRiepilogoPlaylist.getSelectionModel().getSelectedIndex();
         if (selectedId == -1) {
@@ -137,6 +151,11 @@ public class EditPlaylistController extends Controller implements Initializable 
         }
     }
 
+    /**
+     * Al click del bottone "Crea Playlist" effettua il salvataggio della playlist sul database.
+     * @throws SQLException
+     * @throws IOException
+     */
     public void onCrea() throws SQLException, IOException {
         ObservableList<String> playlist = lviewRiepilogoPlaylist.getSelectionModel().getSelectedItems();
         if (playlist.isEmpty()) {
@@ -181,6 +200,10 @@ public class EditPlaylistController extends Controller implements Initializable 
         }
     }
 
+    /**
+     * Al click del bottone "Indietro" chiude la view attuale e apre la view principale.
+     * @throws IOException
+     */
     public void onIndietro() throws IOException {
         Stage stage = (Stage) btnIndietro.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);

@@ -9,8 +9,13 @@ import java.io.IOException;
 import java.sql.*;
 
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 /**
- * La classe contiene i metodi per eseguire operazioni sulla tabella Playlist nel database
+ * La classe contiene i metodi per eseguire operazioni sulla tabella Playlist nel database.
  * @author Luqman Asghar
  * @author Cristian Zuffellato
  */
@@ -173,7 +178,7 @@ public class PlaylistEntity {
 
 
     /**
-     * Estrae le canzoni presenti in una specifica playlist
+     * Effettua la connessione al database ed esegue la query per estrarre le canzoni presenti in una specifica playlist
      * @param playlistId
      * @return resultSet
      * @throws IOException
@@ -258,7 +263,8 @@ public class PlaylistEntity {
     }
 
     /**
-     * Verifica che esiste giò una playlist con il nome passato per l'utente
+     * Effettua la connessione al database ed esegue la query per
+     * verificare se esiste già una playlist con il nome passato dall'utente.
      * @return boolean
      * @throws IOException
      * @throws SQLException

@@ -1,6 +1,12 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 /**
+ * Classe per gestire gli utenti registrati.
  * @author Asghar Luqman
  * @author Zuffellato Cristian
  */

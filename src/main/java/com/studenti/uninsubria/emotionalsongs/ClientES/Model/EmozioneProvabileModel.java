@@ -1,5 +1,15 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
+/**
+ * Classe per gestire le 9 emozioni provabili.
+ * @author Asghar Luqman
+ * @author Zuffellato Cristian
+ */
 public class EmozioneProvabileModel {
 
     // <editor-fold desc="Attributi">

@@ -1,13 +1,15 @@
 package com.studenti.uninsubria.emotionalsongs.ClientES.Model;
 
+//Asghar Luqman, 740940, VA
+//Zuffellato Cristian, 740274, VA
+//Basilico Andrea, 741414, VA
+//Faraj Nour, 739889, VA
+
 import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
 
 /**
- * Gestisce i dati contenuti nella tabella del prospetto emozioni di una canzone
- * Gestisce i dati contenuti nella tabella di GvCanzoni
- * Gestisce i dati contenuti nella tabello di GvPlaylist
- *
+ * Gestisce i dati visualizzati nelle tabelle delle view.
  * @author Nour Faraj
  * @author Andrea Basilico
  * @author Cristian Zuffellato
