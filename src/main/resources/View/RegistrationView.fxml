@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.RegistrationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="329.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studenti.uninsubria.emotionalsongs.ClientES.Controller.RegistrationController">
    <children>
       <Label fx:id="lblNome" layoutX="43.0" layoutY="62.0" prefHeight="17.0" prefWidth="36.0" text="Nome">
          <font>
@@ -79,7 +79,7 @@
          <font>
             <Font name="Calibri Bold" size="12.0" />
          </font></RadioButton>
-      <Button fx:id="btnIndietro" layoutX="48.0" layoutY="275.0" mnemonicParsing="false" text="Torna indietro" />
+      <Button fx:id="btnIndietro" layoutX="48.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnIndietroClicked" text="Torna indietro" />
       <Label fx:id="lblInfo" layoutX="305.0" layoutY="280.0" text="Tutti i campi sono obbligatori.">
          <font>
             <Font name="Calibri Bold" size="13.0" />
