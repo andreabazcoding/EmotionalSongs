@@ -27,7 +27,7 @@ public class MainViewController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            mainViewParent.setLeft(Model.GetInstance().GetViewFactory().GetMenuView(getUserId(), mainViewParent));
+            mainViewParent.setLeft(Model.GetInstance().GetViewFactory().GetMenuView(getUserId(), getUsername(), mainViewParent));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

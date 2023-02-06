@@ -109,7 +109,7 @@ public class PlaylistViewerController extends Controller implements Initializabl
     public void goBack(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) btnGoBack.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);
-        Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+        Model.GetInstance().GetViewFactory().ShowMainView(getUserId(), getUsername());
     }
 
     /**
@@ -156,7 +156,7 @@ public class PlaylistViewerController extends Controller implements Initializabl
             String autore = tableModel.getAutore().get();
             int anno = (int) tableModel.getAnno().getValue();
 
-            Model.GetInstance().GetViewFactory().ShowInserimentoEmozioneView(canzoneId, titolo, autore, anno, userId);
+            Model.GetInstance().GetViewFactory().ShowInserimentoEmozioneView(canzoneId, titolo, autore, anno, userId, getUsername());
         }
     }
 }

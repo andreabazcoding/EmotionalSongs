@@ -154,7 +154,7 @@ import java.util.ResourceBundle;
         public void loadMainView() throws IOException {
             Stage stage = (Stage) btnSave.getScene().getWindow();
             Model.GetInstance().GetViewFactory().CloseStage(stage);
-            Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+            Model.GetInstance().GetViewFactory().ShowMainView(getUserId(), getUsername());
         }
 
         @Override

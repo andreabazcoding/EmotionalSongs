@@ -28,6 +28,7 @@ public abstract class Controller extends Application {
     private Parent root;
 
     private int userId;
+    private String username;
     public int canzoneId;
     public int playlistId;
     public String nomePlaylist;
@@ -70,6 +71,10 @@ public abstract class Controller extends Application {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public String getUsername() { return username; }
+
+    public void setUsername(String username) { this.username = username; }
 
     public int getCanzoneId() { return canzoneId; }
 

@@ -119,7 +119,7 @@ public class GvPlaylistController extends Controller implements Initializable {
         String nomePlaylist = tableModel.getNomePlaylist().get();
 
         ((Node)actionEvent.getSource()).getScene().getWindow().hide();
-        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(userId, playlistId, nomePlaylist);
+        Model.GetInstance().GetViewFactory().ShowPlaylistViewer(userId, getUsername(), playlistId, nomePlaylist);
     }
 
     // </editor-fold>

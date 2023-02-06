@@ -72,6 +72,7 @@ public class LoginController extends Controller implements Initializable {
             lblLoginMessage.setText("Inserisci username e password: ");
         }else {
             setUserId(utenteRegistratoEntity.AuthenticateUser(txtFieldUsername.getText(),pssFieldPassword.getText()));
+            setUsername(txtFieldUsername.getText());
             if(getUserId() != 0) {
                 LoadMainView();
             }else{
@@ -99,7 +100,7 @@ public class LoginController extends Controller implements Initializable {
     private void LoadMainView() throws IOException {
         Stage stage = (Stage) txtFieldUsername.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);
-        Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+        Model.GetInstance().GetViewFactory().ShowMainView(getUserId(), getUsername());
     }
 
     // </editor-fold>

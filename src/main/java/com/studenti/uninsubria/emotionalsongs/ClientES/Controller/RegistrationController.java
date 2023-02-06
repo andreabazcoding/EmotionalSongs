@@ -142,7 +142,7 @@ public class RegistrationController extends Controller {
                 setUserId(utenteRegistratoEntity.AuthenticateUser(utenteRegistratoModel.getUsername(), utenteRegistratoModel.getPassword()));
                 Stage stage = (Stage) txtUsername.getScene().getWindow();
                 Model.GetInstance().GetViewFactory().CloseStage(stage);
-                Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+                Model.GetInstance().GetViewFactory().ShowMainView(getUserId(), utenteRegistratoModel.getUsername());
                 System.out.println(getUserId() + " ritornato da Registrazione");
             }
         }

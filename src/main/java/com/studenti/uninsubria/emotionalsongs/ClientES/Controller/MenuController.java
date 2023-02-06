@@ -43,9 +43,8 @@ public class MenuController extends Controller implements Initializable{
         if (getUserId() == 0) {
             btnCreaPlaylist.setDisable(true);
         } else {
-            btnAccedi.setDisable(true);
-            btnAccedi.setText("Accesso effettuato");
-            lblAccesso.setText("Accesso effettuato");
+            btnAccedi.setText("Logout");
+            lblAccesso.setText("Utente: " + getUsername());
         }
     }
 
@@ -54,7 +53,13 @@ public class MenuController extends Controller implements Initializable{
     }
 
     public void addListeners() {
-        btnAccedi.setOnAction(actionEvent -> onAccedi());
+        btnAccedi.setOnAction(actionEvent -> {
+            try {
+                onAccedi();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         btnPlaylist.setOnAction(actionEvent -> onPlaylist());
         btnCreaPlaylist.setOnAction(actionEvent -> onCreaPlaylist());
         btnCanzoni.setOnAction(actionEvent -> onCanzoni());
@@ -62,7 +67,7 @@ public class MenuController extends Controller implements Initializable{
 
     @FXML
     private void onPlaylist() {
-        mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvPlaylistView(getUserId()));
+        mainViewParent.setCenter(Model.GetInstance().GetViewFactory().GetGvPlaylistView(getUserId(), getUsername()));
     }
 
     @FXML
@@ -71,13 +76,19 @@ public class MenuController extends Controller implements Initializable{
     }
 
     @FXML
-    private void onAccedi() {
-        try {
+    private void onAccedi() throws IOException {
+        if (btnAccedi.getText() == "Logout") {
             Stage stage = (Stage)mainViewParent.getScene().getWindow();
             Model.GetInstance().GetViewFactory().CloseStage(stage);
-            Model.GetInstance().GetViewFactory().ShowLoginView();
-        } catch (IOException e) {
-            e.printStackTrace();
+            Model.GetInstance().GetViewFactory().ShowMainView();
+        } else {
+            try {
+                Stage stage = (Stage)mainViewParent.getScene().getWindow();
+                Model.GetInstance().GetViewFactory().CloseStage(stage);
+                Model.GetInstance().GetViewFactory().ShowLoginView();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -86,7 +97,7 @@ public class MenuController extends Controller implements Initializable{
         try {
             Stage stage = (Stage)mainViewParent.getScene().getWindow();
             Model.GetInstance().GetViewFactory().CloseStage(stage);
-            Model.GetInstance().GetViewFactory().ShowEditPlaylistView(getUserId());
+            Model.GetInstance().GetViewFactory().ShowEditPlaylistView(getUserId(), getUsername());
         } catch (IOException e) {
             e.printStackTrace();
         }

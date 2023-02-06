@@ -72,11 +72,12 @@ public class ViewFactory {
         return GvPlaylistView;
     }
 
-    public AnchorPane GetGvPlaylistView(int userId) {
+    public AnchorPane GetGvPlaylistView(int userId, String username) {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GvPlaylist.fxml"));
                 GvPlaylistController gvPlaylistController = new GvPlaylistController();
                 gvPlaylistController.setUserId(userId);
+                gvPlaylistController.setUsername(username);
                 loader.setController(gvPlaylistController);
                 GvPlaylistView = loader.load();
             }
@@ -86,12 +87,13 @@ public class ViewFactory {
         return GvPlaylistView;
     }
 
-    public VBox GetMenuView(int userId, BorderPane mainViewParent) throws IOException {
+    public VBox GetMenuView(int userId, String username, BorderPane mainViewParent) throws IOException {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Menu.fxml"));
             MenuController menuController = new MenuController();
             menuController.setMainViewParent(mainViewParent);
             menuController.setUserId(userId);
+            menuController.setUsername(username);
             loader.setController(menuController);
             MenuView = loader.load();
         }
@@ -113,10 +115,11 @@ public class ViewFactory {
         CreateStage(loader);
     }
 
-    public void ShowMainView(int userId) throws IOException {
+    public void ShowMainView(int userId, String username) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MainView.fxml"));
         MainViewController mainViewController = new MainViewController();
         mainViewController.setUserId(userId);
+        mainViewController.setUsername(username);
         loader.setController(mainViewController);
         CreateStage(loader);
     }
@@ -126,10 +129,11 @@ public class ViewFactory {
      * @param playlistId l' id della playlist selezionata
      * @param nomePlaylist il nome della playlist selezionata
      */
-    public void ShowPlaylistViewer(int userId, int playlistId, String nomePlaylist) {
+    public void ShowPlaylistViewer(int userId, String username, int playlistId, String nomePlaylist) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PlaylistViewer.fxml"));
         PlaylistViewerController playlistViewerController = new PlaylistViewerController();
         playlistViewerController.setUserId(userId);
+        playlistViewerController.setUsername(username);
         playlistViewerController.setPlaylistId(playlistId);
         playlistViewerController.setNomePlaylist(nomePlaylist);
         loader.setController(playlistViewerController);
@@ -164,11 +168,12 @@ public class ViewFactory {
      * @param anno l' anno della canzone selezionata
      * @param userId l' Id dell' utente corrente
      */
-    public void ShowInserimentoEmozioneView(int canzoneId, String titolo, String autore, int anno, int userId) {
+    public void ShowInserimentoEmozioneView(int canzoneId, String titolo, String autore, int anno, int userId, String username) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/InserimentoEmozioneView.fxml"));
         InserimentoEmozioneController inserimentoEmozioneController = new InserimentoEmozioneController();
 
         inserimentoEmozioneController.setUserId(userId);
+        inserimentoEmozioneController.setUsername(username);
         inserimentoEmozioneController.setCanzoneId(canzoneId);
         inserimentoEmozioneController.setTitolo(titolo);
         inserimentoEmozioneController.setAutore(autore);
@@ -191,10 +196,11 @@ public class ViewFactory {
      * @param userId
      * @throws IOException
      */
-    public void ShowEditPlaylistView(int userId) throws IOException {
+    public void ShowEditPlaylistView(int userId, String username) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EditPlaylistView.fxml"));
         EditPlaylistController editPlaylistController = new EditPlaylistController();
         editPlaylistController.setUserId(userId);
+        editPlaylistController.setUsername(username);
         loader.setController(editPlaylistController);
         CreateStage(loader);
     }

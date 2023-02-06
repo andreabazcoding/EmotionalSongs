@@ -171,13 +171,25 @@ public class EditPlaylistController extends Controller implements Initializable 
                 playlistEntity.CreateCrossPlaylist(crossPlaylistCanzoniModel);
             }
 
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Playlist creata con successo");
+            alert.setHeaderText(null);
+            alert.setContentText("Hai creato la playlist \"" + txtFieldTitoloPlaylist.getText() + "\"");
+            alert.showAndWait();
+
+            clearAll();
         }
     }
 
     public void onIndietro() throws IOException {
         Stage stage = (Stage) btnIndietro.getScene().getWindow();
         Model.GetInstance().GetViewFactory().CloseStage(stage);
-        Model.GetInstance().GetViewFactory().ShowMainView(getUserId());
+        Model.GetInstance().GetViewFactory().ShowMainView(getUserId(), getUsername());
+    }
+
+    public void clearAll() {
+        txtFieldTitoloPlaylist.clear();
+        lviewRiepilogoPlaylist.getItems().clear();
     }
 
     @Override
